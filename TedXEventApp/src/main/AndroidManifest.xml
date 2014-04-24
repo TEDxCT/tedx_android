@@ -8,13 +8,45 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.tedx.capetown.app.BaseActivity"
+            android:name="com.tedx.capetown.app.presentation.activity.BaseActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.AgendaActivity"
+            android:label="@string/title_activity_agenda" >
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.EventActivity"
+            android:label="@string/title_activity_event" >
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.MoreInfoActivity"
+            android:label="@string/title_activity_more_info" >
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.SpeakerProfileActivity"
+            android:label="@string/title_activity_speaker_profile" >
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.SpeakerListActivity"
+            android:label="@string/title_activity_speaker_list" >
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.SponsorsActivity"
+            android:label="@string/title_activity_sponsors" >
+        </activity>
+        <activity
+            android:name="com.tedx.capetown.app.presentation.activity.TalkActivity"
+            android:label="@string/title_activity_talk" >
         </activity>
     </application>
 
