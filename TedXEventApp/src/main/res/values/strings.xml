@@ -18,5 +18,6 @@
     <string name="title_activity_speaker_list">SpeakerListActivity</string>
     <string name="title_activity_sponsors">SponsorsActivity</string>
     <string name="title_activity_talk">TalkActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>
