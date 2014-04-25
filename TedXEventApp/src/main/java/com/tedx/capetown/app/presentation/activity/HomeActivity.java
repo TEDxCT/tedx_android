@@ -1,9 +1,14 @@
 package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 import com.tedx.capetown.app.R;
 
 public class HomeActivity extends Activity {
@@ -12,6 +17,22 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Bundle state = this.getIntent().getExtras();
+        final Activity context = this;
+        if(state!=null)
+            if(state.containsKey("key"))
+                Toast.makeText(this, state.getString("key"), Toast.LENGTH_LONG).show();
+        this.findViewById(R.id.txt_home_main).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(context,AgendaActivity.class);
+                startActivity(intent);
+                intent.putExtra("test","Richard is here");
+                context.setResult(context.RESULT_OK, intent);
+                context.finish();
+            }
+        });
     }
 
 

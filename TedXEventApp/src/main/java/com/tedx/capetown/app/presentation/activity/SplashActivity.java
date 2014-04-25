@@ -1,9 +1,12 @@
 package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.tedx.capetown.app.R;
 
 public class SplashActivity extends Activity {
@@ -12,6 +15,12 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        Intent intent = new Intent();
+    intent.setClass(this.getApplicationContext(), HomeActivity.class);
+        intent.putExtra("key", "Hat");
+//        this.startActivity(intent);
+        this.startActivityForResult(intent, 100);
+//        this.finish();
     }
 
 
@@ -34,5 +43,39 @@ public class SplashActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onSaveInstanceState(Bundle state)
+    {
+        state.putString("Test", "TEST");
+        super.onSaveInstanceState(state);
+    }
+    @Override
 
+    public void onRestoreInstanceState(Bundle state)
+    {
+        super.onRestoreInstanceState(state);
+        if(state!=null)
+            if(state.containsKey("Test"))
+        Toast.makeText(this,state.getString("Test"),Toast.LENGTH_LONG).show();
+    }
+
+    public void onActivityResult( int requestCode, int resultCode,Intent intent)
+    {
+        super.onActivityResult(requestCode,resultCode,intent);
+    if(resultCode==this.RESULT_OK)
+    {
+        if(requestCode==100)
+        {
+            if(intent!=null) {
+                Bundle i = intent.getExtras();
+                if (i != null) {
+                    if (i.containsKey("test")) {
+                        Toast.makeText(this, i.getString("test"), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }
+    }
+
+    }
 }
