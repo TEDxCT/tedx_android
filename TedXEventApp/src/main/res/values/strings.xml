@@ -21,7 +21,6 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="agenda_name">Agenda</string>
     <string name="sponsors_name">Sponsors</string>
-    <string name="speaker_name">Speaker</string>
 
     <string name="activity_speaker_profile_speaker_name_generic">Speaker Name</string>
     <string name="activity_speaker_profile_genre_generic">Genre</string>
