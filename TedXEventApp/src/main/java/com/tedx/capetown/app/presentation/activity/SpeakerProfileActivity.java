@@ -34,17 +34,17 @@ public class SpeakerProfileActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_profile);
 
-        tvSpeakerName = (TextView)findViewById(R.id.txt_speakerName);
-        tvGenre = (TextView)findViewById(R.id.txt_genre);
-        tvTalkName = (TextView)findViewById(R.id.txt_talkName);
-        tvDescription = (TextView)findViewById(R.id.txt_description);
-        tvTwitterHandle = (TextView)findViewById(R.id.txt_twitterHandle);
-        tvEmailAddress = (TextView)findViewById(R.id.txt_emailAddress);
-        ivImage = (ImageView)findViewById(R.id.img_speaker);
+        tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
+        tvGenre = (TextView) findViewById(R.id.txt_genre);
+        tvTalkName = (TextView) findViewById(R.id.txt_talkName);
+        tvDescription = (TextView) findViewById(R.id.txt_description);
+        tvTwitterHandle = (TextView) findViewById(R.id.txt_twitterHandle);
+        tvEmailAddress = (TextView) findViewById(R.id.txt_emailAddress);
+        ivImage = (ImageView) findViewById(R.id.img_speaker);
 
         Bundle state = this.getIntent().getExtras();
-        if(state!=null)
-            if(state.containsKey("speakerId"))
+        if (state != null)
+            if (state.containsKey("speakerId"))
                 loadSpeaker(state.getInt("speakerId"));
 
         tvEmailAddress.setOnClickListener(new View.OnClickListener() {
