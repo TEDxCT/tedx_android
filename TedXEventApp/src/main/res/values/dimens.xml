@@ -2,10 +2,19 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="margin_for_headers">10dp</dimen>
+    <dimen name="margin_for_image_in_list">10dp</dimen>
+    <dimen name="activity_vertical_textview">5dp</dimen>
 
-        <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
-         https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
 
     <dimen name="home_activity_base_btn_width">240dp</dimen>
+
+    <dimen name="activity_speaker_profile_image_width">120dp</dimen>
+    <dimen name="activity_speaker_profile_image_height">120dp</dimen>
+    <dimen name="activity_speaker_profile_speaker_name_margin_left">10dp</dimen>
+    <dimen name="activity_speaker_profile_text_margin_top">15dp</dimen>
+    <dimen name="image_talk_width">80dp</dimen>
+    <dimen name="image_talk_height">80dp</dimen>
+
 </resources>

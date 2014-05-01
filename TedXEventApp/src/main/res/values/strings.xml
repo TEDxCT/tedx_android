@@ -10,7 +10,7 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_home">Home Activity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Hello world</string>
     <string name="title_activity_agenda">Agenda Activity</string>
     <string name="title_activity_event">EventActivity</string>
     <string name="title_activity_more_info">MoreInfoActivity</string>
@@ -21,5 +21,23 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="agenda_name">Agenda</string>
     <string name="sponsors_name">Sponsors</string>
+
+    <string name="activity_speaker_profile_speaker_name_generic">Speaker Name</string>
+    <string name="activity_speaker_profile_genre_generic">Genre</string>
+    <string name="activity_speaker_profile_talk_name_generic">Talk Name</string>
+    <string name="activity_speaker_profile_lorem_ipsum_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</string>
+    <string name="activity_speaker_profile_twitter_handle_generic">Twitter Handle</string>
+    <string name="activity_speaker_profile_email_address_generic">Email Address</string>
+    <string name="talk_name">Talk name</string>
+    <string name="speaker_name">Speaker name</string>
+    <string name="genre">Genre</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</string>
+
+    <string name="listview_session_default_session">Session 0</string>
+    <string name="listview_session_default_time">00:00 - 00:00</string>
+    <string name="listview_session_speaker_talk_title_generic">Talk Title</string>
+    <string name="listview_session_speaker_speaker_generic">Speaker</string>
+    <string name="listview_session_speaker_genre_generic">Genre</string>
+    <string name="listview_session_speaker_short_description_generic">Loading short description of talk...</string>
 
 </resources>
