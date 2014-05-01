@@ -22,11 +22,19 @@
     <string name="agenda_name">Agenda</string>
     <string name="sponsors_name">Sponsors</string>
     <string name="speaker_name">Speaker</string>
+
     <string name="activity_speaker_profile_speaker_name_generic">Speaker Name</string>
     <string name="activity_speaker_profile_genre_generic">Genre</string>
     <string name="activity_speaker_profile_talk_name_generic">Talk Name</string>
     <string name="activity_speaker_profile_lorem_ipsum_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</string>
     <string name="activity_speaker_profile_twitter_handle_generic">Twitter Handle</string>
     <string name="activity_speaker_profile_email_address_generic">Email Address</string>
+
+    <string name="listview_session_default_session">Session 0</string>
+    <string name="listview_session_default_time">00:00 - 00:00</string>
+    <string name="listview_session_speaker_talk_title_generic">Talk Title</string>
+    <string name="listview_session_speaker_speaker_generic">Speaker</string>
+    <string name="listview_session_speaker_genre_generic">Genre</string>
+    <string name="listview_session_speaker_short_description_generic">Loading short description of talk...</string>
 
 </resources>
