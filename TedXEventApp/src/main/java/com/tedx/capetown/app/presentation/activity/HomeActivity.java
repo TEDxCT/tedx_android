@@ -19,9 +19,11 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
         Bundle state = this.getIntent().getExtras();
         final Activity context = this;
+
         if(state!=null)
             if(state.containsKey("key"))
                 Toast.makeText(this, state.getString("key"), Toast.LENGTH_LONG).show();
+
         this.findViewById(R.id.txt_home_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,6 +33,15 @@ public class HomeActivity extends Activity {
                 intent.putExtra("test","Richard is here");
                 context.setResult(context.RESULT_OK, intent);
                 context.finish();
+            }
+        });
+
+        this.findViewById(R.id.btn_speaker_profile_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,SpeakerProfileActivity.class);
+                intent.putExtra("speakerId",1);
+                startActivity(intent);
             }
         });
     }

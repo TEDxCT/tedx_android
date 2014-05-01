@@ -8,9 +8,83 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.tedx.capetown.app.presentation.activity.SpeakerProfileActivity">
 
+    <ImageView
+        android:layout_width="@dimen/activity_speaker_profile_image_width"
+        android:layout_height="@dimen/activity_speaker_profile_image_height"
+        android:id="@+id/img_speaker"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_launcher" />
+
     <TextView
-        android:text="@string/hello_world"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/activity_speaker_profile_speaker_name_generic"
+        android:id="@+id/txt_speakerName"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/img_speaker"
+        android:layout_marginLeft="@dimen/activity_speaker_profile_speaker_name_margin_left" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/activity_speaker_profile_genre_generic"
+        android:id="@+id/txt_genre"
+        android:layout_below="@+id/txt_speakerName"
+        android:layout_alignLeft="@+id/txt_speakerName"
+        android:layout_alignStart="@+id/txt_genre"
+        android:layout_marginTop="@dimen/activity_speaker_profile_text_margin_top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/activity_speaker_profile_talk_name_generic"
+        android:id="@+id/txt_talkName"
+        android:layout_below="@+id/txt_genre"
+        android:layout_alignLeft="@+id/txt_genre"
+        android:layout_alignStart="@+id/txt_genre"
+        android:layout_marginTop="@dimen/activity_speaker_profile_text_margin_top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/txt_description"
+        android:layout_below="@+id/img_speaker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/activity_speaker_profile_lorem_ipsum_text"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="@dimen/activity_speaker_profile_text_margin_top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/activity_speaker_profile_twitter_handle_generic"
+        android:id="@+id/txt_twitterHandle"
+        android:layout_below="@+id/txt_description"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textColor="#0092ff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/activity_speaker_profile_email_address_generic"
+        android:id="@+id/txt_emailAddress"
+        android:layout_below="@+id/txt_twitterHandle"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textColor="#0092FF" />
+
 
 </RelativeLayout>
