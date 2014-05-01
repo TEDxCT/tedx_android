@@ -8,4 +8,6 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
 
     <dimen name="home_activity_base_btn_width">240dp</dimen>
+    <dimen name="image_talk_width">80dp</dimen>
+    <dimen name="image_talk_height">80dp</dimen>
 </resources>
