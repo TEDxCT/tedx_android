@@ -4,7 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.SpeakerModel;
+import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SponsorsActivity extends Activity {
 
@@ -12,6 +19,13 @@ public class SponsorsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sponsors);
+        ListView lv = (ListView)findViewById(R.id.sponsor_listview);
+        List<SpeakerModel> list = new ArrayList<SpeakerModel>();
+        for(int i = 0;i<100;i++) {
+            list.add(new SpeakerModel(i));
+        }
+        SpeakerListAdapter sla = new SpeakerListAdapter(list);
+        lv.setAdapter(sla);
     }
 
 
