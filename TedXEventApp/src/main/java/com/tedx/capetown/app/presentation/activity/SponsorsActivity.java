@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.core.models.SpeakerModel;
-import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +18,18 @@ public class SponsorsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sponsors);
-        ListView lv = (ListView)findViewById(R.id.sponsor_listview);
-        List<SpeakerModel> list = new ArrayList<SpeakerModel>();
-        for(int i = 0;i<100;i++) {
-            list.add(new SpeakerModel(i));
-        }
-        SpeakerListAdapter sla = new SpeakerListAdapter(list);
-        lv.setAdapter(sla);
+
+        populateList();
     }
 
+    private void populateList() {
+        ListView listView = (ListView) findViewById(R.id.sponsor_listview);
+        List<SponsorActivity> listItems = new ArrayList<SponsorActivity>();
+        for(int i = 0; i < 20; i++)
+            listItems.add(new SponsorActivity());
+        ArrayAdapter<SponsorActivity> adapter = new ArrayAdapter<SponsorActivity>(this, R.layout.listview_sponsor, listItems);
+        listView.setAdapter(adapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
