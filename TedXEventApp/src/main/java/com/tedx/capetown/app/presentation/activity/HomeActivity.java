@@ -30,7 +30,6 @@ public class HomeActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(context,AgendaActivity.class);
                 startActivity(intent);
-                intent.putExtra("test","Richard is here");
                 context.setResult(context.RESULT_OK, intent);
                 context.finish();
             }
