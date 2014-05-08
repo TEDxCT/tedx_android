@@ -61,9 +61,8 @@ public class SponsorListAdapter implements ListAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = (LayoutInflater) view.getContext()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View currentView = inflater.inflate(R.layout.activity_agenda, viewGroup, false);
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View currentView = inflater.inflate(R.layout.listview_sponsor, viewGroup, false);
         return currentView;
     }
 
