@@ -4,7 +4,7 @@
 package com.tedx.capetown.lib.sdk.exception;
 
 /**
- * @author richardpj
+ * @author andrewpettey
  * 
  */
 @SuppressWarnings("serial")

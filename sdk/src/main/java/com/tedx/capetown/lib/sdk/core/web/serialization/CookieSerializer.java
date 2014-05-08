@@ -5,7 +5,7 @@ package com.tedx.capetown.lib.sdk.core.web.serialization;
 
 
 /**
- * @author richardpj
+ * @author andrewpettey
  * 
  */
 public class CookieSerializer extends AbstractMapSerializer {

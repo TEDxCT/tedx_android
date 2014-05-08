@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * @author richardpj
+ * @author andrewpettey
  * 
  */
 public abstract class AbstractMapSerializer {
