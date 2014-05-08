@@ -22,7 +22,7 @@ public class SponsorsActivity extends Activity {
         ListView lv = (ListView)findViewById(R.id.sponsor_listview);
         List<SpeakerModel> list = new ArrayList<SpeakerModel>();
         for(int i = 0;i<100;i++) {
-            list.add(new SpeakerModel(i));
+            list.add(new SpeakerModel());
         }
         SpeakerListAdapter sla = new SpeakerListAdapter(list);
         lv.setAdapter(sla);
