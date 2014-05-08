@@ -39,7 +39,12 @@ public class HomeActivity extends Activity {
         this.findViewById(R.id.btn_speaker_profile_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 Intent intent = new Intent(context,SpeakerListActivity.class);
+=======
+                Intent intent = new Intent(context,SponsorsActivity.class);
+                intent.putExtra("speakerId",1);
+>>>>>>> 79020845db4e97e1b85fb86a80b005450080b3e3
                 startActivity(intent);
             }
         });

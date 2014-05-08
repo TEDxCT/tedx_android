@@ -1,10 +1,13 @@
 package com.tedx.capetown.app.presentation.adapter;
 
+import android.content.Context;
 import android.database.DataSetObserver;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 
+import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 
 import java.util.List;
@@ -14,6 +17,10 @@ import java.util.List;
  */
 public class SpeakerListAdapter implements ListAdapter {
     List<SpeakerModel> mSpeakerModelList;
+    public SpeakerListAdapter(List<SpeakerModel> mSpeakerModelList)
+    {
+        this.mSpeakerModelList = mSpeakerModelList;
+    }
     @Override
     public boolean areAllItemsEnabled() {
         return false;
@@ -36,7 +43,7 @@ public class SpeakerListAdapter implements ListAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return mSpeakerModelList.size();
     }
 
     @Override
@@ -46,7 +53,7 @@ public class SpeakerListAdapter implements ListAdapter {
 
     @Override
     public long getItemId(int i) {
-        return mSpeakerModelList.get(i).getId();
+        return mSpeakerModelList.get(i).id;
     }
 
     @Override
@@ -56,21 +63,24 @@ public class SpeakerListAdapter implements ListAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+        LayoutInflater inflater = (LayoutInflater) view.getContext()
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View currentView = inflater.inflate(R.layout.activity_agenda, viewGroup, false);
+        return currentView;
     }
 
     @Override
     public int getItemViewType(int i) {
-        return 0;
+        return i;
     }
 
     @Override
     public int getViewTypeCount() {
-        return 0;
+        return 100;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return mSpeakerModelList.isEmpty();
     }
 }
