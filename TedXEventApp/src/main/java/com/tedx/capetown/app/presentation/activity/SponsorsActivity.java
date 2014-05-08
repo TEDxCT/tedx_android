@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.SponsorModel;
 import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 import com.tedx.capetown.app.presentation.adapter.SponsorListAdapter;
 
@@ -27,8 +28,10 @@ public class SponsorsActivity extends ListActivity {
 
     private void populateList() {
         ListView listView = (ListView) findViewById(R.id.sponsor_listview);
-
-        SponsorListAdapter adapter = new SponsorListAdapter();
+        List<SponsorModel> models = new ArrayList<SponsorModel>();
+        for(int i = 0; i<20;i++)
+            models.add(new SponsorModel());
+        SponsorListAdapter adapter = new SponsorListAdapter(models);
         listView.setAdapter(adapter);
     }
 
