@@ -7,7 +7,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.kalahari.arilou.core.service.storage.SharedPrefStorage;
+import com.tedx.capetown.app.core.service.storage.SharedPrefStorage;
+
 
 /**
  * @author Johan

@@ -3,9 +3,9 @@
  */
 package com.tedx.capetown.app.facade;
 
-import java.io.IOException;
+import com.tedx.capetown.app.core.service.storage.StorageKey;
 
-import com.kalahari.arilou.core.service.storage.StorageKey;
+import java.io.IOException;
 
 /**
  * @author andrewpettey
