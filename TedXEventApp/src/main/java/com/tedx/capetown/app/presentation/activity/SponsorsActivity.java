@@ -1,6 +1,7 @@
 package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,11 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
+import com.tedx.capetown.app.presentation.adapter.SponsorListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SponsorsActivity extends Activity {
+public class SponsorsActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +27,14 @@ public class SponsorsActivity extends Activity {
 
     private void populateList() {
         ListView listView = (ListView) findViewById(R.id.sponsor_listview);
-        List<SponsorActivity> listItems = new ArrayList<SponsorActivity>();
-        for(int i = 0; i < 20; i++)
-            listItems.add(new SponsorActivity());
-        ArrayAdapter<SponsorActivity> adapter = new ArrayAdapter<SponsorActivity>(this, R.layout.listview_sponsor, listItems);
+
+        SponsorListAdapter adapter = new SponsorListAdapter();
         listView.setAdapter(adapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.sponsors, menu);
         return true;
