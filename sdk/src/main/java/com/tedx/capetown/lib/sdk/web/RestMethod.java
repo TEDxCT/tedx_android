@@ -4,7 +4,7 @@
 package com.tedx.capetown.lib.sdk.web;
 
 /**
- * @author richardpj
+ * @author andrewpettey
  * 
  */
 public enum RestMethod {
