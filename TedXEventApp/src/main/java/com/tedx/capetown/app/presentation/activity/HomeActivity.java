@@ -28,9 +28,8 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(context,AgendaActivity.class);
+                intent.setClass(context,SpeakerListActivity.class);
                 startActivity(intent);
-                intent.putExtra("test","Richard is here");
                 context.setResult(context.RESULT_OK, intent);
                 context.finish();
             }

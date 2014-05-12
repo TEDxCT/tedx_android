@@ -62,20 +62,6 @@ public class SplashActivity extends Activity {
     public void onActivityResult( int requestCode, int resultCode,Intent intent)
     {
         super.onActivityResult(requestCode,resultCode,intent);
-    if(resultCode==this.RESULT_OK)
-    {
-        if(requestCode==100)
-        {
-            if(intent!=null) {
-                Bundle i = intent.getExtras();
-                if (i != null) {
-                    if (i.containsKey("test")) {
-                        Toast.makeText(this, i.getString("test"), Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-        }
-    }
 
     }
 }

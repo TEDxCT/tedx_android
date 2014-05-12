@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
+import com.tedx.capetown.lib.sdk.SDKClient;
 
 public class SpeakerListActivity extends Activity {
 
@@ -12,6 +14,7 @@ public class SpeakerListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_list);
+        FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
     }
 
 
