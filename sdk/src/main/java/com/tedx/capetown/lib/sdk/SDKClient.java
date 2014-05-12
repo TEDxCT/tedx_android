@@ -1,7 +1,12 @@
 package com.tedx.capetown.lib.sdk;
 
+import com.tedx.capetown.lib.sdk.connector.SpeakerConnector;
+import com.tedx.capetown.lib.sdk.factory.SDKFactory;
+import com.tedx.capetown.lib.sdk.factory.impl.SDKFactoryImpl;
+
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,11 +14,21 @@ import java.util.Map;
  * Created by andrewpettey on 2014/05/02.
  */
 public class SDKClient {
-    public static final URI DEFAULT_API_ROOT = URI.create("http://95.85.26.105/tedx_server/query/");
+    public static final URI DEFAULT_API_ROOT = URI.create("http://95.85.26.105/");
+    private static URI API_ROOT;
     private Map<String, String> customRequestHeaders = null;
+    public SDKClient()
+    {
+        API_ROOT = DEFAULT_API_ROOT;
+    }
+
     public URI getAPIRoot() throws MalformedURLException {
         return DEFAULT_API_ROOT;
     }
+    public void setAPIRoot(URI path) throws MalformedURLException, URISyntaxException {
+        API_ROOT =  path;
+    }
+    private SDKFactory sdkFactory = new SDKFactoryImpl(this);
 
     public String getUserAgent() {
 
@@ -37,4 +52,9 @@ public class SDKClient {
         //Add or Update the custom header in the map
         customRequestHeaders.put(customHeaderKey, customHeaderValue);
     }
+    public SpeakerConnector getSpeakerConnector() {
+
+        return sdkFactory.createSpeakerConnector();
+    }
+
 }

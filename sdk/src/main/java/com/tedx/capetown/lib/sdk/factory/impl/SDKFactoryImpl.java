@@ -1,6 +1,8 @@
 package com.tedx.capetown.lib.sdk.factory.impl;
 
 import com.tedx.capetown.lib.sdk.SDKClient;
+import com.tedx.capetown.lib.sdk.connector.SpeakerConnector;
+import com.tedx.capetown.lib.sdk.connector.impl.SpeakerConnectorImpl;
 import com.tedx.capetown.lib.sdk.factory.SDKFactory;
 
 public class SDKFactoryImpl implements SDKFactory {
@@ -20,50 +22,9 @@ public class SDKFactoryImpl implements SDKFactory {
 		this.client = client;
 	}
 
-//	/**
-//	 * Returns an instance of the <code>CartConnector</code> interface.
-//	 *
-//	 * @return a <code>CartConnectorImpl</code> instance
-//	 */
-//	@Override
-//	public CartConnector createCartConnector() {
-//
-//		return new CartConnectorImpl(client);
-//	}
-//
-//	@Override
-//	public AuthorizationConnector createAuthorizationConnector() {
-//
-//		return new AuthorizationConnectorImpl(client);
-//	}
-//
-//	@Override
-//	public ProductConnector createProductConnector() {
-//
-//		return new ProductConnectorImpl(client);
-//	}
-//
-//	@Override
-//	public NavigationConnector createNavigationConnector() {
-//
-//		return new NavigationConnectorImpl(client);
-//	}
-//
-//	@Override
-//	public ProfileConnector createProfileConnector() {
-//
-//		return new ProfileConnectorImpl(client);
-//	}
-//
-//	@Override
-//	public FilterConnector createFilterConnector() {
-//
-//		return new FilterConnectorImpl(client);
-//	}
-//
-//	@Override
-//	public SearchSuggestionConnector createSearchSuggestionConnector() {
-//
-//		return new SearchSuggestionConnectorImpl(client);
-//	}
+    @Override
+    public SpeakerConnector createSpeakerConnector() {
+        return new SpeakerConnectorImpl(client);
+    }
+
 }

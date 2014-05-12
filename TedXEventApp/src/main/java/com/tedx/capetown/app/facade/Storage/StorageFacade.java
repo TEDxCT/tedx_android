@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tedx.capetown.app.facade;
+package com.tedx.capetown.app.facade.storage;
 
 import com.tedx.capetown.app.core.service.storage.StorageKey;
 
