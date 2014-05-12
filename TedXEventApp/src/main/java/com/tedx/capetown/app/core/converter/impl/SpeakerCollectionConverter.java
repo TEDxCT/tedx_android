@@ -15,6 +15,7 @@ public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollect
 
     @Override
     public SpeakerCollectionModel convert(SpeakerCollectionDTO source) {
+        SpeakerCollectionModel speakerCollectionModel = new SpeakerCollectionModel();
         return null;
     }
 }

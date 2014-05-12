@@ -70,6 +70,10 @@ public class SpeakerService extends AbstractSDKIntentService {
                 e.printStackTrace();
             }
         }
+        else if (action.equals(SpeakerModelServiceRequest.class.getName()))
+        {
+            Log.wtf("TEST","SpeakerModelServiceRequest: "+action);
+        }
         Log.wtf("TEST","action"+action);
         }
 }

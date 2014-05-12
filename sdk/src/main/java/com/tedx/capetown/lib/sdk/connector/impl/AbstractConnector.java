@@ -31,25 +31,11 @@ public abstract class AbstractConnector {
 
 	private final SDKClient client;
 
-	/**
-	 * Constructor for use by subclasses. Its primary purpose is to store a reference to the given
-	 * <code>KalShopClient</code> instance.
-	 *
-	 * @param client a <code>KalShopClient</code> instance. This instance should be the same one the SDK consumer uses
-	 *        to obtain instances of the SDK interfaces.
-	 */
 	protected AbstractConnector(SDKClient client) {
 
 		this.client = client;
 	}
 
-	/**
-	 * Creates and configures a <code>URLConnection</code> for the given path, relative to the API root configured in
-	 * the connector's associated <code>KalShopClient</code> instance.
-	 *
-	 * @return a <code>RestConnection</code> instance for the URL constructed from <code>relativePath</code>
-	 * @throws java.io.IOException if an I/O error occurs while creating the <code>URLConnection</code> instance
-	 */
 	private RestConnection createConnection(Request request) throws IOException {
 
 		RestConnectionImpl connection = new RestConnectionImpl();
@@ -87,7 +73,6 @@ public abstract class AbstractConnector {
 	protected <T extends DTO> SDKResponse<T> sdkResponseForRequest(Request request, Class<T> dtoType)
 			throws IOException, SDKException, ParseException {
 
-		// RestResponse response; = responseForRequest(request);
 
 		RestResponse response;
 		try {
