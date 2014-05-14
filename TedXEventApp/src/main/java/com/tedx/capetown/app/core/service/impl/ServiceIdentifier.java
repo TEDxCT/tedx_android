@@ -4,7 +4,8 @@ package com.tedx.capetown.app.core.service.impl;
  * Created by andrewpettey on 2014/05/11.
  */
 public enum ServiceIdentifier {
-    Speaker("SpeakerService",SpeakerService.class);
+    Speaker("SpeakerService",SpeakerService.class),
+    Event("EventService", EventService.class);
 
     private final String serviceKey;
     private final Class serviceClass;

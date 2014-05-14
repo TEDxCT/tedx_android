@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_for_headers">
+
+    <ImageView
+        android:layout_width="@dimen/activity_speaker_profile_image_width"
+        android:layout_height="@dimen/activity_speaker_profile_image_height"
+        android:id="@+id/speaker_image"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_karendudley" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:text="Speaker name"
+        android:id="@+id/speaker_name"
+        android:layout_alignTop="@+id/speaker_image"
+        android:layout_toRightOf="@+id/speaker_image" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_textview"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Talker description"
+        android:id="@+id/speaker_description"
+        android:layout_below="@+id/speaker_name"
+        android:layout_alignLeft="@+id/speaker_name"
+        android:layout_toRightOf="@+id/speaker_image" />
+
+</RelativeLayout>

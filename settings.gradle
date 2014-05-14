@@ -1,1 +1,1 @@
-include ':TedXEventApp', ':sdk'
+include ':TedXEventApp',':SDK'
