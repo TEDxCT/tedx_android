@@ -16,6 +16,5 @@ public interface EventConnector {
 
     EventRequestBuilder getEventRequestBuilder(String pathComponent);
 
-    public SDKResponse<EventCollectionDTO> getEventList(EventRequest request) throws IOException,
-            SDKException, ParseException;
+    public SDKResponse<EventCollectionDTO> getEventList(EventRequest request) throws IOException, SDKException, ParseException;
 }

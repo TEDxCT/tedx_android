@@ -2,6 +2,7 @@ package com.tedx.capetown.lib.sdk;
 
 import com.tedx.capetown.lib.sdk.connector.EventConnector;
 import com.tedx.capetown.lib.sdk.connector.SpeakerConnector;
+import com.tedx.capetown.lib.sdk.connector.SponsorConnector;
 import com.tedx.capetown.lib.sdk.factory.SDKFactory;
 import com.tedx.capetown.lib.sdk.factory.impl.SDKFactoryImpl;
 
@@ -54,12 +55,14 @@ public class SDKClient {
         customRequestHeaders.put(customHeaderKey, customHeaderValue);
     }
     public SpeakerConnector getSpeakerConnector() {
-
         return sdkFactory.createSpeakerConnector();
     }
 
-    public EventConnector getEventConnector() {
+    public SponsorConnector getSponsorConnector() {
+        return sdkFactory.createSponsorConnector();
+    }
 
+    public EventConnector getEventConnector() {
         return sdkFactory.createEventConnector();
     }
 

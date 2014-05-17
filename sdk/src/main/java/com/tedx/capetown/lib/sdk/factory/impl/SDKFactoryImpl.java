@@ -3,8 +3,10 @@ package com.tedx.capetown.lib.sdk.factory.impl;
 import com.tedx.capetown.lib.sdk.SDKClient;
 import com.tedx.capetown.lib.sdk.connector.EventConnector;
 import com.tedx.capetown.lib.sdk.connector.SpeakerConnector;
+import com.tedx.capetown.lib.sdk.connector.SponsorConnector;
 import com.tedx.capetown.lib.sdk.connector.impl.EventConnectorImpl;
 import com.tedx.capetown.lib.sdk.connector.impl.SpeakerConnectorImpl;
+import com.tedx.capetown.lib.sdk.connector.impl.SponsorConnectorImpl;
 import com.tedx.capetown.lib.sdk.factory.SDKFactory;
 
 public class SDKFactoryImpl implements SDKFactory {
@@ -32,6 +34,11 @@ public class SDKFactoryImpl implements SDKFactory {
     @Override
     public EventConnector createEventConnector() {
         return new EventConnectorImpl(client);
+    }
+
+    @Override
+    public SponsorConnector createSponsorConnector() {
+        return new SponsorConnectorImpl(client);
     }
 
 }

@@ -27,7 +27,6 @@ public abstract class AbstractSDKIntentService extends IntentService {
     private StorageService storage = null;
 
     protected SDKClient getSDKClient() {
-
         return sdkClient;
     }
 
