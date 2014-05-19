@@ -8,6 +8,7 @@ import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.lib.sdk.dto.SpeakerCollectionDTO;
 import com.tedx.capetown.lib.sdk.dto.SpeakerDTO;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +27,11 @@ public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollect
         Log.wtf("TEST","Source Status: "+source.getCollection()[0].fullName);
         SpeakerCollectionModel speakerCollectionModel = new SpeakerCollectionModel();
         speakerCollectionModel.speakers = new ArrayList<SpeakerModel>();
+
+        SpeakerConverter speakerConverter = new SpeakerConverter(SpeakerDTO.class, SpeakerModel.class);
         for(SpeakerDTO speaker : source.getCollection())
         {
-            SpeakerModel speakerModel = new SpeakerModel();
-            speakerModel.id = speaker.id;
-            speakerModel.fullName = speaker.fullName;
-            speakerModel.descriptionHTML = speaker.descriptionHTML;
+            SpeakerModel speakerModel = speakerConverter.convert(speaker);
             speakerCollectionModel.speakers.add(speakerModel);
         }
         return speakerCollectionModel;

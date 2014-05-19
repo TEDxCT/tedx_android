@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 
@@ -68,6 +70,7 @@ public class SpeakerListAdapter extends BaseAdapter {
         View currentView = mInflater.inflate(R.layout.listview_speaker_details, viewGroup, false);
         ((TextView)currentView.findViewById(R.id.speaker_name)).setText(mSpeakerModelList.get(i).fullName);
         ((TextView)currentView.findViewById(R.id.speaker_description)).setText(mSpeakerModelList.get(i).descriptionHTML);
+        ImageLoader.getInstance().displayImage(mSpeakerModelList.get(i).imageURL, ((ImageView) currentView.findViewById(R.id.speaker_image)));
         return currentView;
     }
 

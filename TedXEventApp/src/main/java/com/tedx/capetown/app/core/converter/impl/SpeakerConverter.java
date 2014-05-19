@@ -14,6 +14,11 @@ public class SpeakerConverter extends AbstractConverter<SpeakerDTO, SpeakerModel
 
     @Override
     public SpeakerModel convert(SpeakerDTO source) {
-        return null;
+        SpeakerModel speakerModel = new SpeakerModel();
+        speakerModel.id = source.id;
+        speakerModel.fullName = source.fullName;
+        speakerModel.descriptionHTML = source.descriptionHTML;
+        speakerModel.imageURL = source.imageURL;
+        return speakerModel;
     }
 }

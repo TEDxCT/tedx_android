@@ -32,5 +32,6 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.2.1@jar'
     compile 'de.greenrobot:eventbus:2.0.1@jar'
     compile project(':SDK')
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.8.6@jar'
 }
 
