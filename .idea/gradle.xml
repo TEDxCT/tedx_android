@@ -7,9 +7,9 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Data\Projects\tedx_android" />
-            <option value="C:\Data\Projects\tedx_android\TedXEventApp" />
-            <option value="C:\Data\Projects\tedx_android\sdk" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/TedXEventApp" />
+            <option value="$PROJECT_DIR$/sdk" />
           </set>
         </option>
       </GradleProjectSettings>

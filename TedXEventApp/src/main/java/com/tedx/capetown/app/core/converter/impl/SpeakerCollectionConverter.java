@@ -31,6 +31,7 @@ public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollect
             SpeakerModel speakerModel = new SpeakerModel();
             speakerModel.id = speaker.id;
             speakerModel.fullName = speaker.fullName;
+            speakerModel.descriptionHTML = speaker.descriptionHTML;
             speakerCollectionModel.speakers.add(speakerModel);
         }
         return speakerCollectionModel;
