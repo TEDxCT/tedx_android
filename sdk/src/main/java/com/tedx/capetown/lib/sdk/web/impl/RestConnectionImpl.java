@@ -44,8 +44,8 @@ public class RestConnectionImpl implements RestConnection {
 
 		_headerAccept = "application/json";
 		_headerContentType = "application/json;charset=UTF-8";
-		_connectionTimeout = 10;
-		_readTimeout = 10;
+		_connectionTimeout = 10000;
+		_readTimeout = 10000;
 
 	}
 
@@ -239,7 +239,7 @@ public class RestConnectionImpl implements RestConnection {
 			try {
 				InputStream errorStream = connection.getErrorStream();
 				if (errorStream == null) {
-					throw new SDKException(SDKException.DEFAULT_USER_MESSAGE, connection.getResponseCode());
+					throw new SDKException("Error Stream is null", connection.getResponseCode());
 				}
 
 				String errorString = convertStreamToString(errorStream);
@@ -257,7 +257,7 @@ public class RestConnectionImpl implements RestConnection {
 				throw sdkException;
 			} catch (Exception e) {
 
-				SDKException sdkException = new SDKException(SDKException.DEFAULT_USER_MESSAGE,
+				SDKException sdkException = new SDKException("Thrown error when making error",
 						connection.getResponseCode(),
 						e);
 				sdkException.setUrl(connection.getURL().toString());
