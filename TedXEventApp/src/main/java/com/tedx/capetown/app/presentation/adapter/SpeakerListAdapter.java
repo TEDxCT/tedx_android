@@ -5,7 +5,9 @@ import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
+import android.widget.TextView;
 
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.SpeakerModel;
@@ -15,11 +17,13 @@ import java.util.List;
 /**
  * Created by andrewpettey on 2014/05/01.
  */
-public class SpeakerListAdapter implements ListAdapter {
+public class SpeakerListAdapter extends BaseAdapter {
     List<SpeakerModel> mSpeakerModelList;
-    public SpeakerListAdapter(List<SpeakerModel> mSpeakerModelList)
+    Context context;
+    public SpeakerListAdapter(List<SpeakerModel> mSpeakerModelList, Context context)
     {
         this.mSpeakerModelList = mSpeakerModelList;
+        this.context = context;
     }
     @Override
     public boolean areAllItemsEnabled() {
@@ -56,16 +60,14 @@ public class SpeakerListAdapter implements ListAdapter {
         return Integer.parseInt(mSpeakerModelList.get(i).id);
     }
 
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = (LayoutInflater) view.getContext()
+        LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View currentView = inflater.inflate(R.layout.activity_agenda, viewGroup, false);
+        View currentView = mInflater.inflate(R.layout.listview_speaker_details, viewGroup, false);
+        ((TextView)currentView.findViewById(R.id.speaker_name)).setText(mSpeakerModelList.get(i).fullName);
+        ((TextView)currentView.findViewById(R.id.speaker_description)).setText(mSpeakerModelList.get(i).descriptionHTML);
         return currentView;
     }
 
@@ -82,5 +84,9 @@ public class SpeakerListAdapter implements ListAdapter {
     @Override
     public boolean isEmpty() {
         return mSpeakerModelList.isEmpty();
+    }
+
+    public void updateData(List<SpeakerModel> speakers) {
+        mSpeakerModelList = speakers;
     }
 }

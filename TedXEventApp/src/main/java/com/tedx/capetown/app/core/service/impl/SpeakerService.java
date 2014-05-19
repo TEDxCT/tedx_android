@@ -23,6 +23,8 @@ import com.tedx.capetown.lib.sdk.exception.SDKException;
 import java.io.IOException;
 import java.text.ParseException;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by andrewpettey on 2014/05/11.
  */
@@ -45,11 +47,8 @@ public class SpeakerService extends AbstractSDKIntentService {
                     SDKException,
                     ParseException {
                 SpeakerConnector speakerConnector = getSDKClient().getSpeakerConnector();
-                Log.wtf("TEST", "SpeakerConnector speakerConnector = getSDKClient().getSpeakerConnector(); ");
                 SpeakerRequest request = speakerConnector.getSpeakerRequestBuilder("tedx_server/response/speakers.php").build();
-                Log.wtf("TEST", "SpeakerRequest request = speakerConnector.getSpeakerRequestBuilder(\"tedx_server/response/speakers.php\").build(); ");
                 SDKResponse<SpeakerCollectionDTO> response = speakerConnector.getSpeakerList(request);
-                Log.wtf("TEST", "SDKResponse<SpeakerCollectionDTO> response = speakerConnector.getSpeakerList(request);");
                 return response;
             }
         }, new SpeakerCollectionConverter(SpeakerCollectionDTO.class,SpeakerCollectionModel.class));
@@ -64,16 +63,13 @@ public class SpeakerService extends AbstractSDKIntentService {
         if (action.equals(SpeakerCollectionServiceRequest.class.getName())) {
             try {
                 SpeakerCollectionModel speakerCollectionModel = fetchSpeakerList();
-                Log.wtf("TEST", "speakerCollectionModel: "+(speakerCollectionModel.speakers.size()));
+                EventBus.getDefault().postSticky(speakerCollectionModel);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (SDKException e) {
                 SpeakerErrorResponse speakerErrorResponse = new SpeakerErrorResponse(null, e);
-                Log.wtf("TEST", "speakerCollectionModel: "+(e.getUrl()));
-                Log.wtf("TEST", "speakerCollectionModel: "+(e.getMessage()));
-
             } catch (ParseException e) {
                 e.printStackTrace();
             }
