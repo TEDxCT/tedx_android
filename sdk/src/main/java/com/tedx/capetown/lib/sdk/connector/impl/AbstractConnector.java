@@ -81,10 +81,12 @@ public abstract class AbstractConnector {
 			if (sdkException.getUrl() == null) {
 				sdkException.setUrl(getTargetUrl(request).toString());
 			}
+            sdkException.setUrl("Abstract Connector");
 			throw sdkException;
 		} catch (Exception e) {
-			SDKException sdkException = new SDKException(SDKException.DEFAULT_USER_MESSAGE, e);
+			SDKException sdkException = new SDKException("Abstract Connector:"+e.getClass(), e);
 			sdkException.setUrl(getTargetUrl(request).toString());
+            sdkException.setUrl("Abstract Connector1");
 			throw sdkException;
 
 		}
@@ -105,25 +107,25 @@ public abstract class AbstractConnector {
 		URL targetUrl = getTargetUrl(request);
 
 		RestConnection connection = createConnection(request);
-		switch (request.getMethod()) {
-			case GET:
-				return connection.Get(targetUrl);
-			case POST:
-				return connection.Post(targetUrl, request.getData());
-			case PUT:
-				return connection.Put(targetUrl, request.getData());
-			default:
-				throw new IllegalArgumentException(
-						"Attempt to initiate REST connection with unimplemented HTTP method.");
+            switch (request.getMethod()) {
+                case GET:
+                    return connection.Get(targetUrl);
+                case POST:
+                    return connection.Post(targetUrl, request.getData());
+                case PUT:
+                    return connection.Put(targetUrl, request.getData());
+                default:
+                    throw new IllegalArgumentException(
+                            "Attempt to initiate REST connection with unimplemented HTTP method.");
 
-		}
+            }
 	}
 
 	private <T extends DTO> T convertResponseToDTO(RestResponse response, Class<T> dtoType) throws
 			IOException, SDKException {
 
+        String json="";
 		try {
-			String json;
 			if (response.stream == null) {
 				json = "{}";
 			} else {
@@ -137,8 +139,7 @@ public abstract class AbstractConnector {
 			response.stream.close();
 			return responseDTO;
 		} catch (Exception e) {
-
-			SDKException sdkException = new SDKException(SDKException.DEFAULT_USER_MESSAGE, e);
+			SDKException sdkException = new SDKException("Converter Error"+e.getMessage(), e);
 			throw sdkException;
 
 		}

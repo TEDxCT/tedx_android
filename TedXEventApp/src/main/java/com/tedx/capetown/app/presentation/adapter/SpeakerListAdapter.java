@@ -53,7 +53,7 @@ public class SpeakerListAdapter implements ListAdapter {
 
     @Override
     public long getItemId(int i) {
-        return mSpeakerModelList.get(i).id;
+        return Integer.parseInt(mSpeakerModelList.get(i).id);
     }
 
     @Override

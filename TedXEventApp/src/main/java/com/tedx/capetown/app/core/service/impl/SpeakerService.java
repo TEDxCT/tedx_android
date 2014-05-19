@@ -4,15 +4,20 @@ import android.app.Service;
 import android.content.Intent;
 import android.util.Log;
 
+import com.tedx.capetown.app.core.converter.Converter;
 import com.tedx.capetown.app.core.converter.impl.SpeakerCollectionConverter;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.service.SDKConnectorRequest;
+import com.tedx.capetown.app.core.service.error.SpeakerErrorResponse;
 import com.tedx.capetown.app.core.service.request.SpeakerCollectionServiceRequest;
 import com.tedx.capetown.app.core.service.request.SpeakerModelServiceRequest;
 import com.tedx.capetown.lib.sdk.connector.SpeakerConnector;
 import com.tedx.capetown.lib.sdk.connector.request.impl.SpeakerRequest;
+import com.tedx.capetown.lib.sdk.dto.DTO;
+import com.tedx.capetown.lib.sdk.dto.ErrorDTO;
 import com.tedx.capetown.lib.sdk.dto.SDKResponse;
 import com.tedx.capetown.lib.sdk.dto.SpeakerCollectionDTO;
+import com.tedx.capetown.lib.sdk.exception.SDKClientException;
 import com.tedx.capetown.lib.sdk.exception.SDKException;
 
 import java.io.IOException;
@@ -39,12 +44,12 @@ public class SpeakerService extends AbstractSDKIntentService {
             public SDKResponse<SpeakerCollectionDTO> makeRequest() throws IOException,
                     SDKException,
                     ParseException {
-
                 SpeakerConnector speakerConnector = getSDKClient().getSpeakerConnector();
+                Log.wtf("TEST", "SpeakerConnector speakerConnector = getSDKClient().getSpeakerConnector(); ");
                 SpeakerRequest request = speakerConnector.getSpeakerRequestBuilder("tedx_server/response/speakers.php").build();
-                Log.wtf("TEST","Request created");
+                Log.wtf("TEST", "SpeakerRequest request = speakerConnector.getSpeakerRequestBuilder(\"tedx_server/response/speakers.php\").build(); ");
                 SDKResponse<SpeakerCollectionDTO> response = speakerConnector.getSpeakerList(request);
-                Log.wtf("TEST","Request sent:"+response.responseDTO.toString());
+                Log.wtf("TEST", "SDKResponse<SpeakerCollectionDTO> response = speakerConnector.getSpeakerList(request);");
                 return response;
             }
         }, new SpeakerCollectionConverter(SpeakerCollectionDTO.class,SpeakerCollectionModel.class));
@@ -57,15 +62,18 @@ public class SpeakerService extends AbstractSDKIntentService {
             return;
         }
         if (action.equals(SpeakerCollectionServiceRequest.class.getName())) {
-            Log.wtf("TEST","TEst:"+action.equals(SpeakerCollectionServiceRequest.class.getName()));
             try {
-                fetchSpeakerList();
+                SpeakerCollectionModel speakerCollectionModel = fetchSpeakerList();
+                Log.wtf("TEST", "speakerCollectionModel: "+(speakerCollectionModel.speakers.size()));
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (SDKException e) {
-                e.printStackTrace();
+                SpeakerErrorResponse speakerErrorResponse = new SpeakerErrorResponse(null, e);
+                Log.wtf("TEST", "speakerCollectionModel: "+(e.getUrl()));
+                Log.wtf("TEST", "speakerCollectionModel: "+(e.getMessage()));
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -74,6 +82,5 @@ public class SpeakerService extends AbstractSDKIntentService {
         {
             Log.wtf("TEST","SpeakerModelServiceRequest: "+action);
         }
-        Log.wtf("TEST","action"+action);
         }
 }

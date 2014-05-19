@@ -3,6 +3,7 @@ package com.tedx.capetown.app.core.service.impl;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tedx.capetown.app.core.converter.Converter;

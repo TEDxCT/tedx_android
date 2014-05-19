@@ -14,4 +14,7 @@ public class SpeakerCollectionDTO extends AbstractCollectionDTO<SpeakerDTO> {
     public void setCollection(SpeakerDTO[] collection) {
         speakers = collection;
     }
+    public void setSpeakers(SpeakerDTO[] speakers) {
+        this.speakers = speakers;
+    }
 }
