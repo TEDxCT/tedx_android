@@ -3,6 +3,8 @@ package com.tedx.capetown.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.tedx.capetown.app.core.appsettings.factory.impl.AppSettingsFactoryImpl;
 import com.tedx.capetown.lib.sdk.BuildSettings;
 
@@ -20,6 +22,8 @@ public class DefaultApplication extends Application {
         super.onCreate();
         DefaultApplication.context = getApplicationContext();
         initSingletons(DefaultApplication.context);
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
+        ImageLoader.getInstance().init(config);
     }
     private void initSingletons(Context ctx) {
 
