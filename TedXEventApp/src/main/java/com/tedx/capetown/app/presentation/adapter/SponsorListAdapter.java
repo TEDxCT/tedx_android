@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.SponsorModel;
@@ -54,6 +55,7 @@ public class SponsorListAdapter extends BaseAdapter {
         View currentView = mInflater.inflate(R.layout.activity_sponsors, viewGroup, false);
        // ((ImageView) currentView.findViewById(R.id.imgSponsor)).setImageDrawable(mSponsorModelList.get(i).ImageURL);
         // TODO get image loader from html thingy to populate image
+        ImageLoader.getInstance().displayImage(mSponsorModelList.get(i).ImageURL, ((ImageView) currentView.findViewById(R.id.speaker_image)));
         return currentView;
     }
 
