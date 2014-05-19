@@ -8,33 +8,47 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.core.models.SponsorCollectionModel;
 import com.tedx.capetown.app.core.models.SponsorModel;
-import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
+import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
 import com.tedx.capetown.app.presentation.adapter.SponsorListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 public class SponsorsActivity extends ListActivity {
+
+    SponsorListAdapter sponsorListAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sponsors);
-
-        populateList();
+        SponsorCollectionModel sponsorCollectionModel = (SponsorCollectionModel) EventBus.getDefault().getStickyEvent(SponsorCollectionModel.class);
+        if (sponsorCollectionModel != null) 
+        {
+            onEventMainThread(sponsorCollectionModel);
+            FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
+        }
+        else
+        {
+            FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
+        }
     }
 
-    private void populateList() {
-        ListView listView = this.getListView();
-        //(ListView) findViewById(R.id.sponsor_listview);
-        List<SponsorModel> models = new ArrayList<SponsorModel>();
-        for(int i = 0; i<20;i++)
-            models.add(new SponsorModel());
-        SponsorListAdapter adapter = new SponsorListAdapter(models, this.getApplicationContext());
-        listView.setAdapter(adapter);
+    public void onPause()
+    {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    public void onResume(){
+        super.onResume();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -55,6 +69,20 @@ public class SponsorsActivity extends ListActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onEventMainThread(SponsorCollectionModel sponsorCollectionModel)
+    {
+        if(sponsorListAdapter == null)
+        {
+            sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, this);
+            this.getListView().setAdapter(sponsorListAdapter);
+        }
+        else
+        {
+            sponsorListAdapter.updateData(sponsorCollectionModel.sponsors);
+        }
+        sponsorListAdapter.notifyDataSetChanged();
     }
 
 }

@@ -15,6 +15,7 @@ import de.greenrobot.event.EventBus;
 
 public class SpeakerListActivity extends ListActivity {
     SpeakerListAdapter speakerListAdapter = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +29,12 @@ public class SpeakerListActivity extends ListActivity {
             FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
         }
     }
-
     public void onPause()
     {
         super.onPause();
         EventBus.getDefault().unregister(this);
     }
+
     public void onResume(){
         super.onResume();
         EventBus.getDefault().register(this);
@@ -58,6 +59,7 @@ public class SpeakerListActivity extends ListActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void onEventMainThread(SpeakerCollectionModel speakerCollectionModel){
         if(speakerListAdapter==null) {
             speakerListAdapter = new SpeakerListAdapter(speakerCollectionModel.speakers, this);
