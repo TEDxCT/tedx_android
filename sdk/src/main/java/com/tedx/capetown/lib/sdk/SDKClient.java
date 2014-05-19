@@ -1,5 +1,6 @@
 package com.tedx.capetown.lib.sdk;
 
+import com.tedx.capetown.lib.sdk.connector.EventConnector;
 import com.tedx.capetown.lib.sdk.connector.SpeakerConnector;
 import com.tedx.capetown.lib.sdk.factory.SDKFactory;
 import com.tedx.capetown.lib.sdk.factory.impl.SDKFactoryImpl;
@@ -55,6 +56,11 @@ public class SDKClient {
     public SpeakerConnector getSpeakerConnector() {
 
         return sdkFactory.createSpeakerConnector();
+    }
+
+    public EventConnector getEventConnector() {
+
+        return sdkFactory.createEventConnector();
     }
 
 }

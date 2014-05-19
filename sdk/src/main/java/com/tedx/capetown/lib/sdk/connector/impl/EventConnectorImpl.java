@@ -16,7 +16,7 @@ import java.text.ParseException;
  * Created by andrewpettey on 2014/05/09.
  */
 public class EventConnectorImpl extends AbstractConnector implements EventConnector {
-    protected EventConnectorImpl(SDKClient client) {
+    public EventConnectorImpl(SDKClient client) {
         super(client);
     }
 
@@ -26,7 +26,7 @@ public class EventConnectorImpl extends AbstractConnector implements EventConnec
     }
 
     @Override
-    public SDKResponse<EventCollectionDTO> getEventInformation(EventRequest request) throws IOException, SDKException, ParseException {
+    public SDKResponse<EventCollectionDTO> getEventList(EventRequest request) throws IOException, SDKException, ParseException {
         return sdkResponseForRequest(request,EventCollectionDTO.class);
     }
 }

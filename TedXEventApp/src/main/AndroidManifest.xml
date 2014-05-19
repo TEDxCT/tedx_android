@@ -64,6 +64,15 @@
                 <action android:name="com.tedx.capetown.app.core.service.request.SpeakerModelServiceRequest" />
             </intent-filter>
         </service>
+        <service
+            android:name="com.tedx.capetown.app.core.service.impl.EventService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.tedx.capetown.app.core.service.request.EventCollectionServiceRequest" />
+                <action android:name="com.tedx.capetown.app.core.service.request.EventModelServiceRequest" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
