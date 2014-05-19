@@ -43,6 +43,17 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        this.findViewById(R.id.btn_sponsors_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(context,SponsorsActivity.class);
+                startActivity(intent);
+                context.setResult(context.RESULT_OK, intent);
+                context.finish();
+            }
+        });
     }
 
 

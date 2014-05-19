@@ -15,9 +15,12 @@ import java.util.List;
 
 public class SponsorListAdapter implements ListAdapter {
     List<SponsorModel> mSponsorModelList;
-    public SponsorListAdapter(List<SponsorModel> mSponsorModelList)
+    Context mContext;
+
+    public SponsorListAdapter(List<SponsorModel> sponsorModelList, Context context)
     {
-        this.mSponsorModelList = mSponsorModelList;
+        mSponsorModelList = sponsorModelList;
+        mContext = context;
     }
     @Override
     public boolean areAllItemsEnabled() {
@@ -61,7 +64,8 @@ public class SponsorListAdapter implements ListAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View currentView = inflater.inflate(R.layout.listview_sponsor, viewGroup, false);
         return currentView;
     }

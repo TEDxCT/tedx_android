@@ -2,6 +2,7 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,11 +28,12 @@ public class SponsorsActivity extends ListActivity {
     }
 
     private void populateList() {
-        ListView listView = (ListView) findViewById(R.id.sponsor_listview);
+        ListView listView = this.getListView();
+        //(ListView) findViewById(R.id.sponsor_listview);
         List<SponsorModel> models = new ArrayList<SponsorModel>();
         for(int i = 0; i<20;i++)
             models.add(new SponsorModel());
-        SponsorListAdapter adapter = new SponsorListAdapter(models);
+        SponsorListAdapter adapter = new SponsorListAdapter(models, this.getApplicationContext());
         listView.setAdapter(adapter);
     }
 
