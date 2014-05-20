@@ -12,6 +12,5 @@ public class TalkDTO extends DTO {
     public String descriptionHTML;
     public String websiteURL;
 
-    public SessionDTO session;
     public SpeakerDTO speaker;
 }
