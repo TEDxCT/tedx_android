@@ -12,13 +12,13 @@ public class SponsorConverter extends AbstractConverter<SponsorDTO, SponsorModel
     @Override
     public SponsorModel convert(SponsorDTO source) {
         SponsorModel sponsorModel = new SponsorModel();
-        sponsorModel.DateCreated = source.DateCreated;
-        sponsorModel.DateModified = source.DateModified;
-        sponsorModel.IsActive = source.IsActive;
-        sponsorModel.ImageURL = source.ImageURL;
-        sponsorModel.WebsiteURL = source.WebsiteURL;
-        sponsorModel.DescriptionHTML = source.DescriptionHTML;
-        sponsorModel.Name = source.Name;
+        sponsorModel.DateCreated = source.dateCreated;
+        sponsorModel.DateModified = source.dateModified;
+       // sponsorModel.IsActive = (boolean) source.isActive;
+        sponsorModel.ImageURL = source.imageURL;
+        sponsorModel.WebsiteURL = source.websiteURL;
+        sponsorModel.DescriptionHTML = source.descriptionHTML;
+        sponsorModel.Name = source.name;
         return sponsorModel;
     }
 

@@ -12,12 +12,10 @@ import com.tedx.capetown.lib.sdk.dto.SpeakerDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by andrewpettey on 2014/05/11.
- */
 public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollectionDTO, SpeakerCollectionModel> implements Converter<SpeakerCollectionDTO,SpeakerCollectionModel> {
 
-    public SpeakerCollectionConverter(Class<SpeakerCollectionDTO> sourceClass, Class<SpeakerCollectionModel> targetClass) {
+    public SpeakerCollectionConverter(Class<SpeakerCollectionDTO> sourceClass, Class<SpeakerCollectionModel> targetClass)
+    {
         super(sourceClass, targetClass);
     }
 
@@ -36,4 +34,5 @@ public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollect
         }
         return speakerCollectionModel;
     }
+
 }
