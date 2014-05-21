@@ -4,21 +4,24 @@ import com.tedx.capetown.app.core.converter.Converter;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.lib.sdk.dto.SpeakerDTO;
 
-/**
- * Created by andrewpettey on 2014/05/11.
- */
-public class SpeakerConverter extends AbstractConverter<SpeakerDTO, SpeakerModel> implements Converter<SpeakerDTO,SpeakerModel> {
-    public SpeakerConverter(Class<SpeakerDTO> sourceClass, Class<SpeakerModel> targetClass) {
+public class SpeakerConverter extends AbstractConverter<SpeakerDTO, SpeakerModel> implements Converter<SpeakerDTO,SpeakerModel>
+{
+    public SpeakerConverter(Class<SpeakerDTO> sourceClass, Class<SpeakerModel> targetClass)
+    {
         super(sourceClass, targetClass);
     }
 
     @Override
-    public SpeakerModel convert(SpeakerDTO source) {
-        SpeakerModel speakerModel = new SpeakerModel();
-        speakerModel.id = source.id;
-        speakerModel.fullName = source.fullName;
-        speakerModel.descriptionHTML = source.descriptionHTML;
-        speakerModel.imageURL = source.imageURL;
-        return speakerModel;
+    public SpeakerModel convert(SpeakerDTO source)
+    {
+        SpeakerModel model = new SpeakerModel();
+        model.id = source.id;
+        model.fullName = source.fullName;
+        model.descriptionHTML = source.descriptionHTML;
+        model.imageURL = source.imageURL;
+        model.dateCreated = source.dateCreated;
+        model.dateModified = source.dateModified;
+        return model;
     }
+
 }

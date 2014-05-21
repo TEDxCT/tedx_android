@@ -1,9 +1,7 @@
 package com.tedx.capetown.app.core.models;
 
-/**
- * Created by andrewpettey on 2014/05/02.
- */
-public class EventModel {
+public class EventModel
+{
     public int id;
     public String dateCreated;
     public String dateModified;

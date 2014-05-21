@@ -10,7 +10,7 @@ public class SpeakerDTO extends DTO {
     public String id;
     public String dateCreated;
     public String dateModified;
-    public String isActive;
+    //public String isActive;
     public String fullName;
     public String imageURL;
     public String descriptionHTML;

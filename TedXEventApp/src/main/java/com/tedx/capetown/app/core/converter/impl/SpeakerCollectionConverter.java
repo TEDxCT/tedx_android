@@ -1,7 +1,5 @@
 package com.tedx.capetown.app.core.converter.impl;
 
-import android.util.Log;
-
 import com.tedx.capetown.app.core.converter.Converter;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
@@ -12,7 +10,8 @@ import com.tedx.capetown.lib.sdk.dto.SpeakerDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollectionDTO, SpeakerCollectionModel> implements Converter<SpeakerCollectionDTO,SpeakerCollectionModel> {
+public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollectionDTO, SpeakerCollectionModel> implements Converter<SpeakerCollectionDTO,SpeakerCollectionModel>
+{
 
     public SpeakerCollectionConverter(Class<SpeakerCollectionDTO> sourceClass, Class<SpeakerCollectionModel> targetClass)
     {
@@ -20,9 +19,8 @@ public class SpeakerCollectionConverter extends AbstractConverter<SpeakerCollect
     }
 
     @Override
-    public SpeakerCollectionModel convert(SpeakerCollectionDTO source) {
-        Log.wtf("TEST","Source Status: ");
-        Log.wtf("TEST","Source Status: "+source.getCollection()[0].fullName);
+    public SpeakerCollectionModel convert(SpeakerCollectionDTO source)
+    {
         SpeakerCollectionModel speakerCollectionModel = new SpeakerCollectionModel();
         speakerCollectionModel.speakers = new ArrayList<SpeakerModel>();
 

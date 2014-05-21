@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TedXEventApp/TedXEventApp.iml" filepath="$PROJECT_DIR$/TedXEventApp/TedXEventApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdk/sdk.iml" filepath="$PROJECT_DIR$/sdk/sdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sdk/sdk.iml" filepath="$PROJECT_DIR$/sdk/sdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/tedx_android.iml" filepath="$PROJECT_DIR$/tedx_android.iml" />
     </modules>
   </component>

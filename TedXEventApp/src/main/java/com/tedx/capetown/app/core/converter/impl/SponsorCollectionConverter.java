@@ -8,7 +8,8 @@ import com.tedx.capetown.lib.sdk.dto.SponsorDTO;
 
 import java.util.ArrayList;
 
-public class SponsorCollectionConverter extends AbstractConverter<SponsorCollectionDTO, SponsorCollectionModel> implements Converter<SponsorCollectionDTO,SponsorCollectionModel> {
+public class SponsorCollectionConverter extends AbstractConverter<SponsorCollectionDTO, SponsorCollectionModel> implements Converter<SponsorCollectionDTO,SponsorCollectionModel>
+{
 
     public SponsorCollectionConverter(Class<SponsorCollectionDTO> sourceClass, Class<SponsorCollectionModel> targetClass)
     {

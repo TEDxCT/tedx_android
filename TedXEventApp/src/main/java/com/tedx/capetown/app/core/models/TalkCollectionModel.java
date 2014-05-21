@@ -2,9 +2,7 @@ package com.tedx.capetown.app.core.models;
 
 import java.util.List;
 
-/**
- * Created by andrewpettey on 2014/05/02.
- */
-public class TalkCollectionModel {
-    List<TalkModel> talk;
+public class TalkCollectionModel
+{
+    public List<TalkModel> talks;
 }
