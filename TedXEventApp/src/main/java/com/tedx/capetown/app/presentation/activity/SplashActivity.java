@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
 
 public class SplashActivity extends Activity {
 
@@ -15,6 +16,9 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        FacadeFactoryImpl.createEventFacade(this).fetchEventList();
+
         Intent intent = new Intent();
         intent.setClass(this.getApplicationContext(), HomeActivity.class);
         intent.putExtra("key", "Hat");

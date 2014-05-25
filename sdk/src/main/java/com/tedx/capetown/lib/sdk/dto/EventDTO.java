@@ -13,8 +13,8 @@ public class EventDTO extends DTO {
     public String imageURL;
     public String websiteURL;
     public String descriptionHTML;
-    public long latitude;
-    public long longitude;
+    public double latitude;
+    public double longitude;
     public String locationDescriptionHTML;
     public SessionCollectionDTO sessions;
 }

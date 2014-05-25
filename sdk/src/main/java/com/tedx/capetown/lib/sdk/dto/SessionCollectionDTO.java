@@ -14,4 +14,8 @@ public class SessionCollectionDTO extends AbstractCollectionDTO<SessionDTO> {
     public void setCollection(SessionDTO[] collection) {
 sessions = collection;
     }
+
+    public void setSessions(SessionDTO[] sessions) {
+        this.sessions = sessions;
+    }
 }

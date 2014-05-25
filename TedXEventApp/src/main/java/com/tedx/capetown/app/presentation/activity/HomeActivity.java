@@ -54,6 +54,14 @@ public class HomeActivity extends Activity {
                 context.finish();
             }
         });
+
+        this.findViewById(R.id.btn_agenda_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,AgendaActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

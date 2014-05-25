@@ -6,6 +6,7 @@ package com.tedx.capetown.lib.sdk.dto;
 public class EventCollectionDTO extends AbstractCollectionDTO<EventDTO> {
 
     EventDTO[] events;
+
     @Override
     public EventDTO[] getCollection() {
         return events;
@@ -14,5 +15,9 @@ public class EventCollectionDTO extends AbstractCollectionDTO<EventDTO> {
     @Override
     public void setCollection(EventDTO[] collection) {
         events = collection;
+    }
+
+    public void setEvents(EventDTO[] events) {
+        this.events = events;
     }
 }
