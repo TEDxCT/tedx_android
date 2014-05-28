@@ -14,9 +14,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.Speaker;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.SpeakerModel;
+import com.tedx.capetown.app.core.models.TalkModel;
 
 import java.util.List;
 
@@ -81,17 +84,28 @@ public class SpeakerProfileActivity extends Activity {
     }
 
     public void loadSpeaker(int speakerId) {
-        Speaker speaker = getSpeaker(speakerId);
+        SpeakerModel speaker = getSpeaker(speakerId);
+        TalkModel talk = getTalk(speakerId);
 
-        tvSpeakerName.setText(speaker.getSpeakerName());
-        tvGenre.setText(speaker.getGenre());
-        tvTalkName.setText(speaker.getTalkName());
-        tvDescription.setText(speaker.getDescription());
-        tvTwitterHandle.setText(speaker.getTwitterHandle());
-        tvEmailAddress.setText(speaker.getEmailAddress());
+        tvSpeakerName.setText(speaker.fullName);
+        tvGenre.setText("Genre?");
+        tvTalkName.setText(talk.name);
+        tvDescription.setText(speaker.descriptionHTML);
 
-        Drawable myDrawable = getResources().getDrawable(R.drawable.img_karendudley);
-        ivImage.setImageDrawable(myDrawable);
+        if(false) //ToDO: get twitter handle
+             tvTwitterHandle.setText("TODO");
+        else
+            tvTwitterHandle.setVisibility(View.GONE);
+
+
+        if(false) //ToDO: get email address
+            tvEmailAddress.setText("TODO");
+        else
+            tvEmailAddress.setVisibility(View.GONE);
+
+
+        if(speaker.imageURL != null && !speaker.imageURL.isEmpty())
+            ImageLoader.getInstance().displayImage(speaker.imageURL, ivImage);
     }
 
     public void emailIntent(String address) {
@@ -124,11 +138,18 @@ public class SpeakerProfileActivity extends Activity {
     }
 
     //Dummy Class
-    public Speaker getSpeaker(int speakerId) {
+    public SpeakerModel getSpeaker(int speakerId) {
         EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
 //        eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0)
-        Speaker spkr = new Speaker(eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker.fullName,"Food","the Kitchen","Karen uses food and sharing thereof as a metaphor for embracing our diversity and creating spaces for people to find comfort and nourishment.","@twitter","karen@test.com","img_karendudley.jpg");
-        return spkr;
+        SpeakerModel speaker = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker;
+        //Speaker spkr = new Speaker(.fullName,"Food","the Kitchen","Karen uses food and sharing thereof as a metaphor for embracing our diversity and creating spaces for people to find comfort and nourishment.","@twitter","karen@test.com","img_karendudley.jpg");
+        return speaker;
+    }
+
+    public TalkModel getTalk(int speakerId) {
+        EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
+        TalkModel talk = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0);
+        return talk;
     }
 
 }

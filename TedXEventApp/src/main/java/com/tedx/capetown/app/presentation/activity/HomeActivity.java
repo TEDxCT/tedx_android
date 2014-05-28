@@ -67,6 +67,25 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        this.findViewById(R.id.btn_speaker_profile_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,SpeakerProfileActivity.class);
+                intent.putExtra("speakerId",0);
+                startActivity(intent);
+            }
+        });
+
+        this.findViewById(R.id.btn_talk_profile_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,TalkActivity.class);
+                intent.putExtra("talkId",0);
+                startActivity(intent);
+            }
+        });
+
         EventBus.getDefault().register(this);
     }
 
