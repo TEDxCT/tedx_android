@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:text="@string/listview_session_speaker_talk_title_generic"
-        android:id="@+id/txtTalkTitle"
+        android:id="@+id/text_name"
         android:layout_alignTop="@+id/imgSessionSpeaker"
         android:layout_toRightOf="@+id/imgSessionSpeaker" />
 
@@ -31,9 +31,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/listview_session_speaker_speaker_generic"
         android:id="@+id/txtSpeaker"
-        android:layout_below="@+id/txtTalkTitle"
-        android:layout_alignLeft="@+id/txtTalkTitle"
-        android:layout_alignStart="@+id/txtTalkTitle" />
+        android:layout_below="@+id/text_name"
+        android:layout_alignLeft="@+id/text_name"
+        android:layout_alignStart="@+id/text_name" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -72,10 +72,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="jackson-databind-2.2.1" level="project" />
     <orderEntry type="library" exported="" name="jackson-core-2.2.1" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-19.0.1" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.8.6" level="project" />
     <orderEntry type="library" exported="" name="eventbus-2.0.1" level="project" />
-    <orderEntry type="library" exported="" name="jackson-annotations-2.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.0.1" level="project" />
+    <orderEntry type="library" exported="" name="jackson-annotations-2.2.1" level="project" />
     <orderEntry type="module" module-name="sdk" exported="" />
   </component>
 </module>
