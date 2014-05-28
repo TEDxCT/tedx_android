@@ -6,7 +6,10 @@ import com.tedx.capetown.app.core.models.SessionCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.lib.sdk.dto.EventDTO;
 import com.tedx.capetown.lib.sdk.dto.SessionCollectionDTO;
+import com.tedx.capetown.lib.sdk.dto.SessionDTO;
 import com.tedx.capetown.lib.sdk.dto.SpeakerDTO;
+
+import java.util.List;
 
 public class EventConverter extends AbstractConverter<EventDTO, EventModel> implements Converter<EventDTO,EventModel>
 {
@@ -29,7 +32,7 @@ public class EventConverter extends AbstractConverter<EventDTO, EventModel> impl
         model.longitude = source.longitude;
         model.name = source.name;
         model.websiteURL = source.websiteURL;
-        model.sessions = new SessionCollectionConverter(SessionCollectionDTO.class, SessionCollectionModel.class).convert(source.sessions);
+        model.sessions = new SessionCollectionConverter(List.class, SessionCollectionModel.class).convert(source.sessions);
         return model;
     }
 

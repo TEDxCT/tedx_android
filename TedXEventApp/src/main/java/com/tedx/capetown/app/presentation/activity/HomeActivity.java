@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
+
+import de.greenrobot.event.EventBus;
 
 public class HomeActivity extends Activity {
 
@@ -38,7 +43,7 @@ public class HomeActivity extends Activity {
         this.findViewById(R.id.btn_speaker_profile_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,SpeakerListActivity.class);
+                Intent intent = new Intent(context,SpeakerProfileActivity.class);
                 intent.putExtra("speakerId",1);
                 startActivity(intent);
             }
@@ -62,6 +67,7 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
+        EventBus.getDefault().register(this);
     }
 
 
@@ -83,6 +89,11 @@ public class HomeActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onEventMainThread(EventCollectionModel eventCollectionModel){
+        Toast.makeText(this,eventCollectionModel.events.size()+"TEST",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,eventCollectionModel.events.get(0).id+"TEST",Toast.LENGTH_LONG).show();
     }
 
 }

@@ -16,8 +16,11 @@ import android.widget.TextView;
 
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.Speaker;
+import com.tedx.capetown.app.core.models.EventCollectionModel;
 
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 public class SpeakerProfileActivity extends Activity {
 
@@ -122,7 +125,9 @@ public class SpeakerProfileActivity extends Activity {
 
     //Dummy Class
     public Speaker getSpeaker(int speakerId) {
-        Speaker spkr = new Speaker("Karen Dudley","Food","the Kitchen","Karen uses food and sharing thereof as a metaphor for embracing our diversity and creating spaces for people to find comfort and nourishment.","@twitter","karen@test.com","img_karendudley.jpg");
+        EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
+//        eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0)
+        Speaker spkr = new Speaker(eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker.fullName,"Food","the Kitchen","Karen uses food and sharing thereof as a metaphor for embracing our diversity and creating spaces for people to find comfort and nourishment.","@twitter","karen@test.com","img_karendudley.jpg");
         return spkr;
     }
 

@@ -7,26 +7,24 @@ import com.tedx.capetown.lib.sdk.dto.TalkCollectionDTO;
 import com.tedx.capetown.lib.sdk.dto.TalkDTO;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class TalkCollectionConverter extends AbstractConverter<TalkCollectionDTO, TalkCollectionModel> implements Converter<TalkCollectionDTO,TalkCollectionModel> 
-{
+public class TalkCollectionConverter extends AbstractConverter<List, TalkCollectionModel> implements Converter<List,TalkCollectionModel> {
 
-    public TalkCollectionConverter(Class<TalkCollectionDTO> sourceClass, Class<TalkCollectionModel> targetClass)
-    {
+    public TalkCollectionConverter(Class<List> sourceClass, Class<TalkCollectionModel> targetClass) {
         super(sourceClass, targetClass);
     }
 
     @Override
-    public TalkCollectionModel convert(TalkCollectionDTO source)
-    {
+    public TalkCollectionModel convert(List source) {
         TalkCollectionModel talkCollectionModel = new TalkCollectionModel();
         talkCollectionModel.talks = new ArrayList<TalkModel>();
 
         TalkConverter talkConverter = new TalkConverter(TalkDTO.class, TalkModel.class);
-        for(TalkDTO talk : source.getCollection())
+        List<TalkDTO> newSource = (List<TalkDTO>)source;
+        for (TalkDTO talk : newSource)
             talkCollectionModel.talks.add(talkConverter.convert(talk));
 
         return talkCollectionModel;
     }
-
 }

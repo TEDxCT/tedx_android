@@ -5,6 +5,9 @@ import com.tedx.capetown.app.core.models.SessionModel;
 import com.tedx.capetown.app.core.models.TalkCollectionModel;
 import com.tedx.capetown.lib.sdk.dto.SessionDTO;
 import com.tedx.capetown.lib.sdk.dto.TalkCollectionDTO;
+import com.tedx.capetown.lib.sdk.dto.TalkDTO;
+
+import java.util.List;
 
 public class SessionConverter extends AbstractConverter<SessionDTO, SessionModel> implements Converter<SessionDTO,SessionModel>
 
@@ -24,7 +27,7 @@ public class SessionConverter extends AbstractConverter<SessionDTO, SessionModel
         model.startTime = source.startTime;
         model.id = source.id;
         model.name = source.name;
-        model.talks = new TalkCollectionConverter(TalkCollectionDTO.class, TalkCollectionModel.class).convert(source.talks);
+        model.talks = new TalkCollectionConverter(List.class, TalkCollectionModel.class).convert(source.talks);
         return model;
     }
 

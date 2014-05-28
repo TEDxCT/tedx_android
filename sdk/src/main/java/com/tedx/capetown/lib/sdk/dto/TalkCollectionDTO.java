@@ -14,4 +14,7 @@ public class TalkCollectionDTO extends AbstractCollectionDTO<TalkDTO> {
     public void setCollection(TalkDTO[] collection) {
         talks = collection;
     }
+    public void setTalks(TalkDTO[] collection) {
+        talks = collection;
+    }
 }

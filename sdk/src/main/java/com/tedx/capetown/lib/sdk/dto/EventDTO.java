@@ -1,5 +1,7 @@
 package com.tedx.capetown.lib.sdk.dto;
 
+import java.util.List;
+
 /**
  * Created by andrewpettey on 2014/05/08.
  */
@@ -16,5 +18,5 @@ public class EventDTO extends DTO {
     public double latitude;
     public double longitude;
     public String locationDescriptionHTML;
-    public SessionCollectionDTO sessions;
+    public List<SessionDTO> sessions;
 }

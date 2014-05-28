@@ -1,5 +1,7 @@
 package com.tedx.capetown.app.core.converter.impl;
 
+import android.util.Log;
+
 import com.tedx.capetown.app.core.converter.Converter;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.TalkModel;
@@ -24,7 +26,7 @@ public class TalkConverter extends AbstractConverter<TalkDTO, TalkModel> impleme
         model.descriptionHTML = source.descriptionHTML;
         model.imageURL = source.imageURL;
         model.videoURL = source.videoURL;
-        model.orderInSession = Integer.getInteger(source.orderInSession);
+        model.orderInSession = (source.orderInSession);
         model.speaker = new SpeakerConverter(SpeakerDTO.class, SpeakerModel.class).convert(source.speaker);
         return model;
     }

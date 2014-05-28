@@ -10,8 +10,8 @@ public class TalkModel
     public String descriptionHTML;
     public String imageURL;
     public String videoURL;
-    public int orderInSession;
-    public int sessionId;
-    public int speakerId;
+    public String orderInSession;
+    public String sessionId;
+    public String speakerId;
     public SpeakerModel speaker;
 }

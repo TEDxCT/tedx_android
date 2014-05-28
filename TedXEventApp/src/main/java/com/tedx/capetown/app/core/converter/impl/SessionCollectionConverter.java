@@ -7,22 +7,23 @@ import com.tedx.capetown.lib.sdk.dto.SessionCollectionDTO;
 import com.tedx.capetown.lib.sdk.dto.SessionDTO;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class SessionCollectionConverter extends AbstractConverter<SessionCollectionDTO, SessionCollectionModel> implements Converter<SessionCollectionDTO,SessionCollectionModel> {
+public class SessionCollectionConverter extends AbstractConverter<List, SessionCollectionModel> implements Converter<List<SessionDTO>,SessionCollectionModel> {
 
-    public SessionCollectionConverter(Class<SessionCollectionDTO> sourceClass, Class<SessionCollectionModel> targetClass)
+    public SessionCollectionConverter(Class<List> sourceClass, Class<SessionCollectionModel> targetClass)
     {
         super(sourceClass, targetClass);
     }
 
     @Override
-    public SessionCollectionModel convert(SessionCollectionDTO source)
+    public SessionCollectionModel convert(List<SessionDTO> source)
     {
         SessionCollectionModel sessionCollectionModel = new SessionCollectionModel();
         sessionCollectionModel.sessions = new ArrayList<SessionModel>();
 
         SessionConverter sessionConverter = new SessionConverter(SessionDTO.class, SessionModel.class);
-        for(SessionDTO session : source.getCollection())
+        for(SessionDTO session : source)
             sessionCollectionModel.sessions.add(sessionConverter.convert(session));
 
         return sessionCollectionModel;
