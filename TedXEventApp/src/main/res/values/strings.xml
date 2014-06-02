@@ -39,5 +39,6 @@
     <string name="listview_session_speaker_short_description_generic">Loading short description of talk...</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_session">SessionActivity</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
 
 </resources>
