@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -88,9 +89,9 @@ public class SpeakerProfileActivity extends Activity {
         TalkModel talk = getTalk(speakerId);
 
         tvSpeakerName.setText(speaker.fullName);
-        tvGenre.setText("Genre?");
+        tvGenre.setText("Genre");
         tvTalkName.setText(talk.name);
-        tvDescription.setText(speaker.descriptionHTML);
+        tvDescription.setText(Html.fromHtml(speaker.descriptionHTML));
 
         if(false) //ToDO: get twitter handle
              tvTwitterHandle.setText("TODO");

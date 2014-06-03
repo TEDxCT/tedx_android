@@ -2,6 +2,7 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,9 +63,9 @@ public class TalkActivity extends Activity {
         SpeakerModel speaker = getSpeaker(talk.speakerId);
 
         txtTalkName.setText(talk.name);
-        txtGenre.setText("Genre?");
+        txtGenre.setText("Genre");
         txtSpeakerName.setText(speaker.fullName);
-        txtDescription.setText(talk.descriptionHTML);
+        txtDescription.setText(Html.fromHtml(talk.descriptionHTML));
 
         if(speaker.imageURL != null && !speaker.imageURL.isEmpty())
             ImageLoader.getInstance().displayImage(speaker.imageURL, imgTalk);
