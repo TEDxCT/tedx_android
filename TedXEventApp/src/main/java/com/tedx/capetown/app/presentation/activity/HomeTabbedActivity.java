@@ -1,4 +1,4 @@
-package com.tedx.capetown.app;
+package com.tedx.capetown.app.presentation.activity;
 
 import java.util.Locale;
 
@@ -16,8 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tedx.capetown.app.R;
 
-public class TabbedActivity extends ActionBarActivity implements ActionBar.TabListener {
+
+public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -37,7 +39,7 @@ public class TabbedActivity extends ActionBarActivity implements ActionBar.TabLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabbed);
+        setContentView(R.layout.activity_hometabbed);
 
         final ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
