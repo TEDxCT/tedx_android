@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 
 public class TabbedActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -72,7 +71,7 @@ public class TabbedActivity extends ActionBarActivity implements ActionBar.TabLi
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        //getMenuInflater().inflate(R.menu.tabbed, menu); - hide the menu
+        //getMenuInflater().inflate(R.menu.tabbed, menu);
         return true;
     }
 

@@ -17,8 +17,8 @@ import android.widget.TextView;
 import com.tedx.capetown.app.NavigationDrawerFragment;
 import com.tedx.capetown.app.R;
 
-public class BaseActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class BaseActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks
+{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -46,7 +46,8 @@ public class BaseActivity extends Activity
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(int position) {
+    public void onNavigationDrawerItemSelected(int position)
+    {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
@@ -54,7 +55,8 @@ public class BaseActivity extends Activity
                 .commit();
     }
 
-    public void onSectionAttached(int number) {
+    public void onSectionAttached(int number)
+    {
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
@@ -68,7 +70,8 @@ public class BaseActivity extends Activity
         }
     }
 
-    public void restoreActionBar() {
+    public void restoreActionBar()
+    {
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
