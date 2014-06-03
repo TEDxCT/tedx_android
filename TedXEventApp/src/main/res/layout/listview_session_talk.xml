@@ -53,6 +53,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/listview_session_speaker_short_description_generic"
         android:id="@+id/txtShortDescription"
+        android:maxLines="2"
         android:layout_below="@+id/txtGenre"
         android:layout_alignLeft="@+id/txtGenre"
         android:layout_alignStart="@+id/txtGenre" />

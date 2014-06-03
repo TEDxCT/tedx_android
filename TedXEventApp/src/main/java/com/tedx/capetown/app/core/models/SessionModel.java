@@ -7,11 +7,8 @@ import java.util.List;
  */
 public class SessionModel {
     public int id;
-    public String dateCreated;
-    public String dateModified;
     public boolean isActive;
-    public String startTime;
-    public String endTime;
+    public String sessionTime;
     public String name;
     public int eventId;
     public TalkCollectionModel talks;

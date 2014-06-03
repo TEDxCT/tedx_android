@@ -21,6 +21,7 @@ public class SpeakerConverter extends AbstractConverter<SpeakerDTO, SpeakerModel
         model.imageURL = source.imageURL;
         model.dateCreated = source.dateCreated;
         model.dateModified = source.dateModified;
+        model.funkyTitle = source.funkyTitle;
         return model;
     }
 
