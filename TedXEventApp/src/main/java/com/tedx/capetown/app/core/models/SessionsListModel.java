@@ -10,6 +10,6 @@ public class SessionsListModel {
 
     public boolean isSession()
     {
-     return child;
+     return !child;
     }
 }
