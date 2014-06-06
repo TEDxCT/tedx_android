@@ -2,6 +2,7 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -10,7 +11,7 @@ import android.view.MenuItem;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.presentation.adapter.TabSectionsPagerAdapter;
 
-public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener
+public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener, AgendaFragment.OnFragmentInteractionListener
 {
 
     TabSectionsPagerAdapter _SectionsPagerAdapter;
@@ -76,4 +77,8 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
     {
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

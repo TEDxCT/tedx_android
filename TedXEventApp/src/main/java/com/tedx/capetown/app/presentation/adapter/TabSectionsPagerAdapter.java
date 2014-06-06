@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.presentation.activity.AgendaFragment;
+import com.tedx.capetown.app.presentation.activity.SpeakersFragment;
 
 import java.util.Locale;
 
@@ -29,6 +30,8 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     {
         if (position == 0)
            return AgendaFragment.newInstance();
+      //  if (position == 1)
+      //      return SpeakersFragment.newInstance();
         return PlaceholderFragment.newInstance(position + 1);
     }
 

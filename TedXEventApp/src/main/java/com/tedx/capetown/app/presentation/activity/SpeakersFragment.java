@@ -1,35 +1,17 @@
 package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tedx.capetown.app.R;
-import android.app.Activity;
-import android.app.ListActivity;
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
-import android.view.ViewGroup.LayoutParams;
-import com.tedx.capetown.app.R;
-import static android.view.ViewGroup.LayoutParams.*;
 
-public class AgendaFragment extends Fragment
+import com.tedx.capetown.app.R;
+
+public class SpeakersFragment extends Fragment
 {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,9 +26,9 @@ public class AgendaFragment extends Fragment
 
     private OnFragmentInteractionListener mListener;
 
-    public static AgendaFragment newInstance()//String param1, String param2)
+    public static SpeakersFragment newInstance()//String param1, String param2)
     {
-        AgendaFragment fragment = new AgendaFragment();
+        SpeakersFragment fragment = new SpeakersFragment();
         Bundle args = new Bundle();
     //   args.putString(ARG_PARAM1, param1);
     //    args.putString(ARG_PARAM2, param2);
@@ -54,7 +36,7 @@ public class AgendaFragment extends Fragment
         return fragment;
     }
 
-    public AgendaFragment()
+    public SpeakersFragment()
     {
         // Required empty public constructor
     }
