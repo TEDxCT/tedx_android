@@ -2,16 +2,28 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ListFragment;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
-
+import android.app.Activity;
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
+import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
+import com.tedx.capetown.lib.sdk.SDKClient;
+import de.greenrobot.event.EventBus;
 import com.tedx.capetown.app.R;
 
-public class SpeakersFragment extends Fragment
+public class SpeakersFragment extends ListFragment
 {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,8 +35,15 @@ public class SpeakersFragment extends Fragment
     private String mParam2;
 
     SimpleCursorAdapter mAdapter;
+    SpeakerListAdapter speakerListAdapter = null;
+    Context _context;
 
     private OnFragmentInteractionListener mListener;
+
+    public void setContext(Context context)
+    {
+        _context = context;
+    }
 
     public static SpeakersFragment newInstance()//String param1, String param2)
     {
@@ -50,11 +69,29 @@ public class SpeakersFragment extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        //setContentView(R.layout.activity_speaker_list);
+//        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
+//        if (speakerCollectionModel != null)
+//        {
+//            onEventMainThread(speakerCollectionModel);
+//            FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
+//        }
+//        else
+//            FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
+        if (speakerCollectionModel != null)
+        {
+            onEventMainThread(speakerCollectionModel);
+            FacadeFactoryImpl.createSpeakerFacade(_context).fetchSpeakerList();
+        }
+        else
+            FacadeFactoryImpl.createSpeakerFacade(_context).fetchSpeakerList();
         return inflater.inflate(R.layout.fragment_agenda, container, false);
     }
 
@@ -102,6 +139,18 @@ public class SpeakersFragment extends Fragment
     {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public void onEventMainThread(SpeakerCollectionModel speakerCollectionModel)
+    {
+        if(speakerListAdapter == null)
+        {
+            speakerListAdapter = new SpeakerListAdapter(speakerCollectionModel.speakers, _context);
+            this.getListView().setAdapter(speakerListAdapter);
+        }
+        else
+            speakerListAdapter.updateData(speakerCollectionModel.speakers);
+        speakerListAdapter.notifyDataSetChanged();
     }
 
 }

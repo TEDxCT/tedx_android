@@ -13,22 +13,25 @@ import com.tedx.capetown.lib.sdk.SDKClient;
 
 import de.greenrobot.event.EventBus;
 
-public class SpeakerListActivity extends ListActivity {
+public class SpeakerListActivity extends ListActivity
+{
     SpeakerListAdapter speakerListAdapter = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_list);
         SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
-        if (speakerCollectionModel != null) {
+        if (speakerCollectionModel != null)
+        {
             onEventMainThread(speakerCollectionModel);
             FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
-        } else
-        {
-            FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
         }
+        else
+            FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
     }
+
     public void onPause()
     {
         super.onPause();

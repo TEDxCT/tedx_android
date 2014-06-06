@@ -9,9 +9,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 import com.tedx.capetown.app.presentation.adapter.TabSectionsPagerAdapter;
 
-public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener, AgendaFragment.OnFragmentInteractionListener
+import de.greenrobot.event.EventBus;
+
+public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener, AgendaFragment.OnFragmentInteractionListener, SpeakersFragment.OnFragmentInteractionListener
 {
 
     TabSectionsPagerAdapter _SectionsPagerAdapter;
@@ -78,7 +82,20 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onFragmentInteraction(Uri uri)
+    {
     }
+
+    public void onPause()
+    {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    public void onResume()
+    {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
 }

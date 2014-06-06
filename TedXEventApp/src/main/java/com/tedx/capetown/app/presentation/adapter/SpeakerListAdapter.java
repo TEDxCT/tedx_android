@@ -16,10 +16,8 @@ import com.tedx.capetown.app.core.models.SpeakerModel;
 
 import java.util.List;
 
-/**
- * Created by andrewpettey on 2014/05/01.
- */
-public class SpeakerListAdapter extends BaseAdapter {
+public class SpeakerListAdapter extends BaseAdapter
+{
     List<SpeakerModel> mSpeakerModelList;
     Context context;
     public SpeakerListAdapter(List<SpeakerModel> mSpeakerModelList, Context context)

@@ -30,8 +30,12 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     {
         if (position == 0)
            return AgendaFragment.newInstance();
-      //  if (position == 1)
-      //      return SpeakersFragment.newInstance();
+        if (position == 1)
+        {
+            SpeakersFragment fragment = new SpeakersFragment().newInstance();
+            fragment.setContext(_context);
+            return fragment;
+        }
         return PlaceholderFragment.newInstance(position + 1);
     }
 
