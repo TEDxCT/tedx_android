@@ -8,10 +8,10 @@ public class SpeakerModel {
     public String id;
     public String dateCreated;
     public String dateModified;
-//    public boolean isActive;
+    public boolean isActive;
     public String fullName;
     public String imageURL;
     public String descriptionHTML;
-//    public String funkyTitle;
+    public String funkyTitle;
 
 }
