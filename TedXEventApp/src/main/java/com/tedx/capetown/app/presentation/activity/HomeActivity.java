@@ -29,7 +29,7 @@ public class HomeActivity extends Activity {
             if(state.containsKey("key"))
                 Toast.makeText(this, state.getString("key"), Toast.LENGTH_LONG).show();
 
-        this.findViewById(R.id.txt_home_main).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.btn_agenda_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -55,31 +55,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        this.findViewById(R.id.btn_agenda_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,AgendaActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        this.findViewById(R.id.btn_speaker_profile_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,SpeakerProfileActivity.class);
-                intent.putExtra("speakerId",0);
-                startActivity(intent);
-            }
-        });
-
-        this.findViewById(R.id.btn_talk_profile_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,TalkActivity.class);
-                intent.putExtra("talkId",0);
-                startActivity(intent);
-            }
-        });
     }
 
 

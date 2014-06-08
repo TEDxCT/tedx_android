@@ -35,19 +35,5 @@
         android:text="Speakers"
         android:layout_below="@id/btn_sponsors_activity"
         />
-    <Button
-        android:id="@+id/btn_speaker_profile_activity"
-        android:layout_width="@dimen/home_activity_base_btn_width"
-        android:layout_height="wrap_content"
-        android:text="Speaker Profile"
-        android:layout_below="@id/btn_speaker_list_activity"
-        />
-    <Button
-        android:id="@+id/btn_talk_profile_activity"
-        android:layout_width="@dimen/home_activity_base_btn_width"
-        android:layout_height="wrap_content"
-        android:text="Talk"
-        android:layout_below="@id/btn_speaker_profile_activity"
-        />
 
 </RelativeLayout>
