@@ -24,7 +24,6 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
         Bundle state = this.getIntent().getExtras();
         final Activity context = this;
-
         if(state!=null)
             if(state.containsKey("key"))
                 Toast.makeText(this, state.getString("key"), Toast.LENGTH_LONG).show();
@@ -54,8 +53,6 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-
     }
 
 
