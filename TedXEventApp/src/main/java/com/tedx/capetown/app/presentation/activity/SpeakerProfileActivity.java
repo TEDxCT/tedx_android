@@ -8,15 +8,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.Speaker;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.EventModel;
+import com.tedx.capetown.app.core.models.SessionModel;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.core.models.SpeakerModel;
+import com.tedx.capetown.app.core.models.TalkModel;
 
 import java.util.List;
 
@@ -37,13 +44,6 @@ public class SpeakerProfileActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_profile);
 
-        tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
-        tvGenre = (TextView) findViewById(R.id.txt_genre);
-        tvTalkName = (TextView) findViewById(R.id.txt_talkName);
-        tvDescription = (TextView) findViewById(R.id.txt_description);
-        tvTwitterHandle = (TextView) findViewById(R.id.txt_twitterHandle);
-        tvEmailAddress = (TextView) findViewById(R.id.txt_emailAddress);
-        ivImage = (ImageView) findViewById(R.id.img_speaker);
 
         Bundle state = this.getIntent().getExtras();
         if (state != null)
@@ -81,17 +81,34 @@ public class SpeakerProfileActivity extends Activity {
     }
 
     public void loadSpeaker(int speakerId) {
-        Speaker speaker = getSpeaker(speakerId);
 
-        tvSpeakerName.setText(speaker.getSpeakerName());
-        tvGenre.setText(speaker.getGenre());
-        tvTalkName.setText(speaker.getTalkName());
-        tvDescription.setText(speaker.getDescription());
-        tvTwitterHandle.setText(speaker.getTwitterHandle());
-        tvEmailAddress.setText(speaker.getEmailAddress());
+        tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
+        tvGenre = (TextView) findViewById(R.id.txt_genre);
+        tvDescription = (TextView) findViewById(R.id.txt_description);
+        tvTwitterHandle = (TextView) findViewById(R.id.txt_twitterHandle);
+        tvEmailAddress = (TextView) findViewById(R.id.txt_emailAddress);
+        ivImage = (ImageView) findViewById(R.id.img_speaker);
 
-        Drawable myDrawable = getResources().getDrawable(R.drawable.img_karendudley);
-        ivImage.setImageDrawable(myDrawable);
+        SpeakerModel speaker = getSpeaker(speakerId);
+
+        tvSpeakerName.setText(speaker.fullName);
+        tvGenre.setText("Genre");
+        tvDescription.setText(Html.fromHtml(speaker.descriptionHTML));
+
+        if(false) //ToDO: get twitter handle
+             tvTwitterHandle.setText("TODO");
+        else
+            tvTwitterHandle.setVisibility(View.GONE);
+
+
+        if(false) //ToDO: get email address
+            tvEmailAddress.setText("TODO");
+        else
+            tvEmailAddress.setVisibility(View.GONE);
+
+
+        if(speaker.imageURL != null && !speaker.imageURL.isEmpty())
+            ImageLoader.getInstance().displayImage(speaker.imageURL, ivImage);
     }
 
     public void emailIntent(String address) {
@@ -123,12 +140,22 @@ public class SpeakerProfileActivity extends Activity {
         startActivity(resolved ? tweetIntent : Intent.createChooser(tweetIntent, "Choose one"));
     }
 
-    //Dummy Class
-    public Speaker getSpeaker(int speakerId) {
-        EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
-//        eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0)
-        Speaker spkr = new Speaker(eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker.fullName,"Food","the Kitchen","Karen uses food and sharing thereof as a metaphor for embracing our diversity and creating spaces for people to find comfort and nourishment.","@twitter","karen@test.com","img_karendudley.jpg");
-        return spkr;
+    public SpeakerModel getSpeaker(int speakerId) {
+        return findSpeakerById(speakerId);
     }
+
+    public SpeakerModel findSpeakerById(int speakerId)
+    {
+        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
+        for(SpeakerModel speakerModel : speakerCollectionModel.speakers)
+        {
+            if(speakerModel.id == speakerId)
+            {
+                return speakerModel;
+            }
+        }
+        return null;
+    }
+
 
 }

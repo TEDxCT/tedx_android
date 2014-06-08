@@ -24,27 +24,23 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
         Bundle state = this.getIntent().getExtras();
         final Activity context = this;
-
         if(state!=null)
             if(state.containsKey("key"))
                 Toast.makeText(this, state.getString("key"), Toast.LENGTH_LONG).show();
 
-        this.findViewById(R.id.txt_home_main).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.btn_agenda_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(context,SessionActivity.class);
                 startActivity(intent);
-                context.setResult(context.RESULT_OK, intent);
-                context.finish();
             }
         });
 
-        this.findViewById(R.id.btn_speaker_profile_activity).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.btn_speaker_list_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,SpeakerProfileActivity.class);
-                intent.putExtra("speakerId",1);
+                Intent intent = new Intent(context,SpeakerListActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,19 +51,8 @@ public class HomeActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(context,SponsorsActivity.class);
                 startActivity(intent);
-                context.setResult(context.RESULT_OK, intent);
-                context.finish();
             }
         });
-
-        this.findViewById(R.id.btn_agenda_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context,AgendaActivity.class);
-                startActivity(intent);
-            }
-        });
-        EventBus.getDefault().register(this);
     }
 
 
@@ -91,9 +76,6 @@ public class HomeActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onEventMainThread(EventCollectionModel eventCollectionModel){
-        Toast.makeText(this,eventCollectionModel.events.size()+"TEST",Toast.LENGTH_LONG).show();
-        Toast.makeText(this,eventCollectionModel.events.get(0).id+"TEST",Toast.LENGTH_LONG).show();
-    }
+
 
 }

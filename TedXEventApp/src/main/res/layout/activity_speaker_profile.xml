@@ -38,16 +38,6 @@
         android:layout_alignStart="@+id/txt_genre"
         android:layout_marginTop="@dimen/activity_speaker_profile_text_margin_top" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/activity_speaker_profile_talk_name_generic"
-        android:id="@+id/txt_talkName"
-        android:layout_below="@+id/txt_genre"
-        android:layout_alignLeft="@+id/txt_genre"
-        android:layout_alignStart="@+id/txt_genre"
-        android:layout_marginTop="@dimen/activity_speaker_profile_text_margin_top" />
 
     <TextView
         android:layout_width="wrap_content"

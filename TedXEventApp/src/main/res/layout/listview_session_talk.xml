@@ -2,7 +2,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_for_headers">
+    android:layout_margin="@dimen/margin_for_headers"
+    android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:layout_width="@dimen/activity_speaker_profile_image_width"

@@ -5,7 +5,7 @@ package com.tedx.capetown.app.core.models;
  */
 public class SpeakerModel {
 
-    public String id;
+    public int id;
     public String dateCreated;
     public String dateModified;
     public String isActive;
