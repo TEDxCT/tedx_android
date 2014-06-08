@@ -37,23 +37,23 @@ public class SessionActivity extends ListActivity {
         listView = this.getListView();
         SessionListAdapter sessionListAdapter = new SessionListAdapter(getModel(),this);
         setListAdapter(sessionListAdapter);
-        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                Toast.makeText(context,"Clicked",Toast.LENGTH_LONG).show();
-                SessionsListModel session = (SessionsListModel)adapterView.getItemAtPosition(pos);
-                if(session.isSession())
-                {
-                    // Do nothing right now
-                }
-                else
-                {
-                    Intent intent = new Intent(context,TalkActivity.class);
-                    intent.putExtra("talkId",session.talkModel.id);
-                    startActivity(intent);
-                }
-            }
-        });
+//        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+//                Toast.makeText(context,"Clicked",Toast.LENGTH_LONG).show();
+//                SessionsListModel session = (SessionsListModel)adapterView.getItemAtPosition(pos);
+//                if(session.isSession())
+//                {
+//                    // Do nothing right now
+//                }
+//                else
+//                {
+//                    Intent intent = new Intent(context,TalkActivity.class);
+//                    intent.putExtra("talkId",session.talkModel.id);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
     }
 
 

@@ -2,11 +2,19 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
+
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.SessionsListModel;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
 import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 import com.tedx.capetown.lib.sdk.SDKClient;
@@ -15,11 +23,12 @@ import de.greenrobot.event.EventBus;
 
 public class SpeakerListActivity extends ListActivity {
     SpeakerListAdapter speakerListAdapter = null;
-
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_list);
+        context = this;
         SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
         if (speakerCollectionModel != null) {
             onEventMainThread(speakerCollectionModel);
@@ -69,6 +78,16 @@ public class SpeakerListActivity extends ListActivity {
             speakerListAdapter.updateData(speakerCollectionModel.speakers);
         }
         speakerListAdapter.notifyDataSetChanged();
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_LONG).show();
+                SpeakerModel speakerModel = (SpeakerModel)adapterView.getItemAtPosition(pos);
+                    Intent intent = new Intent(context,SpeakerProfileActivity.class);
+                    intent.putExtra("speakerId",speakerModel.id);
+                    startActivity(intent);
+            }
+        });
     }
 
 }

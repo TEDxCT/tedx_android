@@ -1,7 +1,9 @@
 package com.tedx.capetown.app.presentation.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.SpeakerModel;
+import com.tedx.capetown.app.presentation.activity.SpeakerProfileActivity;
+import com.tedx.capetown.app.presentation.activity.TalkActivity;
 
 import java.util.List;
 
@@ -59,7 +63,7 @@ public class SpeakerListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return Integer.parseInt(mSpeakerModelList.get(i).id);
+        return mSpeakerModelList.get(i).id;
     }
 
 
@@ -67,10 +71,19 @@ public class SpeakerListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final SpeakerModel speakerModel = mSpeakerModelList.get(i);
         View currentView = mInflater.inflate(R.layout.listview_speaker_details, viewGroup, false);
-        ((TextView)currentView.findViewById(R.id.speaker_name)).setText(mSpeakerModelList.get(i).fullName);
-        ((TextView)currentView.findViewById(R.id.speaker_description)).setText(mSpeakerModelList.get(i).descriptionHTML);
-        ImageLoader.getInstance().displayImage(mSpeakerModelList.get(i).imageURL, ((ImageView) currentView.findViewById(R.id.speaker_image)));
+        ((TextView)currentView.findViewById(R.id.speaker_name)).setText(speakerModel.fullName);
+        ((TextView)currentView.findViewById(R.id.speaker_description)).setText(Html.fromHtml(speakerModel.descriptionHTML));
+        ImageLoader.getInstance().displayImage(speakerModel.imageURL, ((ImageView) currentView.findViewById(R.id.speaker_image)));
+        currentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,SpeakerProfileActivity.class);
+                intent.putExtra("speakerId", speakerModel.id);
+                context.startActivity(intent);
+            }
+        });
         return currentView;
     }
 

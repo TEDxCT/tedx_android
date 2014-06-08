@@ -16,13 +16,14 @@ public class SpeakerConverter extends AbstractConverter<SpeakerDTO, SpeakerModel
     {
         SpeakerModel model = new SpeakerModel();
         model.id = source.id;
-        model.fullName = source.fullName;
-        model.descriptionHTML = source.descriptionHTML;
-        model.imageURL = source.imageURL;
-        model.dateCreated = source.dateCreated;
-        model.dateModified = source.dateModified;
-        model.funkyTitle = source.funkyTitle;
+        model.fullName = safeNullProtector(source.fullName);
+        model.descriptionHTML = safeNullProtector(source.descriptionHTML);
+        model.imageURL = safeNullProtector(source.imageURL);
+        model.dateCreated = safeNullProtector(source.dateCreated);
+        model.dateModified = safeNullProtector(source.dateModified);
+        model.funkyTitle = safeNullProtector(source.funkyTitle);
         return model;
     }
+
 
 }

@@ -84,7 +84,6 @@ public class SpeakerProfileActivity extends Activity {
 
         tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
         tvGenre = (TextView) findViewById(R.id.txt_genre);
-        tvTalkName = (TextView) findViewById(R.id.txt_talkName);
         tvDescription = (TextView) findViewById(R.id.txt_description);
         tvTwitterHandle = (TextView) findViewById(R.id.txt_twitterHandle);
         tvEmailAddress = (TextView) findViewById(R.id.txt_emailAddress);

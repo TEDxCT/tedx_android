@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class SpeakerDTO extends DTO {
-    public String id;
+    public int id;
     public String dateCreated;
     public String dateModified;
 
