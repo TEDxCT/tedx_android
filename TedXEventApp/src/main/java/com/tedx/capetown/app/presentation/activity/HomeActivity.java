@@ -85,8 +85,6 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-        EventBus.getDefault().register(this);
     }
 
 
@@ -110,9 +108,6 @@ public class HomeActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onEventMainThread(EventCollectionModel eventCollectionModel){
-        Toast.makeText(this,eventCollectionModel.events.size()+"TEST",Toast.LENGTH_LONG).show();
-        Toast.makeText(this,eventCollectionModel.events.get(0).id+"TEST",Toast.LENGTH_LONG).show();
-    }
+
 
 }

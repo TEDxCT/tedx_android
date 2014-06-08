@@ -41,13 +41,6 @@ public class SpeakerProfileActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_profile);
 
-        tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
-        tvGenre = (TextView) findViewById(R.id.txt_genre);
-        tvTalkName = (TextView) findViewById(R.id.txt_talkName);
-        tvDescription = (TextView) findViewById(R.id.txt_description);
-        tvTwitterHandle = (TextView) findViewById(R.id.txt_twitterHandle);
-        tvEmailAddress = (TextView) findViewById(R.id.txt_emailAddress);
-        ivImage = (ImageView) findViewById(R.id.img_speaker);
 
         Bundle state = this.getIntent().getExtras();
         if (state != null)
@@ -85,6 +78,15 @@ public class SpeakerProfileActivity extends Activity {
     }
 
     public void loadSpeaker(int speakerId) {
+
+        tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
+        tvGenre = (TextView) findViewById(R.id.txt_genre);
+        tvTalkName = (TextView) findViewById(R.id.txt_talkName);
+        tvDescription = (TextView) findViewById(R.id.txt_description);
+        tvTwitterHandle = (TextView) findViewById(R.id.txt_twitterHandle);
+        tvEmailAddress = (TextView) findViewById(R.id.txt_emailAddress);
+        ivImage = (ImageView) findViewById(R.id.img_speaker);
+
         SpeakerModel speaker = getSpeaker(speakerId);
         TalkModel talk = getTalk(speakerId);
 
@@ -138,12 +140,9 @@ public class SpeakerProfileActivity extends Activity {
         startActivity(resolved ? tweetIntent : Intent.createChooser(tweetIntent, "Choose one"));
     }
 
-    //Dummy Class
     public SpeakerModel getSpeaker(int speakerId) {
         EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
-//        eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0)
         SpeakerModel speaker = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker;
-        //Speaker spkr = new Speaker(.fullName,"Food","the Kitchen","Karen uses food and sharing thereof as a metaphor for embracing our diversity and creating spaces for people to find comfort and nourishment.","@twitter","karen@test.com","img_karendudley.jpg");
         return speaker;
     }
 
@@ -152,5 +151,6 @@ public class SpeakerProfileActivity extends Activity {
         TalkModel talk = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0);
         return talk;
     }
+
 
 }
