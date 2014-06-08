@@ -35,8 +35,6 @@ public class HomeActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(context,SessionActivity.class);
                 startActivity(intent);
-                context.setResult(context.RESULT_OK, intent);
-                context.finish();
             }
         });
 
@@ -55,8 +53,6 @@ public class HomeActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(context,SponsorsActivity.class);
                 startActivity(intent);
-                context.setResult(context.RESULT_OK, intent);
-                context.finish();
             }
         });
 

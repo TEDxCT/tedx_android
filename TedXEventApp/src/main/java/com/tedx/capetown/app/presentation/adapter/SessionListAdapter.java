@@ -1,6 +1,7 @@
 package com.tedx.capetown.app.presentation.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.tedx.capetown.app.core.models.SessionModel;
 import com.tedx.capetown.app.core.models.SessionsListModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.TalkModel;
+import com.tedx.capetown.app.presentation.activity.TalkActivity;
 
 import java.util.List;
 
