@@ -3,6 +3,7 @@ package com.tedx.capetown.app.presentation.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ public class TalkActivity extends Activity {
     private TextView txtSpeakerName ;
     private TextView txtDescription;
     private ImageView imgTalk;
+    String TAG = "Act:TalkActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +40,9 @@ public class TalkActivity extends Activity {
         txtDescription = (TextView) findViewById(R.id.txtDescription);
         imgTalk = (ImageView) findViewById(R.id.imgTalk);
 
-        if (savedInstanceState != null)
-            if (savedInstanceState.containsKey("talkId"))
-                loadTalk(savedInstanceState.getInt("talkId"));
+        if (getIntent().getExtras() != null)
+            if (getIntent().getExtras().containsKey("talkId"))
+                loadTalk(getIntent().getExtras().getInt("talkId"));
     }
 
     @Override
@@ -60,28 +62,24 @@ public class TalkActivity extends Activity {
 
 
     public void loadTalk(int talkId) {
-        TalkModel talk = getTalk(talkId);
-        SpeakerModel speaker = getSpeaker(talk.speakerId);
+        TalkModel talkModel = getTalk(talkId);
+        SpeakerModel speaker = getSpeaker(talkModel);
 
-        txtTalkName.setText(talk.name);
+        txtTalkName.setText(talkModel.name);
         txtGenre.setText("Genre");
         txtSpeakerName.setText(speaker.fullName);
-        txtDescription.setText(Html.fromHtml(talk.descriptionHTML));
+        txtDescription.setText(Html.fromHtml(talkModel.descriptionHTML));
 
         if(speaker.imageURL != null && !speaker.imageURL.isEmpty())
             ImageLoader.getInstance().displayImage(speaker.imageURL, imgTalk);
     }
 
     public TalkModel getTalk(int talkId) {
-        EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
-        TalkModel talk = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0);
-        return talk;
+        return findTalkById(talkId);
     }
 
-    public SpeakerModel getSpeaker(String speakerId) {
-        EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
-        SpeakerModel speaker = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker;
-        return speaker;
+    public SpeakerModel getSpeaker(TalkModel talkModel) {
+        return talkModel.speaker;
     }
     public TalkModel findTalkById(int talkId)
     {
