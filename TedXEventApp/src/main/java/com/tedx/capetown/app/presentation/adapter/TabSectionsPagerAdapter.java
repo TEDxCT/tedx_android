@@ -28,14 +28,14 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     @Override
     public Fragment getItem(int position)
     {
-        if (position == 0)
-           return AgendaFragment.newInstance();
-        if (position == 1)
-        {
-            SpeakersFragment fragment = new SpeakersFragment().newInstance();
-            fragment.setContext(_context);
-            return fragment;
-        }
+//        if (position == 0)
+//           return AgendaFragment.newInstance();
+//        if (position == 1)
+//        {
+//            SpeakersFragment fragment = new SpeakersFragment().newInstance();
+//            fragment.setContext(_context);
+//            return fragment;
+//        }
         return PlaceholderFragment.newInstance(position + 1);
     }
 

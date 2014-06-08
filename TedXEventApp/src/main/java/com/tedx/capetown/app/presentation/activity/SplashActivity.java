@@ -6,15 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
-
-public class SplashActivity extends Activity
 import de.greenrobot.event.EventBus;
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends Activity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
