@@ -8,7 +8,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
+
+import de.greenrobot.event.EventBus;
 
 public class SplashActivity extends Activity {
 
@@ -16,15 +19,9 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        EventBus.getDefault().register(this);
         FacadeFactoryImpl.createEventFacade(this).fetchEventList();
 
-        Intent intent = new Intent();
-        intent.setClass(this.getApplicationContext(), HomeActivity.class);
-        intent.putExtra("key", "Hat");
-//        this.startActivity(intent);
-        this.startActivityForResult(intent, 100);
-//        this.finish();
     }
 
 
@@ -50,7 +47,6 @@ public class SplashActivity extends Activity {
     @Override
     public void onSaveInstanceState(Bundle state)
     {
-        state.putString("Test", "TEST");
         super.onSaveInstanceState(state);
     }
     @Override
@@ -58,14 +54,17 @@ public class SplashActivity extends Activity {
     public void onRestoreInstanceState(Bundle state)
     {
         super.onRestoreInstanceState(state);
-        if(state!=null)
-            if(state.containsKey("Test"))
-        Toast.makeText(this,state.getString("Test"),Toast.LENGTH_LONG).show();
     }
 
     public void onActivityResult( int requestCode, int resultCode,Intent intent)
     {
         super.onActivityResult(requestCode,resultCode,intent);
 
+    }
+    public void onEventMainThread(EventCollectionModel eventCollectionModel){
+        Intent intent = new Intent();
+        intent.setClass(this.getApplicationContext(), HomeActivity.class);
+        this.startActivity(intent);
+        this.finish();
     }
 }
