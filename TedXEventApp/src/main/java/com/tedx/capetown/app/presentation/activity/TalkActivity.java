@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.EventModel;
+import com.tedx.capetown.app.core.models.SessionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.TalkModel;
 
@@ -36,10 +38,9 @@ public class TalkActivity extends Activity {
         txtDescription = (TextView) findViewById(R.id.txtDescription);
         imgTalk = (ImageView) findViewById(R.id.imgTalk);
 
-        Bundle state = this.getIntent().getExtras();
-        if (state != null)
-            if (state.containsKey("talkId"))
-                loadTalk(state.getInt("talkId"));
+        if (savedInstanceState != null)
+            if (savedInstanceState.containsKey("talkId"))
+                loadTalk(savedInstanceState.getInt("talkId"));
     }
 
     @Override
@@ -82,6 +83,23 @@ public class TalkActivity extends Activity {
         SpeakerModel speaker = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker;
         return speaker;
     }
-
+    public TalkModel findTalkById(int talkId)
+    {
+        EventCollectionModel eventCollectionModel = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
+        for(EventModel eventModel : eventCollectionModel.events)
+        {
+            for(SessionModel sessionModel : eventModel.sessions.sessions)
+            {
+                for(TalkModel talkModel : sessionModel.talks.talks)
+                {
+                    if(talkModel.id == talkId)
+                    {
+                        return talkModel;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
 }

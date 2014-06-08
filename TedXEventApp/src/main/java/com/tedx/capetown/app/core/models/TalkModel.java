@@ -5,7 +5,7 @@ public class TalkModel
     public int id;
     public String dateCreated;
     public String dateModified;
-   // public boolean isActive;
+   public String isActive;
     public String name;
     public String descriptionHTML;
     public String imageURL;
