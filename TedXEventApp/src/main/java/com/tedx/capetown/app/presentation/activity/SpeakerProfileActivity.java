@@ -19,6 +19,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.Speaker;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.EventModel;
+import com.tedx.capetown.app.core.models.SessionModel;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.TalkModel;
 
@@ -88,11 +91,9 @@ public class SpeakerProfileActivity extends Activity {
         ivImage = (ImageView) findViewById(R.id.img_speaker);
 
         SpeakerModel speaker = getSpeaker(speakerId);
-        TalkModel talk = getTalk(speakerId);
 
         tvSpeakerName.setText(speaker.fullName);
         tvGenre.setText("Genre");
-        tvTalkName.setText(talk.name);
         tvDescription.setText(Html.fromHtml(speaker.descriptionHTML));
 
         if(false) //ToDO: get twitter handle
@@ -141,15 +142,20 @@ public class SpeakerProfileActivity extends Activity {
     }
 
     public SpeakerModel getSpeaker(int speakerId) {
-        EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
-        SpeakerModel speaker = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0).speaker;
-        return speaker;
+        return findSpeakerById(speakerId);
     }
 
-    public TalkModel getTalk(int speakerId) {
-        EventCollectionModel eventCollectionModel1 = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
-        TalkModel talk = eventCollectionModel1.events.get(0).sessions.sessions.get(0).talks.talks.get(0);
-        return talk;
+    public SpeakerModel findSpeakerById(int speakerId)
+    {
+        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
+        for(SpeakerModel speakerModel : speakerCollectionModel.speakers)
+        {
+            if(speakerModel.id == speakerId)
+            {
+                return speakerModel;
+            }
+        }
+        return null;
     }
 
 

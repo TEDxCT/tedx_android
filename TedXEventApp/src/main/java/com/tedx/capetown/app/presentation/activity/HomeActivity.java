@@ -38,11 +38,10 @@ public class HomeActivity extends Activity {
             }
         });
 
-        this.findViewById(R.id.btn_speaker_profile_activity).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.btn_speaker_list_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,SpeakerProfileActivity.class);
-                intent.putExtra("speakerId",1);
+                Intent intent = new Intent(context,SpeakerListActivity.class);
                 startActivity(intent);
             }
         });
