@@ -1,46 +1,67 @@
 package com.tedx.capetown.app.presentation.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
-import android.net.Uri;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.SponsorModel;
+import com.tedx.capetown.app.presentation.activity.SpeakerProfileActivity;
 
 import java.util.List;
 
-public class SponsorListAdapter extends BaseAdapter {
-    List<SponsorModel> mSponsorModelList;
-    Context mContext;
+public class SponsorListAdapter extends BaseAdapter
+{
+
+    List<SponsorModel> _sponsorModelList;
+    Context _context;
 
     public SponsorListAdapter(List<SponsorModel> sponsorModelList, Context context)
     {
-        mSponsorModelList = sponsorModelList;
-        mContext = context;
+        _sponsorModelList = sponsorModelList;
+        _context = context;
+    }
+
+    @Override
+    public boolean areAllItemsEnabled() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled(int i) {
+        return false;
+    }
+
+    @Override
+    public void registerDataSetObserver(DataSetObserver dataSetObserver)
+    {
+    }
+
+    @Override
+    public void unregisterDataSetObserver(DataSetObserver dataSetObserver)
+    {
     }
 
     @Override
     public int getCount() {
-        return mSponsorModelList.size();
+        return _sponsorModelList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return mSponsorModelList.get(i);
+        return _sponsorModelList.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return mSponsorModelList.get(i).id;
+        return _sponsorModelList.get(i).id;
     }
 
     @Override
@@ -51,11 +72,11 @@ public class SponsorListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup)
     {
-        LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View currentView = mInflater.inflate(R.layout.activity_sponsors, viewGroup, false);
-       // ((ImageView) currentView.findViewById(R.id.imgSponsor)).setImageDrawable(mSponsorModelList.get(i).ImageURL);
-        // TODO get image loader from html thingy to populate image
-        ImageLoader.getInstance().displayImage(mSponsorModelList.get(i).ImageURL, ((ImageView) currentView.findViewById(R.id.speaker_image)));
+        LayoutInflater layoutInflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final SponsorModel sponsorModel = _sponsorModelList.get(i);
+        View currentView = layoutInflater.inflate(R.layout.activity_sponsors, viewGroup, false);
+        //( (TextView) currentView.findViewById(R.id.sponsor_name) ).setText(sponsorModel.Name);  //sponsors are just images currently, so we don't care about their text name
+        ImageLoader.getInstance().displayImage(sponsorModel.ImageURL, ((ImageView) currentView.findViewById(R.id.imgSponsor)));
         return currentView;
     }
 
@@ -71,11 +92,11 @@ public class SponsorListAdapter extends BaseAdapter {
 
     @Override
     public boolean isEmpty() {
-        return mSponsorModelList.isEmpty();
+        return _sponsorModelList.isEmpty();
     }
 
     public void updateData(List<SponsorModel> sponsors) {
-        mSponsorModelList = sponsors;
+        _sponsorModelList = sponsors;
     }
 
 }
