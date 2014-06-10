@@ -27,10 +27,10 @@ public class AgendaActivity extends ListActivity implements LoaderManager.Loader
     SimpleCursorAdapter mAdapter;
 
     // These are the Contacts rows that we will retrieve
-    static final String[] PROJECTION = new String[] {ContactsContract.Data._ID, ContactsContract.Data.DISPLAY_NAME};
+    static final String[] PROJECTION = new String[] {ContactsContract.Data._ID,  ContactsContract.Data.DISPLAY_NAME};
 
     // This is the select criteria
-    static final String SELECTION = "((" + ContactsContract.Data.DISPLAY_NAME + " NOTNULL) AND (" + ContactsContract.Data.DISPLAY_NAME + " != '' ))";
+    static final String SELECTION = "((" +  ContactsContract.Data.DISPLAY_NAME + " NOTNULL) AND (" +  ContactsContract.Data.DISPLAY_NAME + " != '' ))";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,7 +58,6 @@ public class AgendaActivity extends ListActivity implements LoaderManager.Loader
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.agenda, menu);
         return true;
     }
@@ -70,9 +69,8 @@ public class AgendaActivity extends ListActivity implements LoaderManager.Loader
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
             return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

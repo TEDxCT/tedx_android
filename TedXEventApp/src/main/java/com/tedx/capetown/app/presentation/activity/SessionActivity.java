@@ -40,7 +40,7 @@ public class SessionActivity extends ListActivity {
 //        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-//                Toast.makeText(context,"Clicked",Toast.LENGTH_LONG).show();
+//                Toast.makeText(_context,"Clicked",Toast.LENGTH_LONG).show();
 //                SessionsListModel session = (SessionsListModel)adapterView.getItemAtPosition(pos);
 //                if(session.isSession())
 //                {
@@ -48,7 +48,7 @@ public class SessionActivity extends ListActivity {
 //                }
 //                else
 //                {
-//                    Intent intent = new Intent(context,TalkActivity.class);
+//                    Intent intent = new Intent(_context,TalkActivity.class);
 //                    intent.putExtra("talkId",session.talkModel.id);
 //                    startActivity(intent);
 //                }
