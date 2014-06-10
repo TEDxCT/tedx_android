@@ -16,6 +16,8 @@ import com.tedx.capetown.lib.sdk.exception.SDKException;
 import java.io.IOException;
 import java.text.ParseException;
 
+import de.greenrobot.event.EventBus;
+
 public class SponsorService extends AbstractSDKIntentService {
 
     public SponsorService() {
@@ -30,10 +32,8 @@ public class SponsorService extends AbstractSDKIntentService {
                         SDKException,
                         ParseException {
                     SponsorConnector SponsorConnector = getSDKClient().getSponsorConnector();
-                    SponsorRequest request = SponsorConnector.getSponsorRequestBuilder("tedx_server/response/Sponsors.php").build();
-                    Log.wtf("TEST","Request created");
+                    SponsorRequest request = SponsorConnector.getSponsorRequestBuilder("tedx_server/response/sponsors.php").build();
                     SDKResponse<SponsorCollectionDTO> response = SponsorConnector.getSponsorList(request);
-                    Log.wtf("TEST","Request sent:"+response.responseDTO.toString());
                     return response;
                 }
             }
@@ -46,9 +46,9 @@ public class SponsorService extends AbstractSDKIntentService {
         if (action == null)
             return;
         if (action.equals(SponsorCollectionServiceRequest.class.getName())) {
-            Log.wtf("TEST","TEst:"+action.equals(SponsorCollectionServiceRequest.class.getName()));
             try {
-                fetchSponsorList();
+                SponsorCollectionModel sponsorCollectionModel = fetchSponsorList();
+                EventBus.getDefault().postSticky(sponsorCollectionModel);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (IOException e) {

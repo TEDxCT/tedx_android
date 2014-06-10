@@ -28,31 +28,28 @@ public class SponsorsActivity extends ListActivity
     Context _context;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sponsors);
         _context = this;
         SponsorCollectionModel sponsorCollectionModel = (SponsorCollectionModel) EventBus.getDefault().getStickyEvent(SponsorCollectionModel.class);
-        if (sponsorCollectionModel != null) 
-        {
-            onEventMainThread(sponsorCollectionModel);
-            FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
-        }
-        else
-            FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
+            if (_sponsorListAdapter == null) {
+                _sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, this);
+                this.getListView().setAdapter(_sponsorListAdapter);
+            } else {
+                _sponsorListAdapter.updateData(sponsorCollectionModel.sponsors);
+                _sponsorListAdapter.notifyDataSetChanged();
+            }
     }
 
     public void onPause()
     {
         super.onPause();
-        EventBus.getDefault().unregister(this);
     }
 
     public void onResume()
     {
         super.onResume();
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -71,16 +68,5 @@ public class SponsorsActivity extends ListActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void onEventMainThread(SponsorCollectionModel sponsorCollectionModel)
-    {
-        if(_sponsorListAdapter == null)
-        {
-            _sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, this);
-            this.getListView().setAdapter(_sponsorListAdapter);
-        }
-        else
-            _sponsorListAdapter.updateData(sponsorCollectionModel.sponsors);
-        _sponsorListAdapter.notifyDataSetChanged();
-    }
 
 }

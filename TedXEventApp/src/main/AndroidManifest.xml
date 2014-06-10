@@ -82,6 +82,16 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name="com.tedx.capetown.app.core.service.impl.SponsorService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.tedx.capetown.app.core.service.request.SponsorCollectionServiceRequest" />
+                <action android:name="com.tedx.capetown.app.core.service.request.SponsorModelServiceRequest" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name="com.tedx.capetown.app.presentation.activity.SessionActivity"
             android:label="@string/title_activity_session" >

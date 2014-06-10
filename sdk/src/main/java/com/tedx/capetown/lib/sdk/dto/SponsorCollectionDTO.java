@@ -11,4 +11,8 @@ public class SponsorCollectionDTO extends AbstractCollectionDTO<SponsorDTO> {
     public void setCollection(SponsorDTO[] collection) {
         sponsors = collection;
     }
+
+    public void setSponsors(SponsorDTO[] sponsors) {
+        this.sponsors = sponsors;
+    }
 }

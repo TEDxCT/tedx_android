@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.core.models.SponsorCollectionModel;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
 import de.greenrobot.event.EventBus;
 
@@ -20,10 +21,10 @@ public class SplashActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         EventBus.getDefault().register(this);
+        FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
         FacadeFactoryImpl.createEventFacade(this).fetchEventList();
         SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
         FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
-        FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
     }
 
 
@@ -65,9 +66,9 @@ public class SplashActivity extends Activity
     {
         super.onActivityResult(requestCode,resultCode,intent);
     }
-    public void onEventMainThread(EventCollectionModel eventCollectionModel){
+    public void onEventMainThread(SponsorCollectionModel eventCollectionModel){
         Intent intent = new Intent();
-        intent.setClass(this.getApplicationContext(), HomeTabbedActivity.class);
+        intent.setClass(this.getApplicationContext(), SponsorsActivity.class);
         this.startActivity(intent);
         this.finish();
     }

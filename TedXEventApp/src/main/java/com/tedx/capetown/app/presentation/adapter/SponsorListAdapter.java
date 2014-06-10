@@ -74,8 +74,7 @@ public class SponsorListAdapter extends BaseAdapter
     {
         LayoutInflater layoutInflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final SponsorModel sponsorModel = _sponsorModelList.get(i);
-        View currentView = layoutInflater.inflate(R.layout.activity_sponsors, viewGroup, false);
-        //( (TextView) currentView.findViewById(R.id.sponsor_name) ).setText(sponsorModel.Name);  //sponsors are just images currently, so we don't care about their text name
+        View currentView = layoutInflater.inflate(R.layout.listview_sponsor, viewGroup, false);
         ImageLoader.getInstance().displayImage(sponsorModel.ImageURL, ((ImageView) currentView.findViewById(R.id.imgSponsor)));
         return currentView;
     }
