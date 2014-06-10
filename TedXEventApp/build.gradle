@@ -9,7 +9,7 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
     compileSdkVersion 19
-    buildToolsVersion '19.0.1'
+    buildToolsVersion '19.1'
 
     defaultConfig {
         minSdkVersion 14

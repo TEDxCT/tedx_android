@@ -89,13 +89,11 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
     public void onPause()
     {
         super.onPause();
-        EventBus.getDefault().unregister(this);
     }
 
     public void onResume()
     {
         super.onResume();
-        EventBus.getDefault().register(this);
     }
 
 }

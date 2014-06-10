@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
 import de.greenrobot.event.EventBus;
 
@@ -20,7 +21,8 @@ public class SplashActivity extends Activity
         setContentView(R.layout.activity_splash);
         EventBus.getDefault().register(this);
         FacadeFactoryImpl.createEventFacade(this).fetchEventList();
-
+        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
+        FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
     }
 
 
@@ -64,7 +66,7 @@ public class SplashActivity extends Activity
     }
     public void onEventMainThread(EventCollectionModel eventCollectionModel){
         Intent intent = new Intent();
-        intent.setClass(this.getApplicationContext(), HomeActivity.class);
+        intent.setClass(this.getApplicationContext(), HomeTabbedActivity.class);
         this.startActivity(intent);
         this.finish();
     }

@@ -6,6 +6,7 @@ import android.app.ListFragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,15 +85,10 @@ public class SpeakersFragment extends ListFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
-        if (speakerCollectionModel != null)
-        {
-            onEventMainThread(speakerCollectionModel);
-            FacadeFactoryImpl.createSpeakerFacade(_context).fetchSpeakerList();
-        }
-        else
-            FacadeFactoryImpl.createSpeakerFacade(_context).fetchSpeakerList();
-        return inflater.inflate(R.layout.fragment_agenda, container, false);
+        View fragmentView = inflater.inflate(R.layout.activity_speaker_list, container, false);
+        Log.wtf("SpeakerFrag","Infated View");
+        return fragmentView;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -117,7 +113,14 @@ public class SpeakersFragment extends ListFragment
             throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
         }
     }
-
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
+        speakerListAdapter = new SpeakerListAdapter(speakerCollectionModel.speakers, getActivity());
+        this.getListView().setAdapter(speakerListAdapter);
+    }
     @Override
     public void onDetach()
     {
@@ -141,16 +144,5 @@ public class SpeakersFragment extends ListFragment
         public void onFragmentInteraction(Uri uri);
     }
 
-    public void onEventMainThread(SpeakerCollectionModel speakerCollectionModel)
-    {
-        if(speakerListAdapter == null)
-        {
-            speakerListAdapter = new SpeakerListAdapter(speakerCollectionModel.speakers, _context);
-            this.getListView().setAdapter(speakerListAdapter);
-        }
-        else
-            speakerListAdapter.updateData(speakerCollectionModel.speakers);
-        speakerListAdapter.notifyDataSetChanged();
-    }
 
 }
