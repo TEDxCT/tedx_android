@@ -68,7 +68,7 @@ public class SplashActivity extends Activity
     }
     public void onEventMainThread(SponsorCollectionModel eventCollectionModel){
         Intent intent = new Intent();
-        intent.setClass(this.getApplicationContext(), SponsorsActivity.class);
+        intent.setClass(this.getApplicationContext(), HomeTabbedActivity.class);
         this.startActivity(intent);
         this.finish();
     }
