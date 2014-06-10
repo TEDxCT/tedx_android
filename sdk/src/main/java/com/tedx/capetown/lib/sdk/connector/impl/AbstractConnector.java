@@ -134,7 +134,7 @@ public abstract class AbstractConnector {
 					json = "{}";
 				}
 			}
-
+            
 			T responseDTO = new ObjectMapper().readValue(json, dtoType);
 			response.stream.close();
 			return responseDTO;

@@ -23,6 +23,7 @@ public class SplashActivity extends Activity
         FacadeFactoryImpl.createEventFacade(this).fetchEventList();
         SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
         FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
+        FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
     }
 
 
