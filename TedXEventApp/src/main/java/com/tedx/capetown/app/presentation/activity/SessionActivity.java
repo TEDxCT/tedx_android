@@ -41,7 +41,6 @@ public class SessionActivity extends ListActivity
         setListAdapter(sessionListAdapter);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

@@ -13,14 +13,6 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".presentation.activity.BaseTabbedActivity" >
-        </activity>
-
-        <activity
-            android:name=".presentation.activity.HomeTabbedActivity"
-            android:label="@string/title_activity_tabbed" >
-        </activity>
-
         <activity
             android:name="com.tedx.capetown.app.presentation.activity.SplashActivity"
             android:label="@string/title_activity_splash" >
@@ -29,22 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="com.tedx.capetown.app.presentation.activity.HomeActivity"
-            android:label="@string/title_activity_home" >
+        <activity android:name="com.tedx.capetown.app.presentation.activity.BaseTabbedActivity" >
         </activity>
         <activity
-            android:name="com.tedx.capetown.app.presentation.activity.AgendaActivity"
-            android:label="@string/title_activity_agenda" >
+            android:name="com.tedx.capetown.app.presentation.activity.HomeTabbedActivity"
+            android:label="@string/title_activity_tabbed" >
         </activity>
         <activity
             android:name="com.tedx.capetown.app.presentation.activity.EventActivity"
             android:label="@string/title_activity_event" >
-        </activity>
-        <activity
-            android:name=".presentation.activity.AboutActivity"
-            android:label="@string/title_activity_more_info" >
         </activity>
         <activity
             android:name="com.tedx.capetown.app.presentation.activity.SpeakerProfileActivity"
@@ -53,10 +38,6 @@
         <activity
             android:name="com.tedx.capetown.app.presentation.activity.SpeakerListActivity"
             android:label="@string/title_activity_speaker_list" >
-        </activity>
-        <activity
-            android:name="com.tedx.capetown.app.presentation.activity.SponsorsActivity"
-            android:label="@string/title_activity_sponsors" >
         </activity>
         <activity
             android:name="com.tedx.capetown.app.presentation.activity.TalkActivity"
@@ -81,7 +62,6 @@
                 <action android:name="com.tedx.capetown.app.core.service.request.EventModelServiceRequest" />
             </intent-filter>
         </service>
-
         <service
             android:name="com.tedx.capetown.app.core.service.impl.SponsorService"
             android:enabled="true"
@@ -91,11 +71,6 @@
                 <action android:name="com.tedx.capetown.app.core.service.request.SponsorModelServiceRequest" />
             </intent-filter>
         </service>
-
-        <activity
-            android:name="com.tedx.capetown.app.presentation.activity.SessionActivity"
-            android:label="@string/title_activity_session" >
-        </activity>
 
     </application>
 

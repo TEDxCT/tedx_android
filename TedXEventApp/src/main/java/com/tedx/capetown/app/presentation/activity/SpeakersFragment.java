@@ -21,8 +21,7 @@ public class SpeakersFragment extends ListFragment
 
     public static SpeakersFragment newInstance()
     {
-        SpeakersFragment fragment = new SpeakersFragment();
-        return fragment;
+        return new SpeakersFragment();
     }
 
     public SpeakersFragment()

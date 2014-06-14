@@ -35,8 +35,7 @@ public class AgendaFragment extends ListFragment implements LoaderManager.Loader
 
     public static AgendaFragment newInstance()
     {
-        AgendaFragment fragment = new AgendaFragment();
-        return fragment;
+        return new AgendaFragment();
     }
 
     public AgendaFragment()

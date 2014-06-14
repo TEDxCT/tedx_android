@@ -16,8 +16,7 @@ public class AboutFragment extends Fragment
 
     public static AboutFragment newInstance()
     {
-        AboutFragment fragment = new AboutFragment();
-        return fragment;
+        return new AboutFragment();
     }
 
     public AboutFragment()
