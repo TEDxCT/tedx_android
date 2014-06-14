@@ -1,5 +1,6 @@
 package com.tedx.capetown.app.presentation.activity;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,11 @@ public class SpeakerListActivity extends ListActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_list);
         _context = this;
+
+        final ActionBar actionBar = getActionBar();
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+
         SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
         if (speakerCollectionModel != null)
         {
@@ -44,15 +50,15 @@ public class SpeakerListActivity extends ListActivity
         EventBus.getDefault().unregister(this);
     }
 
-    public void onResume(){
+    public void onResume()
+    {
         super.onResume();
         EventBus.getDefault().register(this);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        getMenuInflater().inflate(R.menu.speaker_list, menu);
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         return true;
     }
 
@@ -60,9 +66,8 @@ public class SpeakerListActivity extends ListActivity
     public boolean onOptionsItemSelected(MenuItem item)
     {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
             return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

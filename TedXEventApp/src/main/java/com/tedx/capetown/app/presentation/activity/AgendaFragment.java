@@ -1,88 +1,65 @@
 package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
-import android.net.Uri;
-import android.os.Bundle;
-import android.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tedx.capetown.app.R;
-import android.app.Activity;
-import android.app.ListActivity;
+import android.app.ListFragment;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.app.Fragment;
 import android.provider.ContactsContract;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
-import android.view.ViewGroup.LayoutParams;
+
 import com.tedx.capetown.app.R;
-import static android.view.ViewGroup.LayoutParams.*;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 
-public class AgendaFragment extends Fragment
+import de.greenrobot.event.EventBus;
+
+public class AgendaFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor>
 {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    SimpleCursorAdapter _listAdapter;
+    private OnFragmentInteractionListener _listener;
 
-    SimpleCursorAdapter mAdapter;
+    static final String[] PROJECTION = new String[] {ContactsContract.Data._ID,  ContactsContract.Data.DISPLAY_NAME}; // These are the Contacts rows that we will retrieve
+    static final String SELECTION = "((" +  ContactsContract.Data.DISPLAY_NAME + " NOTNULL) AND (" +  ContactsContract.Data.DISPLAY_NAME + " != '' ))";
 
-    private OnFragmentInteractionListener mListener;
 
-    public static AgendaFragment newInstance()//String param1, String param2)
+    public static AgendaFragment newInstance()
     {
         AgendaFragment fragment = new AgendaFragment();
-        Bundle args = new Bundle();
-    //   args.putString(ARG_PARAM1, param1);
-    //    args.putString(ARG_PARAM2, param2);
-       // fragment.setArguments(args);
         return fragment;
     }
 
     public AgendaFragment()
     {
-        // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
-        {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_agenda, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_agenda, container, false);
+        return fragmentView;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri)
     {
-        if (mListener != null)
-        {
-            mListener.onFragmentInteraction(uri);
-        }
+        if (_listener != null)
+            _listener.onFragmentInteraction(uri);
     }
 
     @Override
@@ -91,7 +68,7 @@ public class AgendaFragment extends Fragment
         super.onAttach(activity);
         try
         {
-            mListener = (OnFragmentInteractionListener) activity;
+            _listener = (OnFragmentInteractionListener) activity;
         }
         catch (ClassCastException e)
         {
@@ -100,26 +77,60 @@ public class AgendaFragment extends Fragment
     }
 
     @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        // Must add the progress bar to the root of the layout
+        ViewGroup root = (ViewGroup) getView().findViewById(android.R.id.content);
+
+        // For the cursor adapter, specify which columns go into which views
+        String[] fromColumns = {ContactsContract.Data.DISPLAY_NAME};
+        int[] toViews = {android.R.id.text1}; // The TextView in simple_list_item_1
+
+        // Create an empty adapter we will use to display the loaded data. We pass null for the cursor, then update it in onLoadFinished()
+        _listAdapter = new SimpleCursorAdapter(getActivity(), android.R.layout.simple_list_item_1, null, fromColumns, toViews, 0);
+        setListAdapter(_listAdapter);
+
+        // Prepare the loader.  Either re-connect with an existing one, or start a new one.
+        getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
     public void onDetach()
     {
         super.onDetach();
-        mListener = null;
+        _listener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener
     {
-        // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public Loader<Cursor> onCreateLoader(int id, Bundle args)
+    {
+        // Now create and return a CursorLoader that will take care of creating a Cursor for the data being displayed.
+        return new CursorLoader(getActivity(), ContactsContract.Data.CONTENT_URI, PROJECTION, SELECTION, null, null);
+    }
+
+    // Called when a previously created loader has finished loading
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data)
+    {
+        // Swap the new cursor in.  (The framework will take care of closing the old cursor once we return.)
+        _listAdapter.swapCursor(data);
+    }
+
+    // Called when a previously created loader is reset, making the data unavailable
+    public void onLoaderReset(Loader<Cursor> loader)
+    {
+        // This is called when the last Cursor provided to onLoadFinished() above is about to be closed.  We need to make sure we are no longer using it.
+        _listAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id)
+    {
     }
 
 }

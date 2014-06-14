@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.tedx.capetown.app.presentation.activity.BaseActivity$PlaceholderFragment">
+    tools:context="com.tedx.capetown.app.presentation.activity.BaseTabbedActivity$PlaceholderFragment">
 
     <TextView
         android:id="@+id/section_label"

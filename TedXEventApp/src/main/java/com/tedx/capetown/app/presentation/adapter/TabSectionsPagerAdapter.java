@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.presentation.activity.AboutFragment;
 import com.tedx.capetown.app.presentation.activity.AgendaFragment;
 import com.tedx.capetown.app.presentation.activity.SpeakersFragment;
 
@@ -28,14 +29,12 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     @Override
     public Fragment getItem(int position)
     {
-//        if (position == 0)
-//           return AgendaFragment.newInstance();
+        if (position == 0)
+            return new AgendaFragment().newInstance();
         if (position == 1)
-        {
-            SpeakersFragment fragment = new SpeakersFragment().newInstance();
-            fragment.setContext(_context);
-            return fragment;
-        }
+            return new SpeakersFragment().newInstance();
+        if (position == 3)
+            return new AboutFragment().newInstance();
         return PlaceholderFragment.newInstance(position + 1);
     }
 
@@ -49,7 +48,8 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     public CharSequence getPageTitle(int position)
     {
         Locale l = Locale.getDefault();
-        switch (position) {
+        switch (position)
+        {
             case 0:
                 return _context.getString(R.string.title_section1);
             case 1:
@@ -59,10 +59,6 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
         }
         return null;
     }
-
-
-
-
 
     public static class PlaceholderFragment extends Fragment
     {
@@ -88,6 +84,5 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
             return rootView;
         }
     }
-
 
 }

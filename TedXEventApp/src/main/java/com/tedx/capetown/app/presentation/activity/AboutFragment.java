@@ -1,31 +1,26 @@
 package com.tedx.capetown.app.presentation.activity;
 
 import android.app.Activity;
-import android.app.ListFragment;
-import android.content.Context;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
-import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
-import de.greenrobot.event.EventBus;
 
-public class SpeakersFragment extends ListFragment
+public class AboutFragment extends Fragment
 {
 
-    SpeakerListAdapter _listAdapter = null;
     private OnFragmentInteractionListener _listener;
 
-    public static SpeakersFragment newInstance()
+    public static AboutFragment newInstance()
     {
-        SpeakersFragment fragment = new SpeakersFragment();
+        AboutFragment fragment = new AboutFragment();
         return fragment;
     }
 
-    public SpeakersFragment()
+    public AboutFragment()
     {
     }
 
@@ -38,7 +33,7 @@ public class SpeakersFragment extends ListFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View fragmentView = inflater.inflate(R.layout.activity_speaker_list, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_about, container, false);
         return fragmentView;
     }
 
@@ -66,9 +61,6 @@ public class SpeakersFragment extends ListFragment
     public void onResume()
     {
         super.onResume();
-        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
-        _listAdapter = new SpeakerListAdapter(speakerCollectionModel.speakers, getActivity());
-        this.getListView().setAdapter(_listAdapter);
     }
 
     @Override

@@ -1,15 +1,13 @@
 package com.tedx.capetown.app.presentation.activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
@@ -17,21 +15,26 @@ import com.tedx.capetown.app.core.models.EventModel;
 import com.tedx.capetown.app.core.models.SessionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.TalkModel;
-
 import de.greenrobot.event.EventBus;
 
-public class TalkActivity extends Activity {
+public class TalkActivity extends Activity
+{
 
     private TextView txtTalkName;
     private TextView txtGenre;
     private TextView txtSpeakerName ;
     private TextView txtDescription;
     private ImageView imgTalk;
-    String TAG = "Act:TalkActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+
+        final ActionBar actionBar = getActionBar();
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+
         setContentView(R.layout.activity_talk);
 
         txtTalkName = (TextView) findViewById(R.id.txtTalkName);
@@ -46,22 +49,23 @@ public class TalkActivity extends Activity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.talk, menu);
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
             return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
 
-    public void loadTalk(int talkId) {
+    public void loadTalk(int talkId)
+    {
         TalkModel talkModel = getTalk(talkId);
         SpeakerModel speaker = getSpeaker(talkModel);
 
@@ -81,6 +85,7 @@ public class TalkActivity extends Activity {
     public SpeakerModel getSpeaker(TalkModel talkModel) {
         return talkModel.speaker;
     }
+
     public TalkModel findTalkById(int talkId)
     {
         EventCollectionModel eventCollectionModel = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
@@ -91,9 +96,7 @@ public class TalkActivity extends Activity {
                 for(TalkModel talkModel : sessionModel.talks.talks)
                 {
                     if(talkModel.id == talkId)
-                    {
                         return talkModel;
-                    }
                 }
             }
         }

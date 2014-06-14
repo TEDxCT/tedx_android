@@ -1,12 +1,10 @@
 package com.tedx.capetown.app.presentation.activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -14,16 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.Speaker;
-import com.tedx.capetown.app.core.models.EventCollectionModel;
-import com.tedx.capetown.app.core.models.EventModel;
-import com.tedx.capetown.app.core.models.SessionModel;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
-import com.tedx.capetown.app.core.models.TalkModel;
 
 import java.util.List;
 
@@ -40,48 +32,56 @@ public class SpeakerProfileActivity extends Activity {
     private ImageView ivImage;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_profile);
-
 
         Bundle state = this.getIntent().getExtras();
         if (state != null)
             if (state.containsKey("speakerId"))
                 loadSpeaker(state.getInt("speakerId"));
 
-        tvEmailAddress.setOnClickListener(new View.OnClickListener() {
+        final ActionBar actionBar = getActionBar();
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        tvEmailAddress.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 emailIntent(tvEmailAddress.getText().toString());
             }
         });
 
-        tvTwitterHandle.setOnClickListener(new View.OnClickListener() {
+        tvTwitterHandle.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 twitterIntent(tvTwitterHandle.getText().toString());
             }
         });
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.speaker_profile, menu);
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
             return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
-    public void loadSpeaker(int speakerId) {
-
+    public void loadSpeaker(int speakerId)
+    {
         tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
         tvGenre = (TextView) findViewById(R.id.txt_genre);
         tvDescription = (TextView) findViewById(R.id.txt_description);
@@ -100,7 +100,6 @@ public class SpeakerProfileActivity extends Activity {
         else
             tvTwitterHandle.setVisibility(View.GONE);
 
-
         if(false) //ToDO: get email address
             tvEmailAddress.setText("TODO");
         else
@@ -111,7 +110,8 @@ public class SpeakerProfileActivity extends Activity {
             ImageLoader.getInstance().displayImage(speaker.imageURL, ivImage);
     }
 
-    public void emailIntent(String address) {
+    public void emailIntent(String address)
+    {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_EMAIL, address);
@@ -120,7 +120,8 @@ public class SpeakerProfileActivity extends Activity {
         startActivity(Intent.createChooser(intent, "Send Email"));
     }
 
-    public void twitterIntent(String address) {
+    public void twitterIntent(String address)
+    {
         Intent tweetIntent = new Intent(Intent.ACTION_SEND);
         tweetIntent.putExtra(Intent.EXTRA_TEXT, address);
         tweetIntent.setType("application/twitter");
@@ -130,17 +131,17 @@ public class SpeakerProfileActivity extends Activity {
         boolean resolved = false;
         for(ResolveInfo ri: lract)
         {
-            if(ri.activityInfo.name.endsWith(".SendTweet"))
-            {
-                tweetIntent.setClassName(ri.activityInfo.packageName,ri.activityInfo.name);
-                resolved = true;
-                break;
-            }
+            if (!ri.activityInfo.name.endsWith(".SendTweet"))
+                continue;
+            tweetIntent.setClassName(ri.activityInfo.packageName,ri.activityInfo.name);
+            resolved = true;
+            break;
         }
         startActivity(resolved ? tweetIntent : Intent.createChooser(tweetIntent, "Choose one"));
     }
 
-    public SpeakerModel getSpeaker(int speakerId) {
+    public SpeakerModel getSpeaker(int speakerId)
+    {
         return findSpeakerById(speakerId);
     }
 
@@ -150,12 +151,9 @@ public class SpeakerProfileActivity extends Activity {
         for(SpeakerModel speakerModel : speakerCollectionModel.speakers)
         {
             if(speakerModel.id == speakerId)
-            {
                 return speakerModel;
-            }
         }
         return null;
     }
-
 
 }
