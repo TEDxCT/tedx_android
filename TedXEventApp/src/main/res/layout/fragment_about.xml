@@ -52,14 +52,12 @@
         <!--android:background="@android:color/transparent"-->
         <!--android:textColor="@android:color/holo_blue_dark" />-->
 
-    <fragment
-        android:id="@+id/sponsor_fragment_placeholder"
-        android:name="com.tedx.capetown.app.presentation.activity.SponsorsFragment"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_below="@+id/btnAboutLink" />
+        android:id="@+id/sponsors_frame_layout"
+        android:layout_below="@+id/btnAboutLink">
+
+        </FrameLayout>
 
 </RelativeLayout>

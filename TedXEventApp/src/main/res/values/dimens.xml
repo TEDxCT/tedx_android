@@ -16,5 +16,6 @@
     <dimen name="activity_speaker_profile_text_margin_top">15dp</dimen>
     <dimen name="image_talk_width">80dp</dimen>
     <dimen name="image_talk_height">80dp</dimen>
-
+    <!-- Event Fragment -->
+    <dimen name="fragment_event_margin_text_view">4dp</dimen>
 </resources>

@@ -6,18 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.SponsorCollectionModel;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
+
 import de.greenrobot.event.EventBus;
 
-public class SplashActivity extends Activity
-{
+public class SplashActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         final ActionBar actionBar = getActionBar();
@@ -28,19 +28,16 @@ public class SplashActivity extends Activity
         EventBus.getDefault().register(this);
         FacadeFactoryImpl.createSponsorFacade(this).fetchSponsorList();
         FacadeFactoryImpl.createEventFacade(this).fetchEventList();
-        SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
         FacadeFactoryImpl.createSpeakerFacade(this).fetchSpeakerList();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings)
             return true;
@@ -48,24 +45,20 @@ public class SplashActivity extends Activity
     }
 
     @Override
-    public void onSaveInstanceState(Bundle state)
-    {
+    public void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
     }
 
     @Override
-    public void onRestoreInstanceState(Bundle state)
-    {
+    public void onRestoreInstanceState(Bundle state) {
         super.onRestoreInstanceState(state);
     }
 
-    public void onActivityResult( int requestCode, int resultCode,Intent intent)
-    {
-        super.onActivityResult(requestCode,resultCode,intent);
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
     }
 
-    public void onEventMainThread(SponsorCollectionModel eventCollectionModel)
-    {
+    public void onEventMainThread(SponsorCollectionModel eventCollectionModel) {
         Intent intent = new Intent();
         intent.setClass(this.getApplicationContext(), HomeTabbedActivity.class);
         this.startActivity(intent);

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.presentation.activity.AboutFragment;
 import com.tedx.capetown.app.presentation.activity.AgendaFragment;
+import com.tedx.capetown.app.presentation.activity.EventFragment;
 import com.tedx.capetown.app.presentation.activity.SpeakersFragment;
 
 import java.util.Locale;
@@ -30,8 +31,10 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     public Fragment getItem(int position)
     {
         if (position == 0)
-            return new AgendaFragment().newInstance();
+            return new EventFragment().newInstance();
         if (position == 1)
+            return new AgendaFragment().newInstance();
+        if (position == 2)
             return new SpeakersFragment().newInstance();
         if (position == 3)
             return new AboutFragment().newInstance();
@@ -41,7 +44,7 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     @Override
     public int getCount()
     {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -51,10 +54,12 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
         switch (position)
         {
             case 0:
-                return _context.getString(R.string.title_section1);
+                return "Event";
             case 1:
-                return _context.getString(R.string.title_section2);
+                return _context.getString(R.string.title_section1);
             case 2:
+                return _context.getString(R.string.title_section2);
+            case 3:
                 return _context.getString(R.string.title_section3);
         }
         return null;

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
@@ -15,20 +16,19 @@ import com.tedx.capetown.app.core.models.EventModel;
 import com.tedx.capetown.app.core.models.SessionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.core.models.TalkModel;
+
 import de.greenrobot.event.EventBus;
 
-public class TalkActivity extends Activity
-{
+public class TalkActivity extends Activity {
 
     private TextView txtTalkName;
     private TextView txtGenre;
-    private TextView txtSpeakerName ;
+    private TextView txtSpeakerName;
     private TextView txtDescription;
     private ImageView imgTalk;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         final ActionBar actionBar = getActionBar();
@@ -49,14 +49,12 @@ public class TalkActivity extends Activity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings)
             return true;
@@ -64,8 +62,7 @@ public class TalkActivity extends Activity
     }
 
 
-    public void loadTalk(int talkId)
-    {
+    public void loadTalk(int talkId) {
         TalkModel talkModel = getTalk(talkId);
         SpeakerModel speaker = getSpeaker(talkModel);
 
@@ -74,7 +71,7 @@ public class TalkActivity extends Activity
         txtSpeakerName.setText(speaker.fullName);
         txtDescription.setText(Html.fromHtml(talkModel.descriptionHTML));
 
-        if(speaker.imageURL != null && !speaker.imageURL.isEmpty())
+        if (speaker.imageURL != null && !speaker.imageURL.isEmpty())
             ImageLoader.getInstance().displayImage(speaker.imageURL, imgTalk);
     }
 
@@ -86,16 +83,12 @@ public class TalkActivity extends Activity
         return talkModel.speaker;
     }
 
-    public TalkModel findTalkById(int talkId)
-    {
+    public TalkModel findTalkById(int talkId) {
         EventCollectionModel eventCollectionModel = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
-        for(EventModel eventModel : eventCollectionModel.events)
-        {
-            for(SessionModel sessionModel : eventModel.sessions.sessions)
-            {
-                for(TalkModel talkModel : sessionModel.talks.talks)
-                {
-                    if(talkModel.id == talkId)
+        for (EventModel eventModel : eventCollectionModel.events) {
+            for (SessionModel sessionModel : eventModel.sessions.sessions) {
+                for (TalkModel talkModel : sessionModel.talks.talks) {
+                    if (talkModel.id == talkId)
                         return talkModel;
                 }
             }

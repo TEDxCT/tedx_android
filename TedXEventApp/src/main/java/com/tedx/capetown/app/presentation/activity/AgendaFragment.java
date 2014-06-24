@@ -18,66 +18,63 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.SessionModel;
+import com.tedx.capetown.app.core.models.SessionsListModel;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.core.models.TalkModel;
+import com.tedx.capetown.app.presentation.adapter.SessionListAdapter;
 import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
-public class AgendaFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor>
-{
+public class AgendaFragment extends ListFragment {
 
-    SimpleCursorAdapter _listAdapter;
+    SessionListAdapter _listAdapter;
     private OnFragmentInteractionListener _listener;
 
-    static final String[] PROJECTION = new String[] {ContactsContract.Data._ID,  ContactsContract.Data.DISPLAY_NAME}; // These are the Contacts rows that we will retrieve
-    static final String SELECTION = "((" +  ContactsContract.Data.DISPLAY_NAME + " NOTNULL) AND (" +  ContactsContract.Data.DISPLAY_NAME + " != '' ))";
+    static final String[] PROJECTION = new String[]{ContactsContract.Data._ID, ContactsContract.Data.DISPLAY_NAME}; // These are the Contacts rows that we will retrieve
+    static final String SELECTION = "((" + ContactsContract.Data.DISPLAY_NAME + " NOTNULL) AND (" + ContactsContract.Data.DISPLAY_NAME + " != '' ))";
 
 
-    public static AgendaFragment newInstance()
-    {
+    public static AgendaFragment newInstance() {
         return new AgendaFragment();
     }
 
-    public AgendaFragment()
-    {
+    public AgendaFragment() {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_agenda, container, false);
         return fragmentView;
     }
 
-    public void onButtonPressed(Uri uri)
-    {
+    public void onButtonPressed(Uri uri) {
         if (_listener != null)
             _listener.onFragmentInteraction(uri);
     }
 
     @Override
-    public void onAttach(Activity activity)
-    {
+    public void onAttach(Activity activity) {
         super.onAttach(activity);
-        try
-        {
+        try {
             _listener = (OnFragmentInteractionListener) activity;
-        }
-        catch (ClassCastException e)
-        {
+        } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
 
         // Must add the progress bar to the root of the layout
@@ -88,48 +85,43 @@ public class AgendaFragment extends ListFragment implements LoaderManager.Loader
         int[] toViews = {android.R.id.text1}; // The TextView in simple_list_item_1
 
         // Create an empty adapter we will use to display the loaded data. We pass null for the cursor, then update it in onLoadFinished()
-        _listAdapter = new SimpleCursorAdapter(getActivity(), android.R.layout.simple_list_item_1, null, fromColumns, toViews, 0);
-        setListAdapter(_listAdapter);
+        SessionListAdapter sessionListAdapter = new SessionListAdapter(getModel(), getActivity());
+        setListAdapter(sessionListAdapter);
 
         // Prepare the loader.  Either re-connect with an existing one, or start a new one.
-        getLoaderManager().initLoader(0, null, this);
+//        getLoaderManager().initLoader(0, null, this);
+    }
+
+    public List<SessionsListModel> getModel() {
+        EventCollectionModel eventCollectionModel = (EventCollectionModel) EventBus.getDefault().getStickyEvent(EventCollectionModel.class);
+        List<SessionModel> sessions = (List<SessionModel>) eventCollectionModel.events.get(0).sessions.sessions;
+        List<SessionsListModel> sessionsList = new ArrayList<SessionsListModel>();
+        for (SessionModel session : sessions) {
+            SessionsListModel tempSession = new SessionsListModel();
+            tempSession.sessionModel = session;
+            sessionsList.add(tempSession);
+            for (TalkModel talk : session.talks.talks) {
+                SessionsListModel tempTalk = new SessionsListModel();
+                tempTalk.talkModel = talk;
+                tempTalk.child = true;
+                sessionsList.add(tempTalk);
+            }
+        }
+        // apply logic to get a model
+        return sessionsList;
     }
 
     @Override
-    public void onDetach()
-    {
+    public void onDetach() {
         super.onDetach();
-        _listener = null;
     }
 
-    public interface OnFragmentInteractionListener
-    {
+    public interface OnFragmentInteractionListener {
         public void onFragmentInteraction(Uri uri);
     }
 
-    public Loader<Cursor> onCreateLoader(int id, Bundle args)
-    {
-        // Now create and return a CursorLoader that will take care of creating a Cursor for the data being displayed.
-        return new CursorLoader(getActivity(), ContactsContract.Data.CONTENT_URI, PROJECTION, SELECTION, null, null);
-    }
-
-    // Called when a previously created loader has finished loading
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data)
-    {
-        // Swap the new cursor in.  (The framework will take care of closing the old cursor once we return.)
-        _listAdapter.swapCursor(data);
-    }
-
-    // Called when a previously created loader is reset, making the data unavailable
-    public void onLoaderReset(Loader<Cursor> loader)
-    {
-        // This is called when the last Cursor provided to onLoadFinished() above is about to be closed.  We need to make sure we are no longer using it.
-        _listAdapter.swapCursor(null);
-    }
-
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id)
-    {
+    public void onListItemClick(ListView l, View v, int position, long id) {
     }
 
 }
