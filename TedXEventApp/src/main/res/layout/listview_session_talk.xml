@@ -13,12 +13,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="@style/TextAppearance.TitleLarge"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:text="@string/listview_session_speaker_talk_title_generic"
         android:id="@+id/text_name"
@@ -29,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_textview"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="@style/TextAppearance.TitleMedium"
         android:text="@string/listview_session_speaker_speaker_generic"
         android:id="@+id/txtSpeaker"
         android:layout_below="@+id/text_name"
@@ -45,7 +46,9 @@
         android:id="@+id/txtGenre"
         android:layout_below="@+id/txtSpeaker"
         android:layout_alignLeft="@+id/txtSpeaker"
-        android:layout_alignStart="@+id/txtSpeaker" />
+        android:layout_alignStart="@+id/txtSpeaker"
+        android:visibility="gone"
+        />
 
     <TextView
         android:layout_width="wrap_content"
