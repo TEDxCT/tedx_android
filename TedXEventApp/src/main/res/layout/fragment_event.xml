@@ -163,7 +163,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/description_linear_layout"
-        android:text="General event information"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 </RelativeLayout>
 

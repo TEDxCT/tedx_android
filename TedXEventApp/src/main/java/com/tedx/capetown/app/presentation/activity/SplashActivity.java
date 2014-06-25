@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.SponsorCollectionModel;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
@@ -58,7 +59,21 @@ public class SplashActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, intent);
     }
 
-    public void onEventMainThread(SponsorCollectionModel eventCollectionModel) {
+    public void onEventMainThread(EventCollectionModel eventCollectionModel) {
+        if(EventBus.getDefault().getStickyEvent(SponsorCollectionModel.class)!=null)
+        {
+            initiateHomeActivity();
+        }
+    }
+
+    public void onEventMainThread(SponsorCollectionModel sponsorCollectionModel) {
+        if(EventBus.getDefault().getStickyEvent(EventCollectionModel.class)!=null)
+        {
+            initiateHomeActivity();
+        }
+    }
+    public void initiateHomeActivity()
+    {
         Intent intent = new Intent();
         intent.setClass(this.getApplicationContext(), HomeTabbedActivity.class);
         this.startActivity(intent);
