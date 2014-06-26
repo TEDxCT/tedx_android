@@ -3,18 +3,20 @@
  */
 package com.tedx.capetown.app.core.service.storage;
 
+import com.tedx.capetown.app.core.models.EventCollectionModel;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
+import com.tedx.capetown.app.core.models.SponsorCollectionModel;
 import com.tedx.capetown.lib.sdk.dto.DTO;
 
 /**
  * @author andrewpettey
  * 
  */
-/*
- * public enum StorageKey { Session, Onboarding, Connect, Cart, RootCategories; }
- */
 
 public enum StorageKey {
-	Session("DTO", DTO.class);
+    EventModel("EventModel", EventCollectionModel.class),
+    SpeakersModel ("SpeakerModel", SpeakerCollectionModel.class),
+    SponsorsModel ("SponsorsModel", SponsorCollectionModel.class);
 
 	private final String storageKey;
 	private final Class storageClass;

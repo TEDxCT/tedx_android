@@ -25,9 +25,9 @@ public class StorageService {
 	private static final String TAG = StorageService.class.getName();
 	private Storage defaultStorageStrategy;
 
-	public StorageService(Context context) {
+	public StorageService() {
 
-		defaultStorageStrategy = new StorageFactoryImpl(context).createSharedPrefStorage();
+		defaultStorageStrategy = new StorageFactoryImpl().createSharedPrefStorage();
 	}
 	private <T extends DTO> void cacheDTO(String key, T dto) throws JsonProcessingException {
 

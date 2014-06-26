@@ -36,10 +36,6 @@
             android:label="@string/title_activity_speaker_profile" >
         </activity>
         <activity
-            android:name="com.tedx.capetown.app.presentation.activity.SpeakerListActivity"
-            android:label="@string/title_activity_speaker_list" >
-        </activity>
-        <activity
             android:name="com.tedx.capetown.app.presentation.activity.TalkActivity"
             android:label="@string/title_activity_talk" >
         </activity>

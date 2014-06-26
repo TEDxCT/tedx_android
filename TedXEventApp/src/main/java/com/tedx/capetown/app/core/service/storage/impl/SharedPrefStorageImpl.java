@@ -11,7 +11,7 @@ import com.tedx.capetown.app.core.service.storage.SharedPrefStorage;
 
 
 /**
- * @author Johan
+ * @author Andrew pettey
  * 
  */
 public class SharedPrefStorageImpl implements SharedPrefStorage {

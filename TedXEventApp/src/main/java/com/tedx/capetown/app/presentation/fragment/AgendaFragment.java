@@ -1,30 +1,21 @@
-package com.tedx.capetown.app.presentation.activity;
+package com.tedx.capetown.app.presentation.fragment;
 
 import android.app.Activity;
 import android.app.ListFragment;
-import android.app.LoaderManager;
-import android.content.Context;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.SessionModel;
 import com.tedx.capetown.app.core.models.SessionsListModel;
-import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.TalkModel;
 import com.tedx.capetown.app.presentation.adapter.SessionListAdapter;
-import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

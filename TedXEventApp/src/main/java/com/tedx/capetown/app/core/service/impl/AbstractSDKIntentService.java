@@ -70,7 +70,7 @@ public abstract class AbstractSDKIntentService extends IntentService {
             sdkClient = SDKClientFactoryImpl.createSDKClient(ctx);
         }
         if (storage == null) {
-            storage = new StorageService(ctx);
+            storage = new StorageService();
         }
     }
 

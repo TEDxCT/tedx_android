@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_for_headers"
-    tools:context="com.tedx.capetown.app.presentation.activity.AgendaFragment"
+    tools:context="com.tedx.capetown.app.presentation.fragment.AgendaFragment"
     android:background="#CCCCCC"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"

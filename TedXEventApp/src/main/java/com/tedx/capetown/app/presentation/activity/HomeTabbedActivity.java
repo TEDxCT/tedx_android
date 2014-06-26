@@ -11,11 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
-import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 import com.tedx.capetown.app.presentation.adapter.TabSectionsPagerAdapter;
-
-import de.greenrobot.event.EventBus;
+import com.tedx.capetown.app.presentation.fragment.AgendaFragment;
+import com.tedx.capetown.app.presentation.fragment.SpeakersFragment;
 
 public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener, AgendaFragment.OnFragmentInteractionListener, SpeakersFragment.OnFragmentInteractionListener {
 

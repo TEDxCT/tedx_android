@@ -1,4 +1,4 @@
-package com.tedx.capetown.app.presentation.activity;
+package com.tedx.capetown.app.presentation.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;

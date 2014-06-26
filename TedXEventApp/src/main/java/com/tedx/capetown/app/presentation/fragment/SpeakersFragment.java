@@ -1,8 +1,7 @@
-package com.tedx.capetown.app.presentation.activity;
+package com.tedx.capetown.app.presentation.fragment;
 
 import android.app.Activity;
 import android.app.ListFragment;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,7 +33,7 @@ public class SpeakersFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.activity_speaker_list, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_speakers, container, false);
         return fragmentView;
     }
 

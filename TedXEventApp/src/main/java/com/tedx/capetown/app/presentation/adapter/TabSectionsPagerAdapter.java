@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.presentation.activity.AboutFragment;
-import com.tedx.capetown.app.presentation.activity.AgendaFragment;
-import com.tedx.capetown.app.presentation.activity.EventFragment;
-import com.tedx.capetown.app.presentation.activity.SpeakersFragment;
+import com.tedx.capetown.app.presentation.fragment.AboutFragment;
+import com.tedx.capetown.app.presentation.fragment.AgendaFragment;
+import com.tedx.capetown.app.presentation.fragment.EventFragment;
+import com.tedx.capetown.app.presentation.fragment.SpeakersFragment;
 
 import java.util.Locale;
 
