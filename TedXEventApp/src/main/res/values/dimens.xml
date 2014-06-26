@@ -10,6 +10,9 @@
 
     <dimen name="home_activity_base_btn_width">240dp</dimen>
 
+    <dimen name="activity_talk_image_width">120dp</dimen>
+    <dimen name="activity_talk_image_height">120dp</dimen>
+
     <dimen name="activity_speaker_profile_image_width">120dp</dimen>
     <dimen name="activity_speaker_profile_image_height">120dp</dimen>
     <dimen name="activity_speaker_profile_speaker_name_margin_left">10dp</dimen>

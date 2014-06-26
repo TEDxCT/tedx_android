@@ -1,3 +1,7 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,22 +16,31 @@
         android:id="@+id/txtTalkName"
         android:textAppearance="@style/TextAppearance.TitleLarge"
         android:text="@string/talk_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerInParent="true"
+        />
 
     <ImageView
         android:id="@+id/imgTalk"
+        android:layout_width="@dimen/activity_talk_image_width"
+        android:layout_height="@dimen/activity_talk_image_height"
+        android:src="@drawable/ic_launcher"
+        android:layout_below="@+id/txtTalkName"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/txtSpeakerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher"
-        android:scaleType="fitStart"
-        android:layout_below="@+id/txtTalkName"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/speaker_name"
+        android:layout_below="@+id/imgTalk"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin" />
+        android:layout_marginTop="@dimen/activity_speaker_profile_text_margin_top"
+        />
 
     <TextView
         android:id="@+id/txtGenre"
@@ -35,10 +48,10 @@
         android:textAppearance="@style/TextAppearance.TitleMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imgTalk"
-        android:layout_below="@id/txtTalkName"
-        android:visibility="gone"
-    />
+        android:layout_below="@id/txtSpeakerName"
+        android:layout_alignParentRight="true"
+        />
+        <!--android:visibility="gone"-->
 
     <TextView
         android:id="@+id/txtDescription"
@@ -48,19 +61,10 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/imgTalk"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@id/txtGenre"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-    <TextView
-        android:id="@+id/txtSpeakerName"
-        android:textAppearance="@style/TextAppearance.TitleSmall"
-        android:text="@string/speaker_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtDescription"
-        android:layout_alignParentRight="true" />
-
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        />
 
 </RelativeLayout>
+</ScrollView>
