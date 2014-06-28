@@ -13,6 +13,7 @@ import com.tedx.capetown.app.presentation.activity.AboutFragment;
 import com.tedx.capetown.app.presentation.activity.AgendaFragment;
 import com.tedx.capetown.app.presentation.activity.EventFragment;
 import com.tedx.capetown.app.presentation.activity.SpeakersFragment;
+import com.tedx.capetown.app.presentation.activity.SponsorsFragment;
 
 import java.util.Locale;
 
@@ -37,7 +38,7 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
         if (position == 2)
             return new SpeakersFragment().newInstance();
         if (position == 3)
-            return new AboutFragment().newInstance();
+            return new SponsorsFragment().newInstance();
         return PlaceholderFragment.newInstance(position + 1);
     }
 

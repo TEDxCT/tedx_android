@@ -36,7 +36,8 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
         _ViewPager = (ViewPager) findViewById(R.id.pager);
         _ViewPager.setAdapter(_SectionsPagerAdapter);
 
-        _ViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        _ViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener()
+        {
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);

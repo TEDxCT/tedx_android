@@ -37,7 +37,6 @@ public class AboutFragment extends Fragment {
         FragmentTransaction fragTransaction = fragMan.beginTransaction();
         SponsorsFragment sponsorsFragment = new SponsorsFragment();
 
-
         fragTransaction.add(frameLayout.getId(), sponsorsFragment, "fragment added");
         fragTransaction.commit();
         return fragmentView;
