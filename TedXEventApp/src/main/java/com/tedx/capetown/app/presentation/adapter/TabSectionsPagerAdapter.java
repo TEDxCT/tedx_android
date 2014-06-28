@@ -39,13 +39,15 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
             return new SpeakersFragment().newInstance();
         if (position == 3)
             return new SponsorsFragment().newInstance();
+        if (position == 4)
+            return new AboutFragment().newInstance();
         return PlaceholderFragment.newInstance(position + 1);
     }
 
     @Override
     public int getCount()
     {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -61,7 +63,9 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
             case 2:
                 return _context.getString(R.string.title_section2);
             case 3:
-                return _context.getString(R.string.title_section3);
+                return _context.getString(R.string.title_sponsors);
+            case 4:
+                return _context.getString(R.string.title_about);
         }
         return null;
     }

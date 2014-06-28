@@ -11,11 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
-import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 import com.tedx.capetown.app.presentation.adapter.TabSectionsPagerAdapter;
-
-import de.greenrobot.event.EventBus;
 
 public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener, AgendaFragment.OnFragmentInteractionListener, SpeakersFragment.OnFragmentInteractionListener {
 
@@ -51,7 +47,7 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.tabbed, menu);
+      //  getMenuInflater().inflate(R.menu.global, menu);
         return true;
     }
 

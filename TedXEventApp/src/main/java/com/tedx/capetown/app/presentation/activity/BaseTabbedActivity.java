@@ -54,7 +54,7 @@ public class BaseTabbedActivity extends Activity implements NavigationDrawerFrag
                 _title = getString(R.string.title_section2);
                 break;
             case 3:
-                _title = getString(R.string.title_section3);
+                _title = getString(R.string.title_about);
                 break;
         }
     }
@@ -73,7 +73,6 @@ public class BaseTabbedActivity extends Activity implements NavigationDrawerFrag
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.base, menu);
             restoreActionBar();
             return true;
         }
