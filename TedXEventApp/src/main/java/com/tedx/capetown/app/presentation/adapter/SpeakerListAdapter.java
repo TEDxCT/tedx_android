@@ -9,13 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.app.presentation.activity.SpeakerProfileActivity;
-import com.tedx.capetown.app.presentation.activity.TalkActivity;
 
 import java.util.List;
 
@@ -74,7 +72,7 @@ public class SpeakerListAdapter extends BaseAdapter
         final SpeakerModel speakerModel = mSpeakerModelList.get(i);
         View currentView = mInflater.inflate(R.layout.listview_speaker_details, viewGroup, false);
         ((TextView)currentView.findViewById(R.id.speaker_name)).setText(speakerModel.fullName);
-        ((TextView)currentView.findViewById(R.id.speaker_description)).setText(Html.fromHtml(speakerModel.descriptionHTML));
+        ((TextView)currentView.findViewById(R.id.speaker_title)).setText(Html.fromHtml(speakerModel.funkyTitle));
         ImageLoader.getInstance().displayImage(speakerModel.imageURL, ((ImageView) currentView.findViewById(R.id.speaker_image)));
         currentView.setOnClickListener(new View.OnClickListener()
         {
