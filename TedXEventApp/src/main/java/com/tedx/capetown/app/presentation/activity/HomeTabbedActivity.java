@@ -12,6 +12,8 @@ import android.view.MenuItem;
 
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.presentation.adapter.TabSectionsPagerAdapter;
+import com.tedx.capetown.app.presentation.fragment.AgendaFragment;
+import com.tedx.capetown.app.presentation.fragment.SpeakersFragment;
 
 public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener, AgendaFragment.OnFragmentInteractionListener, SpeakersFragment.OnFragmentInteractionListener {
 
