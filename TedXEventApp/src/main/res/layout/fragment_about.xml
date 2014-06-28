@@ -1,63 +1,84 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_for_headers"
-    tools:context="com.tedx.capetown.app.presentation.activity.AboutFragment">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    >
 
-
-    <ImageView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_speaker_profile_image_height"
-        android:id="@+id/imgTEDxLogo"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/ic_launcher" />
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_for_headers"
+        tools:context="com.tedx.capetown.app.presentation.activity.AboutFragment">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="TEDxCapeTown Website"
-        android:id="@+id/btnWebsiteLink"
-        android:layout_below="@+id/imgTEDxLogo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
-        android:textColor="@android:color/holo_blue_dark" />
+        <TextView
+            android:id="@+id/txtWebsiteHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/website_heading"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:text="About TEDxCapeTown Website"
-        android:id="@+id/btnAboutLink"
-        android:layout_below="@+id/btnWebsiteLink"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
-        android:textColor="@android:color/holo_blue_dark"/>
+        <TextView
+            android:id="@+id/txtWebsiteContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/website_body"
+            android:layout_below="@id/txtWebsiteHeading"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:autoLink="all"
+        />
 
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
-        <!--android:text="Sponsors"-->
-        <!--android:id="@+id/btnSponsorsLink"-->
-        <!--android:layout_below="@+id/btnAboutLink"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:background="@android:color/transparent"-->
-        <!--android:textColor="@android:color/holo_blue_dark" />-->
+        <TextView
+            android:id="@+id/txtApplicationHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtWebsiteContent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/application_heading"
+            android:layout_marginTop="@dimen/activity_double_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        />
 
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/sponsors_frame_layout"-->
-        <!--android:layout_below="@+id/btnAboutLink">-->
+        <TextView
+            android:id="@+id/txtApplicationBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/application_body"
+            android:layout_below="@id/txtApplicationHeading"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:autoLink="all"
+        />
 
-        <!--</FrameLayout>-->
+        <TextView
+            android:id="@+id/txtAuthorsHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtApplicationBody"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/authors_heading"
+            android:layout_marginTop="@dimen/activity_double_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/txtAuthorsBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/authors_body"
+            android:layout_below="@id/txtAuthorsHeading"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:autoLink="all"
+        />
+
+    </RelativeLayout>
+
+</ScrollView>
