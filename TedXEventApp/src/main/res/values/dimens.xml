@@ -2,6 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_double_vertical_margin">32dp</dimen>
+
+    <dimen name="activity_arrow_margin">5dp</dimen>
+
     <dimen name="margin_for_headers">10dp</dimen>
     <dimen name="margin_for_image_in_list">10dp</dimen>
     <dimen name="activity_vertical_textview">5dp</dimen>
@@ -12,6 +16,8 @@
 
     <dimen name="activity_speaker_profile_image_width">120dp</dimen>
     <dimen name="activity_speaker_profile_image_height">120dp</dimen>
+    <dimen name="arrow_width">30dp</dimen>
+    <dimen name="arrow_height">30dp</dimen>
     <dimen name="activity_speaker_profile_speaker_name_margin_left">10dp</dimen>
     <dimen name="activity_speaker_profile_text_margin_top">15dp</dimen>
     <dimen name="image_talk_width">80dp</dimen>

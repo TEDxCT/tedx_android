@@ -9,10 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tedx.capetown.app.R;
-import com.tedx.capetown.app.presentation.fragment.AboutFragment;
-import com.tedx.capetown.app.presentation.fragment.AgendaFragment;
-import com.tedx.capetown.app.presentation.fragment.EventFragment;
-import com.tedx.capetown.app.presentation.fragment.SpeakersFragment;
+import com.tedx.capetown.app.presentation.activity.AboutFragment;
+import com.tedx.capetown.app.presentation.activity.AgendaFragment;
+import com.tedx.capetown.app.presentation.activity.EventFragment;
+import com.tedx.capetown.app.presentation.activity.SpeakersFragment;
+import com.tedx.capetown.app.presentation.activity.SponsorsFragment;
 
 import java.util.Locale;
 
@@ -37,6 +38,8 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
         if (position == 2)
             return new SpeakersFragment().newInstance();
         if (position == 3)
+            return new SponsorsFragment().newInstance();
+        if (position == 4)
             return new AboutFragment().newInstance();
         return PlaceholderFragment.newInstance(position + 1);
     }
@@ -44,7 +47,7 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
     @Override
     public int getCount()
     {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -60,7 +63,9 @@ public class TabSectionsPagerAdapter extends FragmentPagerAdapter
             case 2:
                 return _context.getString(R.string.title_section2);
             case 3:
-                return _context.getString(R.string.title_section3);
+                return _context.getString(R.string.title_sponsors);
+            case 4:
+                return _context.getString(R.string.title_about);
         }
         return null;
     }

@@ -12,8 +12,6 @@ import android.view.MenuItem;
 
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.presentation.adapter.TabSectionsPagerAdapter;
-import com.tedx.capetown.app.presentation.fragment.AgendaFragment;
-import com.tedx.capetown.app.presentation.fragment.SpeakersFragment;
 
 public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.TabListener, AgendaFragment.OnFragmentInteractionListener, SpeakersFragment.OnFragmentInteractionListener {
 
@@ -34,7 +32,8 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
         _ViewPager = (ViewPager) findViewById(R.id.pager);
         _ViewPager.setAdapter(_SectionsPagerAdapter);
 
-        _ViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        _ViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener()
+        {
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
@@ -48,7 +47,7 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.tabbed, menu);
+      //  getMenuInflater().inflate(R.menu.global, menu);
         return true;
     }
 
