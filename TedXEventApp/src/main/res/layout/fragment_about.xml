@@ -52,12 +52,12 @@
         <!--android:background="@android:color/transparent"-->
         <!--android:textColor="@android:color/holo_blue_dark" />-->
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sponsors_frame_layout"
-        android:layout_below="@+id/btnAboutLink">
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/sponsors_frame_layout"-->
+        <!--android:layout_below="@+id/btnAboutLink">-->
 
-        </FrameLayout>
+        <!--</FrameLayout>-->
 
 </RelativeLayout>

@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.SponsorCollectionModel;
+import com.tedx.capetown.app.presentation.adapter.SpeakerListAdapter;
 import com.tedx.capetown.app.presentation.adapter.SponsorListAdapter;
 import de.greenrobot.event.EventBus;
 
@@ -52,22 +54,20 @@ public class SponsorsFragment extends ListFragment
         super.onResume();
 
         SponsorCollectionModel sponsorCollectionModel = (SponsorCollectionModel) EventBus.getDefault().getStickyEvent(SponsorCollectionModel.class);
-        if (_sponsorListAdapter == null)
-        {
-            _sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, getActivity());
-            this.getListView().setAdapter(_sponsorListAdapter);
-        }
-        else
-        {
-            _sponsorListAdapter.updateData(sponsorCollectionModel.sponsors);
-            _sponsorListAdapter.notifyDataSetChanged();
-        }
-    }
+        _sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, getActivity());
+        this.getListView().setAdapter(_sponsorListAdapter);
 
-    public void onButtonPressed(Uri uri)
-    {
-        if (_listener != null)
-            _listener.onFragmentInteraction(uri);
+//        SponsorCollectionModel sponsorCollectionModel = (SponsorCollectionModel) EventBus.getDefault().getStickyEvent(SponsorCollectionModel.class);
+//        if (_sponsorListAdapter == null)
+//        {
+//            _sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, getActivity());
+//            this.getListView().setAdapter(_sponsorListAdapter);
+//        }
+//        else
+//        {
+//            _sponsorListAdapter.updateData(sponsorCollectionModel.sponsors);
+//            _sponsorListAdapter.notifyDataSetChanged();
+//        }
     }
 
     @Override
