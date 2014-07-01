@@ -98,7 +98,7 @@ public class TalkActivity extends Activity {
 
 
             if (speaker.contactDetails != null) {
-                LinearLayout contactsLayout = (LinearLayout) findViewById(R.id.lla_contactsList_speaker);
+                LinearLayout contactsLayout = (LinearLayout) findViewById(R.id.lla_contactsList_talk);
                 for (ContactModel contact : speaker.contactDetails.contactDetails) {
                     final TextView tvContact = new TextView(this);
                     tvContact.setText(contact.value);
