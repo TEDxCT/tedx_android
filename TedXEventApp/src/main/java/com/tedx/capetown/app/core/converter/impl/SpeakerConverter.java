@@ -1,8 +1,11 @@
 package com.tedx.capetown.app.core.converter.impl;
 
 import com.tedx.capetown.app.core.converter.Converter;
+import com.tedx.capetown.app.core.models.ContactCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerModel;
 import com.tedx.capetown.lib.sdk.dto.SpeakerDTO;
+
+import java.util.List;
 
 public class SpeakerConverter extends AbstractConverter<SpeakerDTO, SpeakerModel> implements Converter<SpeakerDTO,SpeakerModel>
 {
@@ -22,6 +25,7 @@ public class SpeakerConverter extends AbstractConverter<SpeakerDTO, SpeakerModel
         model.dateCreated = safeNullProtector(source.dateCreated);
         model.dateModified = safeNullProtector(source.dateModified);
         model.funkyTitle = safeNullProtector(source.funkyTitle);
+        model.contactDetails = new ContactCollectionConverter(List.class, ContactCollectionModel.class).convert(source.contactDetails);
         return model;
     }
 

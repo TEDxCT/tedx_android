@@ -2,19 +2,25 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.ContactModel;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.EventModel;
 import com.tedx.capetown.app.core.models.SessionModel;
@@ -32,9 +38,8 @@ public class SpeakerProfileActivity extends Activity {
     private TextView tvGenre;
     private TextView tvTalkName;
     private TextView tvDescription;
-    private TextView tvTwitterHandle;
-    private TextView tvEmailAddress;
     private ImageView ivImage;
+    private int talkId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,20 +54,6 @@ public class SpeakerProfileActivity extends Activity {
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
-
-        tvEmailAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                emailIntent(tvEmailAddress.getText().toString());
-            }
-        });
-
-        tvTwitterHandle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                twitterIntent(tvTwitterHandle.getText().toString());
-            }
-        });
     }
 
     @Override
@@ -82,29 +73,65 @@ public class SpeakerProfileActivity extends Activity {
         tvSpeakerName = (TextView) findViewById(R.id.txt_speakerName);
         tvGenre = (TextView) findViewById(R.id.txt_genre);
         tvDescription = (TextView) findViewById(R.id.txt_description);
-        tvTwitterHandle = (TextView) findViewById(R.id.txt_twitterHandle);
-        tvEmailAddress = (TextView) findViewById(R.id.txt_emailAddress);
         ivImage = (ImageView) findViewById(R.id.img_speaker);
         tvTalkName = (TextView) findViewById(R.id.txt_talkName);
 
         SpeakerModel speaker = getSpeaker(speakerId);
-        TalkModel talk = getTalk(speakerId);
-
         tvSpeakerName.setText(speaker.fullName);
         tvGenre.setText(speaker.funkyTitle);
         tvDescription.setText(Html.fromHtml(speaker.descriptionHTML));
-        tvTalkName.setText(talk.name);
 
-        if (false) //ToDO: get twitter handle
-            tvTwitterHandle.setText("TODO");
-        else
-            tvTwitterHandle.setVisibility(View.GONE);
+        TalkModel talk = getTalk(speakerId);
+        if (talk != null)
+        {
+            talkId = talk.id;
+            tvTalkName.setText(talk.name);
 
-        if (false) //ToDO: get email address
-            tvEmailAddress.setText("TODO");
-        else
-            tvEmailAddress.setVisibility(View.GONE);
+            tvTalkName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context,TalkActivity.class);
+                    intent.putExtra("talkId",talkId);
+                    context.startActivity(intent);
+                }
+            });
+        }
 
+        if (speaker.contactDetails != null){
+            LinearLayout contactsLayout = (LinearLayout) findViewById(R.id.lla_contactsList_speaker);
+            for (ContactModel contact : speaker.contactDetails.contactDetails ) {
+                final TextView tvContact = new TextView(this);
+                tvContact.setText(contact.value);
+                tvContact.setTextColor(Color.parseColor("#0092ff"));
+                tvContact.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+                if (contact.name.equals("email")) {
+                    tvContact.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            emailIntent(tvContact.getText().toString());
+                        }
+                    });
+               /* } else if (contact.name.equals("twitter")) {
+                    tvContact.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            twitterIntent(tvContact.getText().toString());
+                        }
+                    });*/
+                } else {
+                    tvContact.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            urlIntent(tvContact.getText().toString());
+                        }
+                    });
+                }
+
+                contactsLayout.addView(tvContact);
+            }
+        }
 
         if (speaker.imageURL != null && !speaker.imageURL.isEmpty())
             ImageLoader.getInstance().displayImage(speaker.imageURL, ivImage);
@@ -117,6 +144,12 @@ public class SpeakerProfileActivity extends Activity {
         intent.putExtra(Intent.EXTRA_SUBJECT, "TEDxCT Talk");
         intent.putExtra(Intent.EXTRA_TEXT, "Great talk!");
         startActivity(Intent.createChooser(intent, "Send Email"));
+    }
+
+    public void urlIntent(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(Intent.createChooser(intent, "Open Url"));
     }
 
     public void twitterIntent(String address) {

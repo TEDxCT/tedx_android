@@ -2,6 +2,8 @@ package com.tedx.capetown.lib.sdk.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 /**
  * Created by andrewpettey on 2014/05/08.
  */
@@ -17,4 +19,6 @@ public class SpeakerDTO extends DTO {
     public String imageURL;
     public String descriptionHTML;
     public String funkyTitle;
+
+    public List<ContactDTO> contactDetails;
 }

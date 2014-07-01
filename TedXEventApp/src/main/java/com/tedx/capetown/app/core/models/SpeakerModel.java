@@ -14,4 +14,5 @@ public class SpeakerModel {
     public String descriptionHTML;
     public String funkyTitle;
 
+    public ContactCollectionModel contactDetails;
 }
