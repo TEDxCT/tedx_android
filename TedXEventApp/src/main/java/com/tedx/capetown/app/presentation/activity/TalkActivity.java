@@ -41,6 +41,7 @@ public class TalkActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         final ActionBar actionBar = getActionBar();
+        actionBar.hide();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
 

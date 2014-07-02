@@ -52,6 +52,7 @@ public class SpeakerProfileActivity extends Activity {
                 loadSpeaker(state.getInt("speakerId"));
 
         final ActionBar actionBar = getActionBar();
+        actionBar.hide();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
     }
