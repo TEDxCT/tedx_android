@@ -43,17 +43,8 @@ public class SpeakersFragment extends ListFragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            _listener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onResume() {
+    public void onResume()
+    {
         super.onResume();
         SpeakerCollectionModel speakerCollectionModel = (SpeakerCollectionModel) EventBus.getDefault().getStickyEvent(SpeakerCollectionModel.class);
         _listAdapter = new SpeakerListAdapter(speakerCollectionModel.speakers, getActivity());
@@ -61,12 +52,28 @@ public class SpeakersFragment extends ListFragment {
     }
 
     @Override
-    public void onDetach() {
+    public void onAttach(Activity activity)
+    {
+        super.onAttach(activity);
+        try
+        {
+            _listener = (OnFragmentInteractionListener) activity;
+        }
+        catch (ClassCastException e)
+        {
+            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach()
+    {
         super.onDetach();
         _listener = null;
     }
 
-    public interface OnFragmentInteractionListener {
+    public interface OnFragmentInteractionListener
+    {
         public void onFragmentInteraction(Uri uri);
     }
 

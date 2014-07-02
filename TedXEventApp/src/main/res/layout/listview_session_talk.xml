@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_for_headers"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
     android:background="#FFFFFF">
 
@@ -20,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.TitleLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:text="@string/listview_session_speaker_talk_title_generic"
         android:id="@+id/text_name"
@@ -31,35 +29,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_textview"
-        android:textAppearance="@style/TextAppearance.TitleMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/listview_session_speaker_speaker_generic"
         android:id="@+id/txtSpeaker"
         android:layout_below="@+id/text_name"
         android:layout_alignLeft="@+id/text_name"
         android:layout_alignStart="@+id/text_name" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_textview"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/listview_session_speaker_genre_generic"
-        android:id="@+id/txtGenre"
-        android:layout_below="@+id/txtSpeaker"
-        android:layout_alignLeft="@+id/txtSpeaker"
-        android:layout_alignStart="@+id/txtSpeaker"
-        android:visibility="gone"
-        />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/activity_vertical_textview"-->
+        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+        <!--android:text="@string/listview_session_speaker_genre_generic"-->
+        <!--android:id="@+id/txtGenre"-->
+        <!--android:layout_below="@+id/txtSpeaker"-->
+        <!--android:layout_alignLeft="@+id/txtSpeaker"-->
+        <!--android:layout_alignStart="@+id/txtSpeaker"-->
+        <!--android:visibility="gone"-->
+        <!--/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_textview"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/listview_session_speaker_short_description_generic"
-        android:id="@+id/txtShortDescription"
-        android:maxLines="2"
-        android:layout_below="@+id/txtGenre"
-        android:layout_alignLeft="@+id/txtGenre"
-        android:layout_alignStart="@+id/txtGenre" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/activity_vertical_textview"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="@string/listview_session_speaker_short_description_generic"-->
+        <!--android:id="@+id/txtShortDescription"-->
+        <!--android:maxLines="2"-->
+        <!--android:layout_below="@+id/txtGenre"-->
+        <!--android:layout_alignLeft="@+id/txtGenre"-->
+        <!--android:layout_alignStart="@+id/txtGenre"-->
+        <!--android:visibility="gone"-->
+        <!--/>-->
+
+    <ImageView
+        android:id="@+id/img_arrow"
+        android:src="@drawable/ic_arrow_ring"
+        android:layout_width="@dimen/arrow_width"
+        android:layout_height="@dimen/arrow_height"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/activity_arrow_margin"
+        android:paddingBottom="@dimen/activity_arrow_margin"
+        android:focusable="false"
+        android:alpha="0.55"        />
+
 </RelativeLayout>

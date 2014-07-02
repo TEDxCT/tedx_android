@@ -12,6 +12,6 @@ public class TalkModel
     public String videoURL;
     public String orderInSession;
     public String sessionId;
-    public String speakerId;
+    public int speakerId;
     public SpeakerModel speaker;
 }

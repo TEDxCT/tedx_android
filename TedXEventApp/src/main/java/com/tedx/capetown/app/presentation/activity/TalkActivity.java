@@ -2,15 +2,23 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
+import com.tedx.capetown.app.core.models.ContactModel;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.EventModel;
 import com.tedx.capetown.app.core.models.SessionModel;
@@ -26,12 +34,14 @@ public class TalkActivity extends Activity {
     private TextView txtSpeakerName;
     private TextView txtDescription;
     private ImageView imgTalk;
+    private int speakerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         final ActionBar actionBar = getActionBar();
+        actionBar.hide();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
 
@@ -68,11 +78,69 @@ public class TalkActivity extends Activity {
 
         txtTalkName.setText(talkModel.name);
         txtGenre.setText("Genre");
-        txtSpeakerName.setText(speaker.fullName);
         txtDescription.setText(Html.fromHtml(talkModel.descriptionHTML));
 
         if (speaker.imageURL != null && !speaker.imageURL.isEmpty())
             ImageLoader.getInstance().displayImage(speaker.imageURL, imgTalk);
+
+        if (speaker != null) {
+            speakerId = speaker.id;
+            txtSpeakerName.setText(speaker.fullName);
+
+            txtSpeakerName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, SpeakerProfileActivity.class);
+                    intent.putExtra("speakerId", speakerId);
+                    context.startActivity(intent);
+                }
+            });
+
+
+            if (speaker.contactDetails != null) {
+                LinearLayout contactsLayout = (LinearLayout) findViewById(R.id.lla_contactsList_talk);
+                for (ContactModel contact : speaker.contactDetails.contactDetails) {
+                    final TextView tvContact = new TextView(this);
+                    tvContact.setText(contact.value);
+                    tvContact.setTextColor(Color.parseColor("#0092ff"));
+                    tvContact.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+                    if (contact.name.equals("email")) {
+                        tvContact.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                emailIntent(tvContact.getText().toString());
+                            }
+                        });
+                    } else {
+                        tvContact.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                urlIntent(tvContact.getText().toString());
+                            }
+                        });
+                    }
+
+                    contactsLayout.addView(tvContact);
+                }
+            }
+        }
+    }
+
+    public void emailIntent(String address) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, address);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "TEDxCT Talk");
+        intent.putExtra(Intent.EXTRA_TEXT, "Great talk!");
+        startActivity(Intent.createChooser(intent, "Send Email"));
+    }
+
+    public void urlIntent(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(Intent.createChooser(intent, "Open Url"));
     }
 
     public TalkModel getTalk(int talkId) {

@@ -18,6 +18,8 @@ public class TalkConverter extends AbstractConverter<TalkDTO, TalkModel> impleme
     @Override
     public TalkModel convert(TalkDTO source)
     {
+        SpeakerModel speaker =  new SpeakerConverter(SpeakerDTO.class, SpeakerModel.class).convert(source.speaker);
+
         TalkModel model = new TalkModel();
         model.id = source.id;
         model.dateCreated = source.dateCreated;
@@ -27,7 +29,8 @@ public class TalkConverter extends AbstractConverter<TalkDTO, TalkModel> impleme
         model.imageURL = source.imageURL;
         model.videoURL = source.videoURL;
         model.orderInSession = (source.orderInSession);
-        model.speaker = new SpeakerConverter(SpeakerDTO.class, SpeakerModel.class).convert(source.speaker);
+        model.speaker = speaker;
+        model.speakerId = speaker.id;
         return model;
     }
 
