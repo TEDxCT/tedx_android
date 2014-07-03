@@ -2,6 +2,8 @@ package com.tedx.capetown.app.presentation.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.graphics.Camera;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fasterxml.jackson.databind.type.MapType;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
+import com.google.android.gms.maps.MapFragment;
+
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
@@ -18,7 +28,6 @@ import com.tedx.capetown.app.core.models.EventModel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import de.greenrobot.event.EventBus;
 
 public class EventFragment extends Fragment {
@@ -82,11 +91,18 @@ public class EventFragment extends Fragment {
     public void setupUI(EventModel model, View view)
     {
         // Server sends time in seconds - can change on server or leave with seconds
-        Date startDate = new Date(Long.parseLong(model.endDate)*1000);
+        Date startDate = new Date(Long.parseLong(model.startDate)*1000);
         TextView eventName = (TextView) view.findViewById(R.id.event_name);
         TextView eventDate = (TextView) view.findViewById(R.id.event_date);
         TextView eventTime = (TextView) view.findViewById(R.id.event_time);
         ImageView eventPicture = (ImageView) view.findViewById(R.id.event_picture);
+        FragmentManager mFragementManager = getActivity().getFragmentManager();
+        MapFragment mapFragment = (MapFragment)mFragementManager.findFragmentById(R.id.event_map);
+        mapFragment.getMap().getUiSettings().setAllGesturesEnabled(false);
+        mapFragment.getMap().setMyLocationEnabled(false);
+        mapFragment.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        LatLng eventPosition = new LatLng(model.latitude, model.longitude);
+        mapFragment.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(eventPosition, 15));
         eventName.setText(model.name);
         eventDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(startDate));
         eventTime.setText(new SimpleDateFormat("kk:mm").format(startDate));

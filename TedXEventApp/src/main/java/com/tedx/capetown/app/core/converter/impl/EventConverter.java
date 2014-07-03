@@ -1,5 +1,7 @@
 package com.tedx.capetown.app.core.converter.impl;
 
+import android.util.Log;
+
 import com.tedx.capetown.app.core.converter.Converter;
 import com.tedx.capetown.app.core.models.EventModel;
 import com.tedx.capetown.app.core.models.SessionCollectionModel;
@@ -24,6 +26,7 @@ public class EventConverter extends AbstractConverter<EventDTO, EventModel> impl
     {
         EventModel model = new EventModel();
         model.descriptionHTML = source.descriptionHTML;
+        model.startDate = source.startDate;
         model.endDate = source.endDate;
         model.id = source.id;
         model.imageURL = source.imageURL;

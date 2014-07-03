@@ -16,7 +16,7 @@ public class EventDTO extends DTO {
     public String websiteURL;
     public String descriptionHTML;
     public double latitude;
-    public double longitude;
+    public double  longitude;
     public String locationDescriptionHTML;
     public List<SessionDTO> sessions;
 }
