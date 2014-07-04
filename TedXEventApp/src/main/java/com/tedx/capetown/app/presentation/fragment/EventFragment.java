@@ -3,6 +3,7 @@ package com.tedx.capetown.app.presentation.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.graphics.Camera;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,8 +19,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.MapFragment;
 
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
@@ -31,7 +35,7 @@ import java.util.Date;
 import de.greenrobot.event.EventBus;
 
 public class EventFragment extends Fragment {
-
+    TedxMapFragment mapFragment;
     private OnFragmentInteractionListener _listener;
 
     public static EventFragment newInstance() {
@@ -48,8 +52,14 @@ public class EventFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.fragment_event, container, false);
+        View fragmentView ;
+        if(container.findViewWithTag("EventFragement")==null)
+            fragmentView = inflater.inflate(R.layout.fragment_event, container, false);
+        else
+            fragmentView = container.findViewWithTag("EventFragement");
+
         setupUI(eventModel,fragmentView);
+        fragmentView.setTag("EventFragment");
         return fragmentView;
     }
 
@@ -97,18 +107,16 @@ public class EventFragment extends Fragment {
         TextView eventTime = (TextView) view.findViewById(R.id.event_time);
         ImageView eventPicture = (ImageView) view.findViewById(R.id.event_picture);
         FragmentManager mFragementManager = getActivity().getFragmentManager();
-        MapFragment mapFragment = (MapFragment)mFragementManager.findFragmentById(R.id.event_map);
-        mapFragment.getMap().getUiSettings().setAllGesturesEnabled(false);
-        mapFragment.getMap().setMyLocationEnabled(false);
-        mapFragment.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng eventPosition = new LatLng(model.latitude, model.longitude);
-        mapFragment.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(eventPosition, 15));
+        LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
+
+        mapFragment = new TedxMapFragment();
+        mapFragment.setEventModel(eventModel);
+        FragmentTransaction transaction =
+                mFragementManager.beginTransaction();
+        transaction.add(R.id.event_map, mapFragment, "MapFragment").commit();
         eventName.setText(model.name);
         eventDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(startDate));
         eventTime.setText(new SimpleDateFormat("kk:mm").format(startDate));
         ImageLoader.getInstance().displayImage(model.imageURL,eventPicture);
     }
-
-
-
 }

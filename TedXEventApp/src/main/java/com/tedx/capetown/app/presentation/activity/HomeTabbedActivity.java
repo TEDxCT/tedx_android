@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.MapsInitializer;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.presentation.adapter.TabSectionsPagerAdapter;
 import com.tedx.capetown.app.presentation.fragment.AgendaFragment;

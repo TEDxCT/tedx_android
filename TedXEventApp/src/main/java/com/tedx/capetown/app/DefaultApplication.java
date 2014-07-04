@@ -3,6 +3,7 @@ package com.tedx.capetown.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.android.gms.maps.MapsInitializer;
 import com.nostra13.universalimageloader.cache.disc.DiscCacheAware;
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -36,6 +37,7 @@ public class DefaultApplication extends Application
                 .defaultDisplayImageOptions(
                         options).build();
         ImageLoader.getInstance().init(config);
+        MapsInitializer.initialize(this);
     }
 
     private void initSingletons(Context ctx)
