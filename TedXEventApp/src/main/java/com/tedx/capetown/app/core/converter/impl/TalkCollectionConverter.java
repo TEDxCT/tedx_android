@@ -22,9 +22,10 @@ public class TalkCollectionConverter extends AbstractConverter<List, TalkCollect
 
         TalkConverter talkConverter = new TalkConverter(TalkDTO.class, TalkModel.class);
         List<TalkDTO> newSource = (List<TalkDTO>)source;
-        for (TalkDTO talk : newSource)
-            talkCollectionModel.talks.add(talkConverter.convert(talk));
-
+        if(newSource!=null && newSource.size()>0) {
+            for (TalkDTO talk : newSource)
+                talkCollectionModel.talks.add(talkConverter.convert(talk));
+        }
         return talkCollectionModel;
     }
 }

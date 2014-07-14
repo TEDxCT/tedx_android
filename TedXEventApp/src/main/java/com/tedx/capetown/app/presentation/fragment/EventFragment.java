@@ -5,6 +5,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Camera;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,13 +27,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.tedx.capetown.app.DefaultApplication;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.EventModel;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 import de.greenrobot.event.EventBus;
 
 public class EventFragment extends Fragment {
@@ -105,6 +112,7 @@ public class EventFragment extends Fragment {
         TextView eventName = (TextView) view.findViewById(R.id.event_name);
         TextView eventDate = (TextView) view.findViewById(R.id.event_date);
         TextView eventTime = (TextView) view.findViewById(R.id.event_time);
+        TextView eventAddress = (TextView) view.findViewById(R.id.event_address1);
         ImageView eventPicture = (ImageView) view.findViewById(R.id.event_picture);
         FragmentManager mFragementManager = getActivity().getFragmentManager();
         LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
@@ -118,5 +126,21 @@ public class EventFragment extends Fragment {
         eventDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(startDate));
         eventTime.setText(new SimpleDateFormat("kk:mm").format(startDate));
         ImageLoader.getInstance().displayImage(model.imageURL,eventPicture);
+        Geocoder geo;
+        geo = new Geocoder(getActivity().getApplicationContext(), Locale.getDefault());
+        List<Address> addresses = null;
+        try {
+            addresses = geo.getFromLocation(eventModel.latitude, eventModel.longitude, 1);
+
+            if (addresses.isEmpty()) {
+                eventAddress.setText("Waiting for Location");
+            }
+            else {
+                if (addresses.size() > 0) {
+                    eventAddress.setText(addresses.get(0).getFeatureName() + ", " + addresses.get(0).getLocality() +", " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName());
+                }
+            }
+        } catch (IOException e) {
+        }
     }
 }

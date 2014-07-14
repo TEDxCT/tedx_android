@@ -1,5 +1,7 @@
 package com.tedx.capetown.app.presentation.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tedx.capetown.app.core.models.EventModel;
 
+import java.util.Locale;
+
 /**
  * Created by andrewpettey on 2014/07/03.
  */
@@ -23,11 +27,21 @@ public class TedxMapFragment extends MapFragment {
         View view =  super.onCreateView ( inflater, container,  savedInstanceState);
 
         LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
-        this.getMap().getUiSettings().setAllGesturesEnabled(false);
-        this.getMap().setMyLocationEnabled(false);
-        this.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        this.getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(eventPosition, 15));
-        this.getMap().addMarker(new MarkerOptions().position(eventPosition).title(eventModel.name));
+        if(this.getMap()!=null) {
+            this.getMap().getUiSettings().setAllGesturesEnabled(false);
+            this.getMap().setMyLocationEnabled(false);
+            this.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            this.getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(eventPosition, 15));
+            this.getMap().addMarker(new MarkerOptions().position(eventPosition).title(eventModel.name));
+            this.getMap().setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+                    String uri = String.format(Locale.ENGLISH, "geo:%f,%f", eventModel.latitude, eventModel.longitude);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    getActivity().startActivity(intent);
+                }
+            });
+        }
         return view;
     }
     public void setEventModel(EventModel eventModel)
