@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!-- Product detail Page -->
+    <!-- Take care with these colors, check where they are being reused for certain items, as creating a new color should be done when one is changed. -->
+    <color name="product_detail_page_bottom_bar_primary_button_color_disabled">#666666</color>
+    <color name="standard_clickable_area_pressed_background">#F8A340</color>
+    <color name="standard_clickable_area_disabled_background">#FFFFFF</color>
+    <color name="standard_clickable_area_default_background">#FFFFFF</color>
+
+</resources>
