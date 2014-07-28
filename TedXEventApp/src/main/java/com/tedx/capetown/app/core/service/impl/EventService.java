@@ -45,7 +45,6 @@ public class EventService extends AbstractSDKIntentService {
                 EventConnector eventConnector = getSDKClient().getEventConnector();
                 EventRequest request = eventConnector.getEventRequestBuilder("tedx_server/response/event.php").build();
                 SDKResponse<EventCollectionDTO> response = eventConnector.getEventList(request);
-                Log.wtf("EventService","response.responseDTO.getCollection()[0].startDate:"+response.responseDTO.getCollection()[0].startDate);
                 return response;
             }
         }, new EventCollectionConverter(EventCollectionDTO.class,EventCollectionModel.class));
@@ -60,14 +59,8 @@ public class EventService extends AbstractSDKIntentService {
         if (action.equals(EventCollectionServiceRequest.class.getName())) {
             try {
                 EventBus.getDefault().postSticky(fetchEventList());
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SDKException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                EventBus.getDefault().postSticky(e);
             }
         }
         else if (action.equals(EventModelServiceRequest.class.getName()))

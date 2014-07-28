@@ -2,28 +2,35 @@ package com.tedx.capetown.app.presentation.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.tedx.capetown.app.DefaultApplication;
 import com.tedx.capetown.app.R;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.SpeakerCollectionModel;
 import com.tedx.capetown.app.core.models.SponsorCollectionModel;
 import com.tedx.capetown.app.core.service.storage.StorageKey;
-import com.tedx.capetown.app.facade.FacadeFactory;
 import com.tedx.capetown.app.facade.factory.FacadeFactoryImpl;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import de.greenrobot.event.EventBus;
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends FragmentActivity {
     boolean dataEvent = false;
     boolean dataSponsor = false;
     boolean dataSpeaker = false;
@@ -36,7 +43,21 @@ public class SplashActivity extends Activity {
         actionBar.setDisplayShowTitleEnabled(false);
 
         setContentView(R.layout.activity_splash);
+        if(!hasActiveInternetConnection())
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Please note the application might require an internet connection")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
         EventBus.getDefault().register(this);
+
         FacadeFactoryImpl.createSponsorFacade(DefaultApplication.getAppContext()).fetchSponsorList();
         FacadeFactoryImpl.createEventFacade(DefaultApplication.getAppContext()).fetchEventList();
         FacadeFactoryImpl.createSpeakerFacade(DefaultApplication.getAppContext()).fetchSpeakerList();
@@ -160,5 +181,26 @@ public class SplashActivity extends Activity {
         this.startActivity(intent);
         this.finish();
     }
-
+    public boolean hasActiveInternetConnection() {
+        if (!isNetworkAvailable()) {
+            try {
+                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
+                urlc.setRequestProperty("User-Agent", "Test");
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(1500);
+                urlc.connect();
+                return (urlc.getResponseCode() == 200);
+            } catch (Exception e) {
+                return false;
+            }
+        } else {
+        }
+        return false;
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null;
+    }
 }
