@@ -9,6 +9,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,6 +114,7 @@ public class EventFragment extends Fragment {
         TextView eventDate = (TextView) view.findViewById(R.id.event_date);
         TextView eventTime = (TextView) view.findViewById(R.id.event_time);
         TextView eventAddress = (TextView) view.findViewById(R.id.event_address1);
+        TextView eventDescription = (TextView) view.findViewById(R.id.event_description);
         ImageView eventPicture = (ImageView) view.findViewById(R.id.event_picture);
         FragmentManager mFragementManager = getActivity().getFragmentManager();
         LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
@@ -125,7 +127,8 @@ public class EventFragment extends Fragment {
         eventName.setText(model.name);
         eventDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(startDate));
         eventTime.setText(new SimpleDateFormat("kk:mm").format(startDate));
-        ImageLoader.getInstance().displayImage(model.imageURL,eventPicture);
+        ImageLoader.getInstance().displayImage(model.imageURL, eventPicture);
+        eventDescription.setText(Html.fromHtml(model.descriptionHTML));
         Geocoder geo;
         geo = new Geocoder(getActivity().getApplicationContext(), Locale.getDefault());
         List<Address> addresses = null;

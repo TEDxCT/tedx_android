@@ -14,7 +14,7 @@
     <string name="website_heading">The TEDx Cape Town website</string>
     <string name="website_body">To learn more about TEDx Cape Town or to volunteer, speak to event organisers, or subscribe to news about the event, please visit our website, <a href='http://tedxcapetown.org/'>TEDxCapeTown.org</a></string>
     <string name="authors_heading">Application authors</string>
-    <string name="authors_body">Andrew Petty\n\nRichard JE Cooke\nAlex Leibhammer\nAndy Spicket\n\n</string>
+    <string name="authors_body">Richard JE Cooke\nAlex Leibhammer\nAndrew Pettey\nAndy Spicket\n</string>
     <string name="application_heading">About this application</string>
     <string name="application_body">This open source application was written for TEDx Cape Town 2014. We intend it to be reused and extended by other TEDx organisers, or for other similar events.\n\nThe freely available code for this application, the iOS version, and the PHP and MySQL server it uses, are all available and explained on our GitHub site, <a href='https://github.com/tedxct'>GitHub.com/TEDxCT</a></string>
 
