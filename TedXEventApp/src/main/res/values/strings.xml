@@ -17,17 +17,14 @@
     <string name="authors_body">Richard JE Cooke\nAlex Leibhammer\nAndrew Pettey\nAndy Spicket\n</string>
     <string name="application_heading">About this application</string>
     <string name="application_body">This open source application was written for TEDx Cape Town 2014. We intend it to be reused and extended by other TEDx organisers, or for other similar events.\n\nThe freely available code for this application, the iOS version, and the PHP and MySQL server it uses, are all available and explained on our GitHub site, <a href='https://github.com/tedxct'>GitHub.com/TEDxCT</a></string>
-
-    <string name="title_activity_home">Home Activity</string>
-    <string name="hello_world">Hello world</string>
-    <string name="title_activity_agenda">Agenda Activity</string>
-    <string name="title_activity_event">EventActivity</string>
-    <string name="title_activity_more_info">MoreInfoActivity</string>
-    <string name="title_activity_speaker_profile">SpeakerProfileActivity</string>
-    <string name="title_activity_speaker_list">SpeakerListActivity</string>
-    <string name="title_activity_sponsors">SponsorsActivity</string>
-    <string name="title_activity_talk">TalkActivity</string>
-    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_agenda">Agenda for event</string>
+    <string name="title_activity_event">Event</string>
+    <string name="title_activity_more_info">More Info</string>
+    <string name="title_activity_speaker_profile">Speaker Profile</string>
+    <string name="title_activity_speaker_list">Speakers</string>
+    <string name="title_activity_sponsors">Sponsors</string>
+    <string name="title_activity_talk">Talk</string>
+    <string name="title_activity_splash">TedX CapeTown 2014 App</string>
     <string name="agenda_name">Agenda</string>
     <string name="sponsors_name">Sponsors</string>
     <string name="activity_speaker_profile_speaker_name_generic">Speaker Name</string>

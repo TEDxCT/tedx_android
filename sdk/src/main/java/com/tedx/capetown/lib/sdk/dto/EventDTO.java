@@ -11,6 +11,7 @@ public class EventDTO extends DTO {
     public String dateModified;
     public String startDate;
     public String endDate;
+    public String hostName;
     public String name;
     public String imageURL;
     public String websiteURL;

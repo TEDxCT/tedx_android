@@ -110,6 +110,7 @@ public class EventFragment extends Fragment {
     {
         // Server sends time in seconds - can change on server or leave with seconds
         Date startDate = new Date(Long.parseLong(model.startDate)*1000);
+        TextView eventHostName = (TextView) view.findViewById(R.id.host_name);
         TextView eventName = (TextView) view.findViewById(R.id.event_name);
         TextView eventDate = (TextView) view.findViewById(R.id.event_date);
         TextView eventTime = (TextView) view.findViewById(R.id.event_time);
@@ -129,6 +130,7 @@ public class EventFragment extends Fragment {
         eventTime.setText(new SimpleDateFormat("kk:mm").format(startDate));
         ImageLoader.getInstance().displayImage(model.imageURL, eventPicture);
         eventDescription.setText(Html.fromHtml(model.descriptionHTML));
+        eventHostName.setText(model.hostName);
         Geocoder geo;
         geo = new Geocoder(getActivity().getApplicationContext(), Locale.getDefault());
         List<Address> addresses = null;

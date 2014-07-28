@@ -33,6 +33,7 @@ public class EventConverter extends AbstractConverter<EventDTO, EventModel> impl
         model.latitude = source.latitude;
         model.locationDescriptionHTML = source.locationDescriptionHTML;
         model.longitude = source.longitude;
+        model.hostName = source.hostName;
         model.name = source.name;
         model.websiteURL = source.websiteURL;
         model.sessions = new SessionCollectionConverter(List.class, SessionCollectionModel.class).convert(source.sessions);
