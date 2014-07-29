@@ -3,7 +3,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_for_headers"
     android:focusable="false"
-    android:background="#FFFFFF" >
+    android:background="@drawable/standard_clickable_area_background"
+    android:clickable="true" >
 
     <ImageView
         android:layout_width="@dimen/activity_speaker_profile_image_width"
