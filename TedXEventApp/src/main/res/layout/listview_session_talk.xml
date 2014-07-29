@@ -5,16 +5,22 @@
     android:background="@drawable/standard_clickable_area_background"
     android:clickable="true">
 
-    <ImageView
+    <FrameLayout
         android:layout_width="@dimen/activity_speaker_profile_image_width"
         android:layout_height="@dimen/activity_speaker_profile_image_height"
-        android:id="@+id/imgSessionSpeaker"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_launcher"
-        />
+        android:id="@+id/listview_session_talk_image_layout"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="@dimen/activity_speaker_profile_image_width"
+            android:layout_height="@dimen/activity_speaker_profile_image_height"
+            android:id="@+id/imgSessionSpeaker"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher"
+            />
+    </FrameLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,8 +29,8 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:text="@string/listview_session_speaker_talk_title_generic"
         android:id="@+id/text_name"
-        android:layout_alignTop="@+id/imgSessionSpeaker"
-        android:layout_toRightOf="@+id/imgSessionSpeaker" />
+        android:layout_alignTop="@+id/listview_session_talk_image_layout"
+        android:layout_toRightOf="@+id/listview_session_talk_image_layout" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,31 +44,31 @@
         android:layout_alignStart="@+id/text_name" />
 
     <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="@dimen/activity_vertical_textview"-->
-        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-        <!--android:text="@string/listview_session_speaker_genre_generic"-->
-        <!--android:id="@+id/txtGenre"-->
-        <!--android:layout_below="@+id/txtSpeaker"-->
-        <!--android:layout_alignLeft="@+id/txtSpeaker"-->
-        <!--android:layout_alignStart="@+id/txtSpeaker"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/activity_vertical_textview"-->
+    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+    <!--android:text="@string/listview_session_speaker_genre_generic"-->
+    <!--android:id="@+id/txtGenre"-->
+    <!--android:layout_below="@+id/txtSpeaker"-->
+    <!--android:layout_alignLeft="@+id/txtSpeaker"-->
+    <!--android:layout_alignStart="@+id/txtSpeaker"-->
+    <!--android:visibility="gone"-->
+    <!--/>-->
 
     <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="@dimen/activity_vertical_textview"-->
-        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-        <!--android:text="@string/listview_session_speaker_short_description_generic"-->
-        <!--android:id="@+id/txtShortDescription"-->
-        <!--android:maxLines="2"-->
-        <!--android:layout_below="@+id/txtGenre"-->
-        <!--android:layout_alignLeft="@+id/txtGenre"-->
-        <!--android:layout_alignStart="@+id/txtGenre"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/activity_vertical_textview"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+    <!--android:text="@string/listview_session_speaker_short_description_generic"-->
+    <!--android:id="@+id/txtShortDescription"-->
+    <!--android:maxLines="2"-->
+    <!--android:layout_below="@+id/txtGenre"-->
+    <!--android:layout_alignLeft="@+id/txtGenre"-->
+    <!--android:layout_alignStart="@+id/txtGenre"-->
+    <!--android:visibility="gone"-->
+    <!--/>-->
 
     <ImageView
         android:id="@+id/img_arrow"

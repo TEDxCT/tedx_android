@@ -25,9 +25,8 @@ public class TedxMapFragment extends MapFragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view =  super.onCreateView ( inflater, container,  savedInstanceState);
-
-        LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
         if(this.getMap()!=null) {
+        LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
             this.getMap().getUiSettings().setAllGesturesEnabled(false);
             this.getMap().setMyLocationEnabled(false);
             this.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);

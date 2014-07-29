@@ -5,5 +5,5 @@
     <color name="standard_clickable_area_pressed_background">#666666</color>
     <color name="standard_clickable_area_disabled_background">#FFFFFF</color>
     <color name="standard_clickable_area_default_background">#FFFFFF</color>
-
+    <color name="standard_cardview_background_color">#FFFFFF</color>
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android" >
+    <padding android:bottom="@dimen/standard_cardview_padding" android:left="@dimen/standard_cardview_padding" android:right="@dimen/standard_cardview_padding" android:top="@dimen/standard_cardview_padding"/>
+    <solid android:color="@color/standard_cardview_background_color"/>
+</shape>

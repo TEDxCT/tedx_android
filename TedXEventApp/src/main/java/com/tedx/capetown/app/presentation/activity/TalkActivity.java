@@ -77,7 +77,7 @@ public class TalkActivity extends Activity {
         SpeakerModel speaker = getSpeaker(talkModel);
 
         txtTalkName.setText(talkModel.name);
-        txtGenre.setText("Genre");
+        txtGenre.setText(talkModel.speaker.funkyTitle);
         txtDescription.setText(Html.fromHtml(talkModel.descriptionHTML));
 
         if (speaker.imageURL != null && !speaker.imageURL.isEmpty())
@@ -87,7 +87,7 @@ public class TalkActivity extends Activity {
             speakerId = speaker.id;
             txtSpeakerName.setText(speaker.fullName);
 
-            txtSpeakerName.setOnClickListener(new View.OnClickListener() {
+            findViewById(R.id.activity_talk_speaker_layout).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Context context = view.getContext();
