@@ -125,6 +125,10 @@ public class TalkActivity extends Activity {
                     contactsLayout.addView(tvContact);
                 }
             }
+            else
+            {
+                findViewById(R.id.lla_contactsList_talk).setVisibility(View.GONE);
+            }
         }
     }
 

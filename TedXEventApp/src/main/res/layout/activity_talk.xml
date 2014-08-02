@@ -1,25 +1,23 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    style="@style/CardViewHolder">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context="com.tedx.capetown.app.presentation.activity.TalkActivity">
 
         <TextView
             android:id="@+id/txtTalkName"
             android:textAppearance="@style/TextAppearance.TitleLarge"
             android:text="@string/talk_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
+            style="@style/CardView.Standard.Title"
             />
 
         <ImageView
@@ -30,14 +28,15 @@
             android:layout_below="@+id/txtTalkName"
             android:layout_centerInParent="true"
             />
+
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgTalk"
             android:clickable="true"
-            android:background="@drawable/standard_cardview_clickable_area_background"
-            android:id="@+id/activity_talk_speaker_layout"
-            android:padding="10dp">
+            style="@style/CardView.Rounded"
+            android:id="@+id/activity_talk_speaker_layout">
+
             <TextView
                 android:id="@+id/txtSpeakerName"
                 android:layout_width="wrap_content"
@@ -58,38 +57,48 @@
                 android:layout_alignTop="@+id/txtSpeakerName"
                 android:paddingBottom="@dimen/activity_arrow_margin"
                 android:focusable="false"
-                android:alpha="0.55"        />
+                android:alpha="0.55"/>
         </RelativeLayout>
-        <TextView
-            android:id="@+id/txtGenre"
-            android:text="@string/genre"
-            android:textAppearance="@style/TextAppearance.TitleMedium"
+
+        <RelativeLayout
+            android:id="@+id/activity_talk_speaker_details_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/activity_talk_speaker_layout"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            />
+            style="@style/CardView.Standard">
 
-        <TextView
-            android:id="@+id/txtDescription"
-            android:textAppearance="@style/TextAppearance.TextMedium"
-            android:text="@string/lorem_ipsum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/txtGenre"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            />
+            <TextView
+                android:id="@+id/txtGenre"
+                android:text="@string/genre"
+                android:textAppearance="@style/TextAppearance.TitleMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                />
+
+            <TextView
+                android:id="@+id/txtDescription"
+                android:textAppearance="@style/TextAppearance.TextMedium"
+                android:text="@string/lorem_ipsum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/txtGenre"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                />
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/lla_contactsList_talk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtDescription"
-            android:orientation="vertical">
+            android:layout_below="@+id/activity_talk_speaker_details_layout"
+            android:orientation="vertical"
+            style="@style/CardView.Standard">
         </LinearLayout>
 
     </RelativeLayout>

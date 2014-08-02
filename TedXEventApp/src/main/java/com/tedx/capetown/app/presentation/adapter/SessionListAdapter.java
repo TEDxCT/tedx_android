@@ -78,14 +78,13 @@ public class SessionListAdapter extends BaseAdapter {
             currentView = mInflater.inflate(R.layout.listview_session, viewGroup, false);
             SessionModel sessionModel = mSessionsListModel.get(i).sessionModel;
             ((TextView)currentView.findViewById(R.id.text_name)).setText(sessionModel.name);
+            ((TextView)currentView.findViewById(R.id.listview_session_position)).setText(sessionModel.position+" ");
         }
         else {
             currentView = mInflater.inflate(R.layout.listview_session_talk, viewGroup, false);
             final TalkModel talkModel = mSessionsListModel.get(i).talkModel;
             ((TextView) currentView.findViewById(R.id.text_name)).setText(talkModel.name);
             ((TextView)currentView.findViewById(R.id.txtSpeaker)).setText(talkModel.speaker.fullName);
-        //    ((TextView)currentView.findViewById(R.id.txtGenre)).setText(talkModel.speaker.funkyTitle);
-        //    ((TextView)currentView.findViewById(R.id.txtShortDescription)).setText(Html.fromHtml(talkModel.speaker.descriptionHTML + ""));
             ImageLoader.getInstance().displayImage(talkModel.imageURL, ((ImageView) currentView.findViewById(R.id.imgSessionSpeaker)));
             // Implemented this way because the onItemClickListener is not working correctly
             currentView.setOnClickListener(new View.OnClickListener() {

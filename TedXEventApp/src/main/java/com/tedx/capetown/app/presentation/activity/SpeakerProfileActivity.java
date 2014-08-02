@@ -133,6 +133,10 @@ public class SpeakerProfileActivity extends Activity {
                 contactsLayout.addView(tvContact);
             }
         }
+        else
+        {
+            findViewById(R.id.lla_contactsList_talk).setVisibility(View.GONE);
+        }
 
         if (speaker.imageURL != null && !speaker.imageURL.isEmpty())
             ImageLoader.getInstance().displayImage(speaker.imageURL, ivImage);

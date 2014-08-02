@@ -10,7 +10,7 @@
     </style>
 
     <style name="TextAppearance.Large" parent="@android:style/TextAppearance.Large">
-        </style>
+    </style>
     <style name="TextAppearance.TitleLarge" parent="@android:style/TextAppearance.Large">
         <item name="android:textColor">#333</item>
         <item name="android:textSize">20sp</item>
@@ -28,14 +28,43 @@
         <item name="android:textSize">16sp</item>
     </style>
     <style name="CardView">
+        <item name="android:layout_marginTop">@dimen/standard_cardview_margin_top</item>
+        <item name="android:layout_marginRight">@dimen/standard_cardview_margin_right</item>
+        <item name="android:layout_marginBottom">@dimen/standard_cardview_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/standard_cardview_margin_left</item>
+        <item name="android:padding">@dimen/standard_cardview_padding</item>
+    </style>
+    <style name="CardView.Standard" >
         <item name="android:background">@drawable/standard_cardview_background</item>
+    </style>
+    <style name="CardView.Standard.Clickable" >
+        <item name="android:background">@drawable/standard_cardview_clickable_area_background</item>
+    </style>
+    <style name="CardView.Standard.Title">
+        <item name="android:background">@drawable/standard_cardview_title_background</item>
+        <item name="android:textColor">@color/standard_cardview_title_text_color</item>
+        <item name="android:textSize">@dimen/standard_cardview_title_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="CardView.Rounded">
+        <item name="android:background">@drawable/standard_cardview_rounded_clickable_area_background</item>
+    </style>
+    <style name="CardViewHolder">
+        <item name="android:paddingTop">@dimen/standard_cardview_margin_top</item>
+        <item name="android:paddingBottom">@dimen/standard_cardview_margin_bottom</item>
+    </style>
+    <style name="ImageViewHolder">
+        <item name="android:background">@drawable/standard_image_view_holder_background</item>
         <item name="android:layout_marginTop">@dimen/standard_cardview_margin_top</item>
         <item name="android:layout_marginRight">@dimen/standard_cardview_margin_right</item>
         <item name="android:layout_marginBottom">@dimen/standard_cardview_margin_bottom</item>
         <item name="android:layout_marginLeft">@dimen/standard_cardview_margin_left</item>
     </style>
-    <style name="CardViewHolder">
-        <item name="android:paddingTop">@dimen/standard_cardview_margin_top</item>
-        <item name="android:paddingBottom">@dimen/standard_cardview_margin_bottom</item>
+    <style name="ListView.CardView" parent="android:Widget.ListView">
+        <item name="android:layout_marginTop">@dimen/standard_listview_cardview_margin_top</item>
+        <item name="android:layout_marginRight">@dimen/standard_listview_cardview_margin_right</item>
+        <item name="android:layout_marginBottom">@dimen/standard_listview_cardview_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/standard_listview_cardview_margin_left</item>
+        <item name="android:dividerHeight">@dimen/standard_listview_cardview_divider_height</item>
     </style>
 </resources>

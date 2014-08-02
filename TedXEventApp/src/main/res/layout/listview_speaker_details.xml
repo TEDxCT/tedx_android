@@ -1,9 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_for_headers"
     android:focusable="false"
-    android:background="@drawable/standard_clickable_area_background"
+    style="@style/CardView.Standard.Clickable"
     android:clickable="true" >
 
     <ImageView

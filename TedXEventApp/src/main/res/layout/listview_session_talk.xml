@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
-    android:background="@drawable/standard_clickable_area_background"
+    style="@style/CardView.Standard.Clickable"
     android:clickable="true">
 
     <FrameLayout

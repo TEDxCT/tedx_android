@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@android:id/list"
-        android:dividerHeight="@dimen/margin_for_headers"
+        style="@style/ListView.CardView"
         />
 
 </RelativeLayout>

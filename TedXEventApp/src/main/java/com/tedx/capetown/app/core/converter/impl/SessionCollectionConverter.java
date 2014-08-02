@@ -23,9 +23,13 @@ public class SessionCollectionConverter extends AbstractConverter<List, SessionC
         sessionCollectionModel.sessions = new ArrayList<SessionModel>();
 
         SessionConverter sessionConverter = new SessionConverter(SessionDTO.class, SessionModel.class);
-        for(SessionDTO session : source)
-            sessionCollectionModel.sessions.add(sessionConverter.convert(session));
-
+        int i = 1;
+        for(SessionDTO session : source) {
+            SessionModel sessionModel = sessionConverter.convert(session);
+            sessionModel.position = Integer.parseInt(i+"");
+            sessionCollectionModel.sessions.add(sessionModel);
+            i++;
+        }
         return sessionCollectionModel;
     }
 

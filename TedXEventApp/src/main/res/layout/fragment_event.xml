@@ -17,8 +17,7 @@
             android:id="@+id/top_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/CardView"
-            >
+            style="@style/CardView.Standard">
 
             <TextView
                 android:id="@+id/host_name"
@@ -64,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/image_linear_layout"
-            style="@style/CardView"
+            style="@style/CardView.Standard"
             android:layout_below="@+id/top_relative_layout">
             <ImageView
                 android:id="@+id/event_picture"
@@ -90,7 +89,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/maps_linear_layout"
             android:layout_below="@id/image_linear_layout"
-            style="@style/CardView">
+            style="@style/CardView.Standard">
 
 
             <FrameLayout
@@ -132,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/maps_linear_layout"
-            style="@style/CardView"
+            style="@style/CardView.Standard"
             android:id="@+id/description_linear_layout">
 
             <TextView

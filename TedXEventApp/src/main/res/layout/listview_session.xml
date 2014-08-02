@@ -1,28 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
-    android:background="@color/standard_clickable_area_default_background"
-    android:paddingBottom="@dimen/activity_double_vertical_margin"
-    android:paddingTop="@dimen/activity_double_vertical_margin"
-    >
+    style="@style/CardView.Standard">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/listview_session_default_session"
         android:id="@+id/text_name"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/listview_session_default_session"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/listview_session_position"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/listview_session_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/listview_session_default_time"
-        android:id="@+id/text_session_time"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"/>
 </RelativeLayout>

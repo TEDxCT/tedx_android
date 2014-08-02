@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class SessionModel {
     public int id;
+    public int position;
     public boolean isActive;
     public String sessionTime;
     public String name;

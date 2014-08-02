@@ -11,11 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@android:id/list"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:dividerHeight="@dimen/activity_vertical_margin"
+        style="@style/ListView.CardView"
     />
 
 </RelativeLayout>
