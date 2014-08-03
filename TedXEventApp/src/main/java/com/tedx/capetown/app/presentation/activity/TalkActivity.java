@@ -81,7 +81,7 @@ public class TalkActivity extends Activity {
         txtDescription.setText(Html.fromHtml(talkModel.descriptionHTML));
 
         if (speaker.imageURL != null && !speaker.imageURL.isEmpty())
-            ImageLoader.getInstance().displayImage(speaker.imageURL, imgTalk);
+            ImageLoader.getInstance().displayImage(talkModel.imageURL, imgTalk);
 
         if (speaker != null) {
             speakerId = speaker.id;

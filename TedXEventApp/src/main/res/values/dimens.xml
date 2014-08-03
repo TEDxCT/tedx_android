@@ -34,6 +34,9 @@
     <dimen name="standard_cardview_margin_right">10dp</dimen>
     <dimen name="standard_cardview_margin_bottom">5dp</dimen>
     <dimen name="standard_cardview_margin_left">10dp</dimen>
+    <dimen name="standard_cardview_small_text_size">16sp</dimen>
+    <dimen name="standard_cardview_medium_text_size">18sp</dimen>
+    <dimen name="standard_cardview_large_text_size">20sp</dimen>
     <dimen name="standard_cardview_title_text_size">20sp</dimen>
     <dimen name="standard_cardview_title_rounding_size">6dp</dimen>
     <dimen name="standard_listview_cardview_divider_height">10dp</dimen>
@@ -41,6 +44,8 @@
     <dimen name="standard_listview_cardview_margin_right">10dp</dimen>
     <dimen name="standard_listview_cardview_margin_bottom">10dp</dimen>
     <dimen name="standard_listview_cardview_margin_left">10dp</dimen>
+
     <!-- Event Fragment -->
     <dimen name="fragment_event_margin_text_view">4dp</dimen>
+    <dimen name="fragment_event_image_size_height">200dp</dimen>
 </resources>

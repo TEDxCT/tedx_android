@@ -2,9 +2,11 @@
 <resources>
 
     <color name="standard_theme_background">#CCCCCC</color>
+    <color name="standard_theme_text_color">#000000</color>
     <color name="standard_clickable_area_pressed_background">#AAAAAA</color>
     <color name="standard_clickable_area_disabled_background">#FFFFFF</color>
     <color name="standard_clickable_area_default_background">#FFFFFF</color>
     <color name="standard_cardview_background_color">#FFFFFF</color>
     <color name="standard_cardview_title_text_color">#666666</color>
+    <color name="standard_cardview_text_color">#000000</color>
 </resources>

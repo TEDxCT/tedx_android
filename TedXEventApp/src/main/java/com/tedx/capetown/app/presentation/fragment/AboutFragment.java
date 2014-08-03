@@ -32,13 +32,6 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_about, container, false);
-//        FrameLayout frameLayout = (FrameLayout) fragmentView.findViewById(R.id.sponsors_frame_layout);
-//        FragmentManager fragMan = getFragmentManager();
-//        FragmentTransaction fragTransaction = fragMan.beginTransaction();
-//        SponsorsFragment sponsorsFragment = new SponsorsFragment();
-//
-//        fragTransaction.add(frameLayout.getId(), sponsorsFragment, "fragment added");
-//        fragTransaction.commit();
         return fragmentView;
     }
 
