@@ -14,11 +14,12 @@
 
     <dimen name="home_activity_base_btn_width">240dp</dimen>
 
-    <dimen name="activity_talk_image_width">120dp</dimen>
-    <dimen name="activity_talk_image_height">120dp</dimen>
+    <dimen name="activity_talk_image_width">200dp</dimen>
+    <dimen name="activity_talk_image_height">200dp</dimen>
 
-    <dimen name="activity_speaker_profile_image_width">120dp</dimen>
-    <dimen name="activity_speaker_profile_image_height">120dp</dimen>
+    <dimen name="activity_speaker_profile_image_width">200dp</dimen>
+    <dimen name="activity_speaker_profile_image_height">200dp</dimen>
+
     <dimen name="arrow_width">44dp</dimen>
     <dimen name="arrow_height">44dp</dimen>
     <dimen name="activity_speaker_profile_speaker_name_margin_left">10dp</dimen>
@@ -44,7 +45,8 @@
     <dimen name="standard_listview_cardview_margin_right">10dp</dimen>
     <dimen name="standard_listview_cardview_margin_bottom">10dp</dimen>
     <dimen name="standard_listview_cardview_margin_left">10dp</dimen>
-
+    <dimen name="standard_listview_cardview_image_width">100dp</dimen>
+    <dimen name="standard_listview_cardview_image_height">100dp</dimen>
     <!-- Event Fragment -->
     <dimen name="fragment_event_margin_text_view">4dp</dimen>
     <dimen name="fragment_event_image_size_height">200dp</dimen>

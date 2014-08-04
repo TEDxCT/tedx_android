@@ -68,7 +68,7 @@
                 android:id="@+id/txt_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="@style/TextAppearance.TextMedium"
                 android:text="@string/activity_speaker_profile_genre_generic"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/activity_vertical_margin" />
@@ -86,7 +86,7 @@
                 android:text="@string/activity_speaker_profile_lorem_ipsum_text"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:textSize="@dimen/activity_speaker_profile_text_margin_top" />
+                android:textAppearance="@style/TextAppearance.TextSmall" />
 
         </RelativeLayout>
 
