@@ -37,8 +37,9 @@
     <dimen name="standard_cardview_margin_left">10dp</dimen>
     <dimen name="standard_cardview_small_text_size">16sp</dimen>
     <dimen name="standard_cardview_medium_text_size">18sp</dimen>
+    <dimen name="standard_cardview_medium_title_text_size">20sp</dimen>
     <dimen name="standard_cardview_large_text_size">20sp</dimen>
-    <dimen name="standard_cardview_title_text_size">20sp</dimen>
+    <dimen name="standard_cardview_title_text_size">22sp</dimen>
     <dimen name="standard_cardview_title_rounding_size">6dp</dimen>
     <dimen name="standard_listview_cardview_divider_height">10dp</dimen>
     <dimen name="standard_listview_cardview_margin_top">10dp</dimen>

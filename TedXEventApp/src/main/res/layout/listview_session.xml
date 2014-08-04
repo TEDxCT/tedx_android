@@ -7,7 +7,7 @@
         android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="@style/TextAppearance.TitleMedium"
         android:text="@string/listview_session_default_session"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/listview_session_position"
@@ -17,7 +17,7 @@
         android:id="@+id/listview_session_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="@style/TextAppearance.TextMedium"
         android:text="@string/listview_session_default_time"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"/>

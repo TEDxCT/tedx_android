@@ -182,25 +182,26 @@ public class SplashActivity extends FragmentActivity {
         this.finish();
     }
     public boolean hasActiveInternetConnection() {
-        if (!isNetworkAvailable()) {
-            try {
-                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
-                urlc.setRequestProperty("User-Agent", "Test");
-                urlc.setRequestProperty("Connection", "close");
-                urlc.setConnectTimeout(1500);
-                urlc.connect();
-                return (urlc.getResponseCode() == 200);
-            } catch (Exception e) {
-                return false;
-            }
-        } else {
-        }
-        return false;
+        return isNetworkAvailable();
+//        if (isNetworkAvailable()) {
+//            try {
+//                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
+//                urlc.setRequestProperty("User-Agent", "Test");
+//                urlc.setRequestProperty("Connection", "close");
+//                urlc.setConnectTimeout(1500);
+//                urlc.connect();
+//                return (urlc.getResponseCode() == 200);
+//            } catch (Exception e) {
+//                return false;
+//            }
+//        } else {
+//        }
+//        return false;
     }
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null;
+        return activeNetworkInfo.isAvailable();
     }
 }

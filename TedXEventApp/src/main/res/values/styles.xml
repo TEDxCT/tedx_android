@@ -22,7 +22,7 @@
     </style>
     <style name="TextAppearance.TitleMedium" >
         <item name="android:textColor">@color/standard_cardview_text_color</item>
-        <item name="android:textSize">@dimen/standard_cardview_medium_text_size</item>
+        <item name="android:textSize">@dimen/standard_cardview_medium_title_text_size</item>
     </style>
     <style name="TextAppearance.TitleSmall" >
         <item name="android:textColor">@color/standard_cardview_text_color</item>
