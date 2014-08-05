@@ -34,7 +34,7 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
         _SectionsPagerAdapter = new TabSectionsPagerAdapter(getFragmentManager(), getApplicationContext());
         _ViewPager = (ViewPager) findViewById(R.id.pager);
         _ViewPager.setAdapter(_SectionsPagerAdapter);
-
+        _ViewPager.setOffscreenPageLimit(1);
         _ViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener()
         {
             @Override
@@ -45,7 +45,6 @@ public class HomeTabbedActivity extends ActionBarActivity implements ActionBar.T
 
         for (int i = 0; i < _SectionsPagerAdapter.getCount(); i++)
             actionBar.addTab(actionBar.newTab().setText(_SectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
-        Log.wtf("HOMETABBED", "_SectionsPagerAdapter.getCount():" + _SectionsPagerAdapter.getCount());
     }
 
     @Override

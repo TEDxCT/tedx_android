@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="@style/TextAppearance.Title.Large"
             android:text="@string/activity_speaker_profile_speaker_name_generic"
             android:id="@+id/txt_speakerName"
             android:layout_alignParentTop="true"
@@ -46,15 +46,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true" />
 
-            <ImageView
-                android:id="@+id/img_arrow"
-                android:src="@drawable/ic_arrow_ring"
-                android:layout_width="@dimen/arrow_width"
-                android:layout_height="@dimen/arrow_height"
-                android:layout_marginRight="@dimen/activity_arrow_margin"
-                android:layout_alignParentRight="true"
-                android:focusable="false"
-                android:alpha="0.55"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -68,7 +59,7 @@
                 android:id="@+id/txt_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.TextMedium"
+                android:textAppearance="@style/TextAppearance.Title.Medium"
                 android:text="@string/activity_speaker_profile_genre_generic"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/activity_vertical_margin" />
@@ -83,10 +74,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="20dp"
-                android:text="@string/activity_speaker_profile_lorem_ipsum_text"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:textAppearance="@style/TextAppearance.TextSmall" />
+                android:textAppearance="@style/TextAppearance.TextMedium" />
 
         </RelativeLayout>
 
@@ -96,7 +86,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/activity_speaker_profile_talk_details_layout"
             style="@style/CardView.Standard"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

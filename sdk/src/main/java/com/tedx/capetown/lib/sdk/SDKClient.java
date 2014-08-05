@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by andrewpettey on 2014/05/02.
  */
 public class SDKClient {
-    public static final URI DEFAULT_API_ROOT = URI.create("http://95.85.26.105/");
+    public static final URI DEFAULT_API_ROOT = URI.create("http://api.tedxcapetown.org/");
     private static URI API_ROOT;
     private Map<String, String> customRequestHeaders = null;
     public SDKClient()

@@ -12,21 +12,25 @@
     <style name="TextAppearance">
         <item name="android:textStyle">normal</item>
     </style>
-    <style name="TextAppearance.TitleLarge" >
-        <item name="android:textColor">@color/standard_cardview_text_color</item>
-        <item name="android:textSize">@dimen/standard_cardview_large_text_size</item>
+    <style name="TextAppearance.Title" >
+        <item name="android:textColor">@color/standard_cardview_title_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Title.Large" >
+        <item name="android:textSize">@dimen/standard_cardview_large_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Title.Medium" >
+        <item name="android:textSize">@dimen/standard_cardview_medium_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Title.Small" >
+        <item name="android:textSize">@dimen/standard_cardview_small_title_text_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <style name="TextAppearance.TextLarge" >
         <item name="android:textColor">@color/standard_cardview_text_color</item>
         <item name="android:textSize">@dimen/standard_cardview_large_text_size</item>
-    </style>
-    <style name="TextAppearance.TitleMedium" >
-        <item name="android:textColor">@color/standard_cardview_text_color</item>
-        <item name="android:textSize">@dimen/standard_cardview_medium_title_text_size</item>
-    </style>
-    <style name="TextAppearance.TitleSmall" >
-        <item name="android:textColor">@color/standard_cardview_text_color</item>
-        <item name="android:textSize">@dimen/standard_cardview_small_text_size</item>
     </style>
     <style name="TextAppearance.TextSmall" >
         <item name="android:textColor">@color/standard_cardview_text_color</item>
@@ -34,7 +38,7 @@
     </style>
     <style name="TextAppearance.TextMedium">
         <item name="android:textColor">@color/standard_cardview_text_color</item>
-        <item name="android:textSize">@dimen/standard_cardview_large_text_size</item>
+        <item name="android:textSize">@dimen/standard_cardview_medium_text_size</item>
     </style>
     <style name="CardView">
         <item name="android:layout_marginTop">@dimen/standard_cardview_margin_top</item>
@@ -51,8 +55,7 @@
     </style>
     <style name="CardView.Standard.Title">
         <item name="android:background">@drawable/standard_cardview_title_background</item>
-        <item name="android:textColor">@color/standard_cardview_title_text_color</item>
-        <item name="android:textSize">@dimen/standard_cardview_title_text_size</item>
+        <item name="android:textAppearance">@style/TextAppearance.Title.Large</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="CardView.Rounded">

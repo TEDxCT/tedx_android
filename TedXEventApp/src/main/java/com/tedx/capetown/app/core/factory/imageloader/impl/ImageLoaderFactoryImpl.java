@@ -18,11 +18,11 @@ public class ImageLoaderFactoryImpl {
 
 
         Builder builder = new DisplayImageOptions.Builder()
-                .showImageForEmptyUri(R.drawable.ic_drawer)
-                .showImageOnFail(R.drawable.ic_launcher)
+                .showImageForEmptyUri(R.drawable.defaultuser)
+                .showImageOnFail(R.drawable.defaultuser)
                 .showStubImage(R.drawable.splash)
                 .cacheInMemory(true)
-                .cacheOnDisc(false)
+                .cacheOnDisc(true)
                 .bitmapConfig(Bitmap.Config.RGB_565);
         return builder;
     }

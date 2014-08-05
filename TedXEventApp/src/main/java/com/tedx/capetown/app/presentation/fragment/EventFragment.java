@@ -10,6 +10,7 @@ import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,11 +110,12 @@ public class EventFragment extends Fragment {
     public void setupUI(EventModel model, View view)
     {
         // Server sends time in seconds - can change on server or leave with seconds
+        // Bug with timezones from the Server
         Date startDate = new Date(Long.parseLong(model.startDate)*1000);
+        startDate = new Date(startDate.getTime()+startDate.getTimezoneOffset()*60*1000);
         TextView eventHostName = (TextView) view.findViewById(R.id.host_name);
         TextView eventName = (TextView) view.findViewById(R.id.event_name);
         TextView eventDate = (TextView) view.findViewById(R.id.event_date);
-        TextView eventTime = (TextView) view.findViewById(R.id.event_time);
         TextView eventAddress = (TextView) view.findViewById(R.id.event_address1);
         TextView eventDescription = (TextView) view.findViewById(R.id.event_description);
         ImageView eventPicture = (ImageView) view.findViewById(R.id.event_picture);
@@ -126,8 +128,7 @@ public class EventFragment extends Fragment {
                 mFragementManager.beginTransaction();
         transaction.add(R.id.event_map, mapFragment, "MapFragment").commit();
         eventName.setText(model.name);
-        eventDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(startDate));
-        eventTime.setText(new SimpleDateFormat("kk:mm").format(startDate));
+        eventDate.setText(new SimpleDateFormat("MMM dd, yyyy KK:mm a").format(startDate));
         ImageLoader.getInstance().displayImage(model.imageURL, eventPicture);
         eventDescription.setText(Html.fromHtml(model.descriptionHTML));
         eventHostName.setText(model.hostName);

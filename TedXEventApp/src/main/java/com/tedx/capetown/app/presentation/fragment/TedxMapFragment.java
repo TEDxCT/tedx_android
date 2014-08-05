@@ -12,9 +12,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.EventModel;
 
 import java.util.Locale;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by andrewpettey on 2014/07/03.
@@ -26,7 +29,11 @@ public class TedxMapFragment extends MapFragment {
     {
         View view =  super.onCreateView ( inflater, container,  savedInstanceState);
         if(this.getMap()!=null) {
-        LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
+            if(eventModel==null)
+            {
+                eventModel = ((EventCollectionModel)EventBus.getDefault().getStickyEvent(EventCollectionModel.class)).events.get(0);
+            }
+            LatLng eventPosition = new LatLng(eventModel.latitude, eventModel.longitude);
             this.getMap().getUiSettings().setAllGesturesEnabled(false);
             this.getMap().setMyLocationEnabled(false);
             this.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);

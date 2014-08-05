@@ -101,6 +101,7 @@ public class SpeakerProfileActivity extends Activity {
 
         if (speaker.contactDetails != null){
             LinearLayout contactsLayout = (LinearLayout) findViewById(R.id.lla_contactsList_speaker);
+            contactsLayout.setVisibility(View.VISIBLE);
             for (ContactModel contact : speaker.contactDetails.contactDetails ) {
                 final TextView tvContact = new TextView(this);
                 tvContact.setText(contact.value);
@@ -135,7 +136,9 @@ public class SpeakerProfileActivity extends Activity {
         }
         else
         {
-            findViewById(R.id.lla_contactsList_talk).setVisibility(View.GONE);
+            if(findViewById(R.id.lla_contactsList_talk)!=null) {
+                findViewById(R.id.lla_contactsList_talk).setVisibility(View.GONE);
+            }
         }
 
         if (speaker.imageURL != null && !speaker.imageURL.isEmpty())

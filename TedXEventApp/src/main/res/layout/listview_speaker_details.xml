@@ -10,7 +10,7 @@
         android:layout_height="@dimen/standard_listview_cardview_image_height"
         android:id="@+id/speaker_image"
         android:layout_alignParentStart="true"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher"/>
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -25,8 +25,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:text="Speaker name"
             android:id="@+id/speaker_name"
-            android:focusable="false"
-            android:singleLine="true"/>
+            android:focusable="false"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,8 +36,7 @@
             android:id="@+id/speaker_title"
             android:layout_below="@+id/speaker_name"
             android:layout_alignLeft="@+id/speaker_name"
-            android:focusable="false"
-            android:singleLine="true"/>
+            android:focusable="false"/>
 
     </RelativeLayout>
     <!--<ImageView-->

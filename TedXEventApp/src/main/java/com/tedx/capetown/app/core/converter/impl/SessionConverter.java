@@ -21,7 +21,7 @@ public class SessionConverter extends AbstractConverter<SessionDTO, SessionModel
     public SessionModel convert(SessionDTO source)
     {
         SessionModel model = new SessionModel();
-        model.sessionTime = source.startTime + "-"+ source.endTime;
+        model.sessionTime = source.startTime;
         model.id = source.id;
         model.name = source.name;
         model.talks = new TalkCollectionConverter(List.class, TalkCollectionModel.class).convert(source.talks);

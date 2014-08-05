@@ -27,7 +27,7 @@
     <dimen name="image_talk_width">80dp</dimen>
     <dimen name="image_talk_height">80dp</dimen>
     <!-- Clickable object dimensions-->
-    <dimen name="standard_clickable_area_corner_rounding">3dp</dimen>
+    <dimen name="standard_clickable_area_corner_rounding">6dp</dimen>
 
     <!-- Card Object Dimensions-->
     <dimen name="standard_cardview_padding">12dp</dimen>
@@ -37,7 +37,9 @@
     <dimen name="standard_cardview_margin_left">10dp</dimen>
     <dimen name="standard_cardview_small_text_size">16sp</dimen>
     <dimen name="standard_cardview_medium_text_size">18sp</dimen>
+    <dimen name="standard_cardview_large_title_text_size">22sp</dimen>
     <dimen name="standard_cardview_medium_title_text_size">20sp</dimen>
+    <dimen name="standard_cardview_small_title_text_size">18sp</dimen>
     <dimen name="standard_cardview_large_text_size">20sp</dimen>
     <dimen name="standard_cardview_title_text_size">22sp</dimen>
     <dimen name="standard_cardview_title_rounding_size">6dp</dimen>

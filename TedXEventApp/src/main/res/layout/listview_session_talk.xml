@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/listview_session_speaker_talk_title_generic"
-            android:id="@+id/text_name"
+            android:id="@+id/listview_session_name"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"/>
 
@@ -44,7 +44,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/listview_session_speaker_speaker_generic"
             android:id="@+id/txtSpeaker"
-            android:layout_below="@+id/text_name"
+            android:layout_below="@+id/listview_session_name"
             android:layout_alignParentLeft="true"/>
 
     </RelativeLayout>
