@@ -49,13 +49,6 @@ public class SplashActivity extends FragmentActivity {
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.hide();
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                SetupSplashActivity();
-            }
-        }, (waitPeriod));
     }
 
     private void SetupSplashActivity() {
@@ -85,6 +78,25 @@ public class SplashActivity extends FragmentActivity {
         } catch (IOException e) {
 //            e.printStackTrace();
         }
+    }
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                SetupSplashActivity();
+            }
+        }, (waitPeriod));
     }
 
     @Override
