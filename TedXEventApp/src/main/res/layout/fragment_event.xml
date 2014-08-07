@@ -28,12 +28,13 @@
             <ImageView
                 android:id="@+id/event_picture"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/fragment_event_image_size_height"
+                android:layout_height="wrap_content"
                 android:src="@drawable/splash"
-                android:scaleType="fitCenter"
+                android:scaleType="centerInside"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
+        <!--android:layout_height="@dimen/fragment_event_image_size_height"-->
         <RelativeLayout
             android:id="@+id/top_relative_layout"
             android:layout_width="match_parent"
@@ -96,22 +97,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Address line 1"
                 android:layout_below="@+id/event_map" />
-
-            <TextView
-                android:id="@+id/event_address2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address line 2"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_below="@+id/event_address1" />
-
-            <TextView
-                android:id="@+id/event_gps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GPS location"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_below="@+id/event_address2"/>
         </RelativeLayout>
     </LinearLayout>
 

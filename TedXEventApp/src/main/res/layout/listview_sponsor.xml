@@ -1,19 +1,23 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textAlignment="center">
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/standard_listview_cardview_sponsors_min_image_height"
+    android:textAlignment="center"
+    style="@style/CardView.Standard">
 
     <ImageView
         android:id="@+id/imgSponsor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:src="@drawable/ic_launcher"
-        android:scaleType="fitCenter"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:src="@drawable/defaultuser"
+        android:scaleType="centerInside"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         />
 
 </RelativeLayout>
