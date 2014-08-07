@@ -5,6 +5,8 @@ import android.util.Log;
 import com.tedx.capetown.app.core.converter.impl.SponsorCollectionConverter;
 import com.tedx.capetown.app.core.models.SponsorCollectionModel;
 import com.tedx.capetown.app.core.service.SDKConnectorRequest;
+import com.tedx.capetown.app.core.service.error.SpeakerErrorResponse;
+import com.tedx.capetown.app.core.service.error.SponsorErrorResponse;
 import com.tedx.capetown.app.core.service.request.SponsorCollectionServiceRequest;
 import com.tedx.capetown.app.core.service.request.SponsorModelServiceRequest;
 import com.tedx.capetown.lib.sdk.connector.SponsorConnector;
@@ -49,14 +51,9 @@ public class SponsorService extends AbstractSDKIntentService {
             try {
                 SponsorCollectionModel sponsorCollectionModel = fetchSponsorList();
                 EventBus.getDefault().postSticky(sponsorCollectionModel);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SDKException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                SponsorErrorResponse sponsorErrorResponse = new SponsorErrorResponse(null, e);
+                EventBus.getDefault().postSticky(sponsorErrorResponse);
             }
         }
         else if (action.equals(SponsorModelServiceRequest.class.getName()))

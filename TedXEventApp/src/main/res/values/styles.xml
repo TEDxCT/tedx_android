@@ -1,11 +1,11 @@
 <resources>
 
-    <style name="TedXApplicationTheme" parent="@style/Theme.AppCompat.Light">
+    <style name="TedXApplicationTheme" parent="Theme.AppCompat.Light">
         <item name="android:actionBarTabTextStyle">@style/TabText</item>
         <item name="android:windowBackground">@color/standard_theme_background</item>
     </style>
 
-    <style name="TabText" parent="Widget.AppCompat.ActionBar.TabText">
+    <style name="TabText" parent="android:Widget.ActionBar.TabText">
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/standard_theme_text_color</item>
     </style>

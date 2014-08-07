@@ -7,6 +7,8 @@ import com.tedx.capetown.app.core.converter.impl.EventCollectionConverter;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.models.EventCollectionModel;
 import com.tedx.capetown.app.core.service.SDKConnectorRequest;
+import com.tedx.capetown.app.core.service.error.EventErrorResponse;
+import com.tedx.capetown.app.core.service.error.SpeakerErrorResponse;
 import com.tedx.capetown.app.core.service.request.EventCollectionServiceRequest;
 import com.tedx.capetown.app.core.service.request.EventModelServiceRequest;
 import com.tedx.capetown.lib.sdk.connector.EventConnector;
@@ -58,9 +60,11 @@ public class EventService extends AbstractSDKIntentService {
         }
         if (action.equals(EventCollectionServiceRequest.class.getName())) {
             try {
-                EventBus.getDefault().postSticky(fetchEventList());
+                EventCollectionModel eventCollectionModel = fetchEventList();
+                EventBus.getDefault().postSticky(eventCollectionModel);
             } catch (Exception e) {
-                EventBus.getDefault().postSticky(e);
+                EventErrorResponse eventErrorResponse = new EventErrorResponse(null, e);
+                EventBus.getDefault().postSticky(eventErrorResponse);
             }
         }
         else if (action.equals(EventModelServiceRequest.class.getName()))

@@ -64,14 +64,10 @@ public class SpeakerService extends AbstractSDKIntentService {
             try {
                 SpeakerCollectionModel speakerCollectionModel = fetchSpeakerList();
                 EventBus.getDefault().postSticky(speakerCollectionModel);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SDKException e) {
+            } catch (Exception e) {
                 SpeakerErrorResponse speakerErrorResponse = new SpeakerErrorResponse(null, e);
-            } catch (ParseException e) {
-                e.printStackTrace();
+                EventBus.getDefault().postSticky(speakerErrorResponse);
+
             }
         }
         else if (action.equals(SpeakerModelServiceRequest.class.getName()))
