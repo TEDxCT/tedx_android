@@ -50,7 +50,7 @@
     <dimen name="standard_listview_cardview_margin_left">10dp</dimen>
     <dimen name="standard_listview_cardview_image_width">100dp</dimen>
     <dimen name="standard_listview_cardview_image_height">100dp</dimen>
-    <dimen name="standard_listview_cardview_sponsors_min_image_height">100dp</dimen>
+    <dimen name="standard_listview_cardview_sponsors_min_image_height">150dp</dimen>
 
     <!-- Event Fragment -->
     <dimen name="fragment_event_margin_text_view">4dp</dimen>

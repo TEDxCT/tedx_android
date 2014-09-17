@@ -29,7 +29,7 @@ import de.greenrobot.event.EventBus;
  * Created by andrewpettey on 2014/05/11.
  */
 public class SpeakerService extends AbstractSDKIntentService {
-
+    private static String TAG = "Srv:Speaker";
     public SpeakerService() {
 
         super(ServiceIdentifier.Speaker.name());
@@ -72,7 +72,7 @@ public class SpeakerService extends AbstractSDKIntentService {
         }
         else if (action.equals(SpeakerModelServiceRequest.class.getName()))
         {
-            Log.wtf("TEST","SpeakerModelServiceRequest: "+action);
+            Log.wtf(TAG,"SpeakerModelServiceRequest: "+action);
         }
-        }
+    }
 }

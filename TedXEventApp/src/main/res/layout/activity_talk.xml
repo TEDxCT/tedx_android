@@ -22,11 +22,11 @@
 
         <ImageView
             android:id="@+id/imgTalk"
-            android:layout_width="@dimen/activity_talk_image_width"
-            android:layout_height="@dimen/activity_talk_image_height"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_speaker_profile_image_height"
             android:src="@drawable/ic_launcher"
             android:layout_below="@+id/txtTalkName"
-            android:layout_centerInParent="true"
+            style="@style/CardView.Standard"
             />
 
         <RelativeLayout

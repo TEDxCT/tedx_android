@@ -9,6 +9,8 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -142,9 +144,13 @@ public class TalkActivity extends Activity {
     }
 
     public void urlIntent(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url));
-        startActivity(Intent.createChooser(intent, "Open Url"));
+        if(!url.startsWith("http://")&&!url.startsWith("https://"))
+        {
+            url = "http://"+url;
+        }
+        Uri uri = Uri.parse(url);
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(webIntent);
     }
 
     public TalkModel getTalk(int talkId) {

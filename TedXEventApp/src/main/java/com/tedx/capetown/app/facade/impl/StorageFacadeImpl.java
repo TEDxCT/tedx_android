@@ -28,10 +28,16 @@ public class StorageFacadeImpl implements StorageFacade {
     }
 
     @Override
-    public Object read(StorageKey key) throws IOException {
-
-        return service.read(key);
-
+    public Object read(StorageKey key) {
+        Object data;
+        try{
+            data = service.read(key);
+            return data;
+        }
+        catch(Exception e)
+        {
+            return null;
+        }
     }
 
     @Override

@@ -11,6 +11,8 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -115,13 +117,6 @@ public class SpeakerProfileActivity extends Activity {
                             emailIntent(tvContact.getText().toString());
                         }
                     });
-               /* } else if (contact.name.equals("twitter")) {
-                    tvContact.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            twitterIntent(tvContact.getText().toString());
-                        }
-                    });*/
                 } else {
                     tvContact.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -149,33 +144,19 @@ public class SpeakerProfileActivity extends Activity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_EMAIL, address);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "TEDxCT Talk");
-        intent.putExtra(Intent.EXTRA_TEXT, "Great talk!");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "TedXCapeTown Event Contact");
+        intent.putExtra(Intent.EXTRA_TEXT, "TedXCapeTown App User");
         startActivity(Intent.createChooser(intent, "Send Email"));
     }
 
     public void urlIntent(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url));
-        startActivity(Intent.createChooser(intent, "Open Url"));
-    }
-
-    public void twitterIntent(String address) {
-        Intent tweetIntent = new Intent(Intent.ACTION_SEND);
-        tweetIntent.putExtra(Intent.EXTRA_TEXT, address);
-        tweetIntent.setType("application/twitter");
-        PackageManager pm = getPackageManager();
-        List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
-
-        boolean resolved = false;
-        for (ResolveInfo ri : lract) {
-            if (!ri.activityInfo.name.endsWith(".SendTweet"))
-                continue;
-            tweetIntent.setClassName(ri.activityInfo.packageName, ri.activityInfo.name);
-            resolved = true;
-            break;
+        if(!url.startsWith("http://")&&!url.startsWith("https://"))
+        {
+            url = "http://"+url;
         }
-        startActivity(resolved ? tweetIntent : Intent.createChooser(tweetIntent, "Choose one"));
+        Uri uri = Uri.parse(url);
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(webIntent);
     }
 
     public SpeakerModel getSpeaker(int speakerId) {

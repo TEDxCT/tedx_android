@@ -94,7 +94,6 @@ public class AppSettingsImpl implements AppSettings {
     public String getSetting(AppSettingKey settingKey) {
 
         String result = null;
-        Log.wtf("TEST",settingKey.toString()+"="+_environmentOverideProperties.getProperty(settingKey.toString()));
         result = _environmentOverideProperties.getProperty(settingKey.toString());
 
         if (result == null) {

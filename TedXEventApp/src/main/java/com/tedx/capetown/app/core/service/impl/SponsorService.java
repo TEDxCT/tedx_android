@@ -21,6 +21,7 @@ import java.text.ParseException;
 import de.greenrobot.event.EventBus;
 
 public class SponsorService extends AbstractSDKIntentService {
+    private static String TAG = "Srv:Sponsor";
 
     public SponsorService() {
         super(ServiceIdentifier.Sponsor.name());
@@ -28,18 +29,18 @@ public class SponsorService extends AbstractSDKIntentService {
 
     private SponsorCollectionModel fetchSponsorList() throws IllegalArgumentException, IllegalAccessException, IOException, SDKException, ParseException {
         return executeSdkConnectorRequest(
-            new SDKConnectorRequest<SponsorCollectionDTO>() {
-                @Override
-                public SDKResponse<SponsorCollectionDTO> makeRequest() throws IOException,
-                        SDKException,
-                        ParseException {
-                    SponsorConnector SponsorConnector = getSDKClient().getSponsorConnector();
-                    SponsorRequest request = SponsorConnector.getSponsorRequestBuilder("tedx_server/response/sponsors.php").build();
-                    SDKResponse<SponsorCollectionDTO> response = SponsorConnector.getSponsorList(request);
-                    return response;
+                new SDKConnectorRequest<SponsorCollectionDTO>() {
+                    @Override
+                    public SDKResponse<SponsorCollectionDTO> makeRequest() throws IOException,
+                            SDKException,
+                            ParseException {
+                        SponsorConnector SponsorConnector = getSDKClient().getSponsorConnector();
+                        SponsorRequest request = SponsorConnector.getSponsorRequestBuilder("tedx_server/response/sponsors.php").build();
+                        SDKResponse<SponsorCollectionDTO> response = SponsorConnector.getSponsorList(request);
+                        return response;
+                    }
                 }
-            }
-            , new SponsorCollectionConverter(SponsorCollectionDTO.class,SponsorCollectionModel.class)
+                , new SponsorCollectionConverter(SponsorCollectionDTO.class,SponsorCollectionModel.class)
         );
     }
     @Override
@@ -58,9 +59,8 @@ public class SponsorService extends AbstractSDKIntentService {
         }
         else if (action.equals(SponsorModelServiceRequest.class.getName()))
         {
-            Log.wtf("TEST","SponsorModelServiceRequest: "+action);
+            Log.wtf(TAG,"SponsorModelServiceRequest: "+action);
         }
-        Log.wtf("TEST","action"+action);
     }
 
 }

@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -63,20 +65,26 @@ public class SplashActivity extends FragmentActivity {
         FacadeFactoryImpl.createSpeakerFacade(DefaultApplication.getAppContext()).fetchSpeakerList();
         ObjectMapper mapper = new ObjectMapper();
         try {
-            if(FacadeFactoryImpl.createStorageFacade().read(StorageKey.EventModel)!=null)
+            String eventData = (String) FacadeFactoryImpl.createStorageFacade().read(StorageKey.EventModel);
+            String speakerData = (String) FacadeFactoryImpl.createStorageFacade().read(StorageKey.SpeakersModel);
+            String sponsorData = (String)FacadeFactoryImpl.createStorageFacade().read(StorageKey.SponsorsModel);
+            if(!TextUtils.isEmpty(eventData))
             {
-                EventBus.getDefault().postSticky(mapper.readValue((String) FacadeFactoryImpl.createStorageFacade().read(StorageKey.EventModel), EventCollectionModel.class));
+                EventBus.getDefault().postSticky(mapper.readValue(eventData, EventCollectionModel.class));
             }
-            if(FacadeFactoryImpl.createStorageFacade().read(StorageKey.SpeakersModel)!=null)
+            if(!TextUtils.isEmpty(speakerData))
             {
-                EventBus.getDefault().postSticky(mapper.readValue((String)FacadeFactoryImpl.createStorageFacade().read(StorageKey.SpeakersModel), SpeakerCollectionModel.class));
+                EventBus.getDefault().postSticky(mapper.readValue(speakerData, SpeakerCollectionModel.class));
             }
-            if(FacadeFactoryImpl.createStorageFacade().read(StorageKey.SponsorsModel)!=null)
+            if(!TextUtils.isEmpty(sponsorData))
             {
-                EventBus.getDefault().postSticky(mapper.readValue((String)FacadeFactoryImpl.createStorageFacade().read(StorageKey.SponsorsModel), SponsorCollectionModel.class));
+                EventBus.getDefault().postSticky(mapper.readValue(sponsorData, SponsorCollectionModel.class));
             }
-        } catch (IOException e) {
-//            e.printStackTrace();
+        } catch (Exception e) {
+            FacadeFactoryImpl.createStorageFacade().remove(StorageKey.SponsorsModel);
+            FacadeFactoryImpl.createStorageFacade().remove(StorageKey.SpeakersModel);
+            FacadeFactoryImpl.createStorageFacade().remove(StorageKey.EventModel);
+            ErrorFragment.DisplayFatalError(this, "An error occurred - please restart the app.");
         }
     }
     @Override
@@ -136,20 +144,6 @@ public class SplashActivity extends FragmentActivity {
     }
     public boolean hasActiveInternetConnection() {
         return isNetworkAvailable();
-//        if (isNetworkAvailable()) {
-//            try {
-//                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
-//                urlc.setRequestProperty("User-Agent", "Test");
-//                urlc.setRequestProperty("Connection", "close");
-//                urlc.setConnectTimeout(1500);
-//                urlc.connect();
-//                return (urlc.getResponseCode() == 200);
-//            } catch (Exception e) {
-//                return false;
-//            }
-//        } else {
-//        }
-//        return false;
     }
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager

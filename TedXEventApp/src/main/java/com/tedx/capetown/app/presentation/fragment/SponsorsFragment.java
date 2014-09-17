@@ -38,13 +38,6 @@ public class SponsorsFragment extends ListFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View fragmentView = inflater.inflate(R.layout.fragment_sponsors, container, false);
-  //      FrameLayout frameLayout = (FrameLayout) fragmentView.findViewById(R.id.sponsors_frame_layout);
-  //      FragmentManager fragMan = getFragmentManager();
-  //      FragmentTransaction fragTransaction = fragMan.beginTransaction();
-       // SponsorsFragment sponsorsFragment = new SponsorsFragment();
-
- //       fragTransaction.add(frameLayout.getId(), this, "fragment added");  //sponsorsFragment
- //       fragTransaction.commit();
         return fragmentView;
     }
 
@@ -56,32 +49,12 @@ public class SponsorsFragment extends ListFragment
         SponsorCollectionModel sponsorCollectionModel = (SponsorCollectionModel) EventBus.getDefault().getStickyEvent(SponsorCollectionModel.class);
         _sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, getActivity());
         this.getListView().setAdapter(_sponsorListAdapter);
-
-//        SponsorCollectionModel sponsorCollectionModel = (SponsorCollectionModel) EventBus.getDefault().getStickyEvent(SponsorCollectionModel.class);
-//        if (_sponsorListAdapter == null)
-//        {
-//            _sponsorListAdapter = new SponsorListAdapter(sponsorCollectionModel.sponsors, getActivity());
-//            this.getListView().setAdapter(_sponsorListAdapter);
-//        }
-//        else
-//        {
-//            _sponsorListAdapter.updateData(sponsorCollectionModel.sponsors);
-//            _sponsorListAdapter.notifyDataSetChanged();
-//        }
     }
 
     @Override
     public void onAttach(Activity activity)
     {
         super.onAttach(activity);
-//        try
-//        {
-//            _listener = (OnFragmentInteractionListener) activity;
-//        }
-//        catch (ClassCastException e)
-//        {
-//            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
-//        }
     }
 
     @Override

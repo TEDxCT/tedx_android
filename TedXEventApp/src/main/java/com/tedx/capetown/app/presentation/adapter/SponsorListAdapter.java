@@ -3,7 +3,10 @@ package com.tedx.capetown.app.presentation.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.net.Uri;
 import android.text.Html;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +79,12 @@ public class SponsorListAdapter extends BaseAdapter
         final SponsorModel sponsorModel = _sponsorModelList.get(i);
         View currentView = layoutInflater.inflate(R.layout.listview_sponsor, viewGroup, false);
         ImageLoader.getInstance().displayImage(sponsorModel.ImageURL, ((ImageView) currentView.findViewById(R.id.imgSponsor)));
+        currentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                urlIntent(sponsorModel.WebsiteURL);
+            }
+        });
         return currentView;
     }
 
@@ -98,4 +107,13 @@ public class SponsorListAdapter extends BaseAdapter
         _sponsorModelList = sponsors;
     }
 
+    public void urlIntent(String url) {
+        if(!url.startsWith("http://")&&!url.startsWith("https://"))
+        {
+            url = "http://"+url;
+        }
+        Uri uri = Uri.parse(url);
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, uri);
+        _context.startActivity(webIntent);
+    }
 }
